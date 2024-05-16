@@ -1,0 +1,97 @@
+\uchapter{Metodologia}
+\label{chap:metodologia}
+
+\section{Definição dos requisitos}
+A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. 
+
+Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. 
+
+Como requisitos funcionais foram definidos os seguintes:
+\begin{itemize}[label={$\sbullet$}]
+    \item Permitir que os usuários digitem a gramática a ser analisada
+    \item Permitir que os usuários visualizem o estado das estruturas dos algoritmos
+    \item Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos  
+    \item Permitir que os usuários selecionem o algoritmo a ser visualizado
+\end{itemize}
+
+Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas, partir delas foram definidos os seguintes requisitos:
+\begin{itemize}[label={$\sbullet$}]
+    \item Permitir que os usuários digitem uma \textit{string} a ser analisada
+    \item Permitir que os usuários visualizem a análise de uma \textit{string}
+    \item Permitir que os usuários visualizem a árvore sintática de uma \textit{string}. 
+    \item Permitir que os usuários copiem em formato de texto os resultados da análise de uma \textit{string}
+    \item Permitir que os usuários copiem implementações dos algoritmos 
+\end{itemize}
+Com esses requisitos tem-se a base para o desenvolvimento da ferramenta.
+
+
+\section{Interface de usuário}
+Essa seção irá falar sobre os detalhes de implementação da interface de usuário da ferramenta. 
+
+Para que o usuário selecione um algoritmo para visualizar a ferramenta terá opções no topo da tela que alternam entre abas. Dentre essas abas estarão inclusas uma para a entrada de gramáticas e uma aba para visualização de cada algoritmo disponível.
+
+Para que o usuário possa dar uma gramática de entrada será criado um campo de texto como mostra Figura \ref{fig:mgrammar}.
+
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=16cm}
+    \caption{Caption}
+    \label{fig:mgrammar}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mgrammar.png}}
+    \Fonte{fornecida pelo próprio autor}
+\end{figure}
+\FloatBarrier
+
+Para a visualização dos algoritmos a ferramenta terá uma composição de elementos como mostra a Figura \ref{fig:mfirst}, esses elementos são modificados de acordo com a execução do algoritmo selecionado. Os passos da execução do algoritmo podem ser controlados pelo conjunto de controles acima dos elementos do algoritmo como mostra a Figura \ref{fig:mfirst}.
+
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=16cm}
+    \caption{Caption}
+    \label{fig:mfirst}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mfirst.png}}
+    \Fonte{fornecida pelo próprio autor}
+\end{figure}
+\FloatBarrier
+
+Nas abas de visualização de algoritmos serão inclusos um campo de texto no qual o usuário poderá inserir uma \textit{string} de entrada para ser analisada pelo algoritmo, um campo de texto para copiar os resultados dos algoritmos em forma de texto e um campo de texto para copiar a implementação do algoritmo.
+
+\section{Integração dos algoritmos}
+Para todas as estruturas de dados usadas nos algoritmos serão criadas representações visuais, dessa forma todos os passos do funcionamento poderão ser representados como estados dessas estruturas. Calculando antecipadamente os estados dessas estruturas em cada passo dos algoritmos podemos fazer um controle de fluxo entre os passos dos algoritmos.
+
+\section{Animações}
+As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica. Um exemplo de animação é a animação do estado da estrutura de pilha que é usada em alguns algoritmos. Quando um item é adicionado ou removido da pilha, o elemento visual que representa esse item terá sua posição interpolada do ponto inicial ao ponto final.
+
+\section{Avaliação}
+Será realizado um teste prático com um grupo de estudantes, onde os eles serão solicitados a realizar tarefas específicas utilizando a ferramenta. Serão coletados dados quantitativos, como tempo de execução das tarefas e taxa de acerto, bem como dados qualitativos por meio de questionários e entrevistas para avaliar a percepção dos estudantes sobre a eficácia da ferramenta. Além disso, a comparação dos resultados obtidos com um grupo de controle que não utiliza a ferramenta ajudará a avaliar o impacto da visualização na compreensão e desempenho dos alunos. Essa abordagem abrangente de avaliação garantirá uma análise completa da eficácia e utilidade da ferramenta desenvolvida nesse trabalho.
+
+O desenvolvimento desse trabalho seguirá o cronograma mostrado no Quadro \ref{qua:cronograma}
+\setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
+\setlength{\belowcaptionskip}{5pt plus 0pt minus 0pt}
+\begin{table}[h]
+\centering\setlength{\extrarowheight}{2pt}
+\captionsetup{width={\textwidth}}
+\captionof{quadro}{Cronograma}\label{qua:cronograma}
+\resizebox{\textwidth}{!}{\begin{NiceTabular}{l*{6}{m[c]{1.2cm}}}[corners,hvlines]
+\CodeBefore
+  \rowcolor{gray!15}{1-2}
+\Body
+\Block{2-1}{Atividades}  & \Block{1-6}{Período}  \\
+% &\Block[c]{1-4}{1° mês}&&&&
+% \Block{1-4}{2° mês}&&&&
+% \Block{1-4}{3° mês}&&&&
+% \Block{1-4}{4° mês}&&&&
+% \Block{1-2}{5° mês}\\
+&1° mês&2° mês&3° mês&4° mês&5° mês&6° mês\\
+% Revisão literária & x & x &  & \NotEmpty& & x& x& x& x& x& x& x& x& x& x& x&x & x \\
+Revisão bibliográfica                   &x& & & & & \\
+Definição dos requisitos                & &x& & & & \\
+Implementação da interface de usuário   & &x&x& & & \\
+Integração dos algoritmos               & & &x&x&x& \\
+Implementação das animações             & & &x&x&x& \\
+Avaliação                               & & & & &x& \\
+Apresentação                            & & & & & &x\\
+\end{NiceTabular}}
+{\Fonte{fornecido pelo autor}}
+\end{table}
+\definecolor{myblue}{HTML}{C0C0C0}

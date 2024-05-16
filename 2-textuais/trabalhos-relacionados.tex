@@ -1,0 +1,84 @@
+\uchapter{Trabalhos Relacionados}
+\label{cap:trabalhos-relacionados}
+
+Nesta seção, estão descritas algumas ferramentas de visualização de algoritmos de análise sintática, suas funcionalidades e limitações.
+
+\section{\textit{Parser Generator Web Tools}}
+\label{sec:trabalho-relacionado-a}
+
+Essa ferramenta desenvolvida por \textcite{Parser-2024-04-12} é uma aplicação web que oferece a visualização de três algoritmos, LL(1), SLR(1) e CLR(1). Ao ser informada uma gramática pela caixa de entrada, a ferramenta cria a tabela dos conjuntos \textit{first} e \textit{follow} como mostra a Figura \ref{fig:sets}, um autômato dos estados do analisador sintático e a tabela de transição de estados como mostra a Figura \ref{fig:tableandautomata}.
+\begin{figure}[htp]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:sets} Imagem da ferramenta de \textit{Parser Generator Web Tools}}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg
+    }}{
+    \Fonte{\textcite{Parser-2024-04-12}.}}
+\end{figure}
+\begin{figure}[ht]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:tableandautomata}Imagem da ferramenta de \textit{Parser Generator Web Tools}}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg}}
+    {\Fonte{\textcite{Parser-2024-04-12}.}}
+\end{figure}
+\FloatBarrier
+
+\section{LR(1) \textit{Parser Generator}}
+Feita especificamente para o algoritmo CLR(1) a ferramenta web criada por \textcite{LR-2024-04-12} gera o conjunto de first mostrado na Figura \ref{fig:firstandcanonical}, o conjunto de itens canônicos mostrado na Figura \ref{fig:firstandcanonical} e a tabela de transição de estados mostrada na Figura \ref{fig:tableandparse}. A ferramenta também disponibiliza o passo a passo da análise de uma \textit{string} junto com uma árvore sintática representada por contêineres contidos um dentro do outro como mostra a Figura \ref{fig:tableandparse}.
+
+\begin{figure}[ht]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:firstandcanonical}Imagem da ferramenta de LR(1) \textit{Parser Generator}}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/Captura de tela 2024-04-20 092130.png}}{
+    \Fonte{\textcite{LR-2024-04-12}.}}
+\end{figure}
+\begin{figure}[ht]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:tableandparse}Imagem da ferramenta de LR(1) \textit{Parser Generator}}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/Captura de tela 2024-04-20 092451.png}}{
+    \Fonte{\textcite{LR-2024-04-12}.}}
+\end{figure}
+\FloatBarrier
+
+\section{PAVT}
+No trabalho de \textcite{sangal2018pavt} foi criada a ferramenta PAVT (\textit{Parsing Algorithms Visualization Tool}) para visualização de seis algoritmos de análise sintática, no entanto, a visualização é realizada apenas pela leitura de um arquivo de texto gerado pela ferramenta, além de não mostrar instruções de como chegar ao resultado descrito no arquivo de texto. O software também está apenas disponível em versão \textit{desktop} para o sistema operacional \textit{Windows}.
+
+\begin{figure}[ht]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:pavt}Imagem da ferramenta PAVT}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/pavt.png}}{
+    \Fonte{\textcite{pavt}.}}
+\end{figure}
+\FloatBarrier
+
+\section{JFLAP}
+JFLAP (\textit{Java Formal Languages and Automata Package}) é uma ferramenta \textit{desktop} criada por \textcite{jflap} que pode ser usada para visualização dos algoritmos LL(1), SLR e de força bruta. Apesar da visualização ser feita por meio de uma interface gráfica, assim como na ferramenta citada na seção anterior, JFLAP não dá instruções de como chegar nos resultados mostrados.
+
+\begin{figure}[ht]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:jflap}Imagem da ferramenta JFLAP}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/jflap.png}}{
+    \Fonte{\textcite{jflap}.}}
+\end{figure}
+
+\begin{figure}[ht]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:jflapparse}Imagem da ferramenta JFLAP}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/jflapparse.png}}{
+    \Fonte{\textcite{jflap}.}}
+\end{figure}
+\FloatBarrier
+
+\section{Considerações}
+Apesar de já existirem ferramentas de visualização de \textit{parsers}, algumas desvantagens ainda precisam ser consideradas. Uma limitação é que o conteúdo não tem muita interatividade, a ferramenta PAVT, por exemplo, apresenta apenas em um arquivo de texto. Isso pode dificultar a compreensão dos conceitos. A ferramenta Parser Generator Web Tools não oferece a visualização da árvore sintática que é um elemento fundamental para entender a estrutura da análise sintática. Outro ponto fraco é a falta de detalhamento do passo a passo dos algoritmos, o que impede que os estudantes acompanhem o funcionamento interno dos processos de análise. A variedade de algoritmos de análise sintática disponíveis nas ferramentas pode ser limitada, restringindo a exposição dos alunos a diferentes abordagens e técnicas. Por fim, nenhuma das ferramentas apresenta uma versão mobile. Essas lacunas representam oportunidades de melhoria para que as ferramentas de visualização de parsers se tornem ainda mais eficazes no apoio ao ensino e aprendizagem de análise sintática.
+
+% \bibliography{3-pos-textuais/referencias}
+%\Gls{ambiguidade}
+%\Gls{braile}
+%\Gls{coerencia}
+%\Gls{dialetos}
+%\Gls{elipse}
+%\Gls{locucao-adjetiva}
+%\Gls{modificadores}
+%\Gls{paronimos}
+%\Gls{sintese}
+%\Gls{borboleta}
