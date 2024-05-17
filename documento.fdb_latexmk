@@ -1,22 +1,22 @@
 # Fdb version 4
-["biber documento"] 1715892800.4915 "documento.bcf" "documento.bbl" "documento" 1715893327.93721 0
+["biber documento"] 1715892800.4915 "documento.bcf" "documento.bbl" "documento" 1715912353.47469 0
   "3-pos-textuais/referencias.bib" 1715892799 6961 96bb13a5c21d96c36303c2f9070cba9c ""
-  "documento.bcf" 1715893327 116840 4250d61e7dff1fd1bfae07a32c1d2249 "pdflatex"
+  "documento.bcf" 1715912352 116840 4250d61e7dff1fd1bfae07a32c1d2249 "pdflatex"
   (generated)
   "documento.bbl"
   "documento.blg"
   (rewritten before read)
-["makeindex documento.idx"] 1715892551.27917 "documento.idx" "documento.ind" "documento" 1715893327.93585 0
-  "documento.idx" 1715893324 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex documento.idx"] 1715892551.27917 "documento.idx" "documento.ind" "documento" 1715912353.47426 0
+  "documento.idx" 1715912349 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "documento.ilg"
   "documento.ind"
   (rewritten before read)
-["pdflatex"] 1715893321.65099 "c:/Users/Fagner/Downloads/latex/documento.tex" "documento.pdf" "documento" 1715893327.93806 0
+["pdflatex"] 1715912346.8543 "c:/Users/Fagner/Downloads/latex/documento.tex" "documento.pdf" "documento" 1715912353.47534 0
   "1-pre-textuais/lista-de-abreviaturas-e-siglas.tex" 1715899694 1172 3109482c50edf0693369ed320822e871 ""
-  "2-textuais/1-introducao.tex" 1715899694 4844 f40005fe8f7b5ab6400b043d44127e41 ""
+  "2-textuais/1-introducao.tex" 1715895907 4843 2b8b113906124f292f6a71852a86b389 ""
   "2-textuais/2-fundamentacao-teorica.tex" 1715889108 16831 07547e821c2d8b556608183e0861151b ""
-  "2-textuais/3-metodologia.tex" 1715899694 6420 e00e800f45ac698da55793ea2aa30353 ""
+  "2-textuais/3-metodologia.tex" 1715912331 6470 86960205572e497bf0a917c8876e2932 ""
   "2-textuais/trabalhos-relacionados.tex" 1715899694 5860 7e5f6c3bfc27cce2c3cf42a10530b155 ""
   "3-pos-textuais/glossario.tex" 1715899694 1325 bece85bf2ed1bad79d64e9c045f5b991 ""
   "C:/Users/Fagner/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1715891312 82507 a9eef8696c92627b87e9975edea03b2a ""
@@ -349,17 +349,17 @@
   "C:/Users/Fagner/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Fagner/AppData/Local/Programs/MiKTeX/tex/latex/xpatch/xpatch.sty" 1585221260 8510 7803f78066c4f9d008405191a4b43073 ""
   "C:/Users/Fagner/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
-  "c:/Users/Fagner/Downloads/latex/documento.tex" 1715893307 12872 8049f72ef13b9ead7a5d7e00983465b6 ""
-  "documento.aux" 1715893327 30165 b131d95742f93b0aa12b297457369ed1 "pdflatex"
+  "c:/Users/Fagner/Downloads/latex/documento.tex" 1715896157 7660 7b5b6c61b01c807f7aa2fbfdf65ab327 ""
+  "documento.aux" 1715912352 30308 c2d56192eeaa4aa14ffe124164baefa0 "pdflatex"
   "documento.bbl" 1715892804 24865 b2829bb25ef8d3a0ffa2e501e2e3b8e6 "biber documento"
   "documento.gls" 0 -1 0 ""
   "documento.ind" 1715892551 0 d41d8cd98f00b204e9800998ecf8427e "makeindex documento.idx"
-  "documento.loa" 1715893327 797 b368f867c18975dbd1370598218eef8e "pdflatex"
-  "documento.lof" 1715893327 2048 79b0f2e870a1c1f6100aa315ed8d28ba "pdflatex"
-  "documento.loq" 1715893327 89 2bbda379c6e7aaec53e93f261943fb28 "pdflatex"
-  "documento.run.xml" 1715893327 2628 81d64c0e2ff6227648cd2f5d940ba688 "pdflatex"
-  "documento.tex" 1715893307 12872 8049f72ef13b9ead7a5d7e00983465b6 ""
-  "documento.toc" 1715893327 4308 86790a5bed84a8f6c144deeb5eb6f7ed "pdflatex"
+  "documento.loa" 1715912352 797 8a0f0fca41a08977cfb70b38d65bb2af "pdflatex"
+  "documento.lof" 1715912352 2098 dbce47eb0ab2cf8c85c13496903d9c2d "pdflatex"
+  "documento.loq" 1715912352 89 bef11e014b82ddd7a41097200ebcbd7d "pdflatex"
+  "documento.run.xml" 1715912352 2628 81d64c0e2ff6227648cd2f5d940ba688 "pdflatex"
+  "documento.tex" 1715896157 7660 7b5b6c61b01c807f7aa2fbfdf65ab327 ""
+  "documento.toc" 1715912352 4306 f4e369bc28bc341b960c28f682ec554d "pdflatex"
   "figuras/Captura de tela 2024-04-20 092130.png" 1715899694 75713 4e38e26356c6181df0dc5d26bdd0e0b8 ""
   "figuras/Captura de tela 2024-04-20 092451.png" 1715899694 43216 29fa99b6ddab4d40f5bf597c7355302c ""
   "figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg" 1715899694 23046 c26c6ac4022cbd53781cc85051154914 ""
