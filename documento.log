@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.16)  16 MAY 2024 23:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.16)  27 MAY 2024 11:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1900,84 +1900,91 @@ l.163 	\imprimirlistadeilustracoes
 
 ] (documento.loq) [2] (documento.loa) [3
 
-] (documento.toc) [4] (2-textuais/1-introducao.tex [5
+] (documento.toc) [4] [5] (2-textuais/1-introducao.tex [6
 
-
-]) (2-textuais/2-fundamentacao-teorica.tex [6]
-<figuras/compfases.png, id=216, 816.04875pt x 200.24812pt>
-File: figuras/compfases.png Graphic file (type png)
-<use figuras/compfases.png>
-Package pdftex.def Info: figuras/compfases.png  used on input line 14.
-(pdftex.def)             Requested size: 443.86316pt x 108.91765pt.
- [7
-
- <./figuras/compfases.png>] [8]
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family ptm in TS1 encoding.
-            Default family used instead on input line 84.
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family ptm in TS1 encoding.
-            Default family used instead on input line 84.
- [9] [10] [11] [12] [13] [14] [15]) (2-textuais/trabalhos-relacionados.tex [16
 
 ]
-<figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg, id=296, 1084.05pt x 591.20876pt>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
+) (2-textuais/2-fundamentacao-teorica.tex [7]
+<figuras/compfases.png, id=232, 816.04875pt x 200.24812pt>
+File: figuras/compfases.png Graphic file (type png)
+<use figuras/compfases.png>
+Package pdftex.def Info: figuras/compfases.png  used on input line 16.
+(pdftex.def)             Requested size: 443.86316pt x 108.91765pt.
+ [8
+
+ <./figuras/compfases.png>] [9]
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 86.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 86.
+ [10] [11] [12] [13] [14] [15] [16] [17
+
+]) (2-textuais/trabalhos-relacionados.tex [18]
+<figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg, id=321, 1084.05pt x 591.20876pt>
 File: figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg Graphic file (type jpg)
 <use figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg>
 Package pdftex.def Info: figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg  used on input line 14.
 (pdftex.def)             Requested size: 443.86316pt x 242.07239pt.
-<figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg, id=299, 1084.05pt x 903.375pt>
+<figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg, id=324, 1084.05pt x 903.375pt>
 File: figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg Graphic file (type jpg)
 <use figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg>
 Package pdftex.def Info: figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg  used on input line 20.
 (pdftex.def)             Requested size: 443.86316pt x 369.88991pt.
- [17
+ [19
 
  <./figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg>]
-<figuras/Captura de tela 2024-04-20 092130.png, id=313, 1193.20781pt x 541.27219pt>
+<figuras/Captura de tela 2024-04-20 092130.png, id=338, 1193.20781pt x 541.27219pt>
 File: figuras/Captura de tela 2024-04-20 092130.png Graphic file (type png)
 <use figuras/Captura de tela 2024-04-20 092130.png>
 Package pdftex.def Info: figuras/Captura de tela 2024-04-20 092130.png  used on input line 31.
 (pdftex.def)             Requested size: 443.86316pt x 201.34952pt.
-<figuras/Captura de tela 2024-04-20 092451.png, id=316, 603.75563pt x 496.85625pt>
+<figuras/Captura de tela 2024-04-20 092451.png, id=341, 603.75563pt x 496.85625pt>
 File: figuras/Captura de tela 2024-04-20 092451.png Graphic file (type png)
 <use figuras/Captura de tela 2024-04-20 092451.png>
 Package pdftex.def Info: figuras/Captura de tela 2024-04-20 092451.png  used on input line 37.
 (pdftex.def)             Requested size: 443.86316pt x 365.27214pt.
- [18 <./figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg>] [19 <./figuras/Captura de tela 2024-04-20 092130.png>] [20 <./figuras/Captura de tela 2024-04-20 092451.png>]
-<figuras/pavt.png, id=337, 606.76688pt x 487.06969pt>
+ [20 <./figuras/Screenshot_20240420_070346_Chrome-EDIT.jpg>] [21 <./figuras/Captura de tela 2024-04-20 092130.png>] [22 <./figuras/Captura de tela 2024-04-20 092451.png>]
+<figuras/pavt.png, id=361, 606.76688pt x 487.06969pt>
 File: figuras/pavt.png Graphic file (type png)
 <use figuras/pavt.png>
 Package pdftex.def Info: figuras/pavt.png  used on input line 48.
 (pdftex.def)             Requested size: 443.86316pt x 356.30855pt.
- [21
+ [23
 
  <./figuras/pavt.png>]
-<figuras/jflap.png, id=348, 482.40225pt x 436.63126pt>
+<figuras/jflap.png, id=372, 482.40225pt x 436.63126pt>
 File: figuras/jflap.png Graphic file (type png)
 <use figuras/jflap.png>
 Package pdftex.def Info: figuras/jflap.png  used on input line 59.
 (pdftex.def)             Requested size: 443.86316pt x 401.7656pt.
-<figuras/jflapparse.png, id=351, 594.72188pt x 539.76656pt>
+<figuras/jflapparse.png, id=375, 594.72188pt x 539.76656pt>
 File: figuras/jflapparse.png Graphic file (type png)
 <use figuras/jflapparse.png>
 Package pdftex.def Info: figuras/jflapparse.png  used on input line 66.
 (pdftex.def)             Requested size: 443.86316pt x 402.84724pt.
- [22 <./figuras/jflap.png>] [23 <./figuras/jflapparse.png>]) (2-textuais/3-metodologia.tex [24]
-<figuras/mgrammar.png, id=371, 625.58719pt x 425.33907pt>
+ [24 <./figuras/jflap.png>] [25 <./figuras/jflapparse.png>]) (2-textuais/3-metodologia.tex [26]
+<figuras/mgrammar.png, id=395, 625.58719pt x 425.33907pt>
 File: figuras/mgrammar.png Graphic file (type png)
 <use figuras/mgrammar.png>
 Package pdftex.def Info: figuras/mgrammar.png  used on input line 40.
 (pdftex.def)             Requested size: 443.86316pt x 301.79164pt.
- [25
+ [27
 
 ]
-<figuras/mfirst.png, id=378, 624.83438pt x 428.35031pt>
+<figuras/mfirst.png, id=402, 624.83438pt x 428.35031pt>
 File: figuras/mfirst.png Graphic file (type png)
 <use figuras/mfirst.png>
 Package pdftex.def Info: figuras/mfirst.png  used on input line 52.
 (pdftex.def)             Requested size: 443.86316pt x 304.29425pt.
- [26 <./figuras/mgrammar.png>] [27 <./figuras/mfirst.png>]
+ [28 <./figuras/mgrammar.png>] [29 <./figuras/mfirst.png>]
 \g__nicematrix_max_cell_width_dim=\dimen412
 \c@iRow=\count654
 \c@jCol=\count655
@@ -1991,12 +1998,6 @@ Package pdftex.def Info: figuras/mfirst.png  used on input line 52.
 \g__nicematrix_dp_ante_last_row_dim=\dimen418
 \g__nicematrix_ht_last_row_dim=\dimen419
 \g__nicematrix_dp_last_row_dim=\dimen420
-\g__nicematrix_block_box_1_box=\box113
-\g__nicematrix_block_box_2_box=\box114
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 94.
- (C:\Users\Fagner\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
 \g__nicematrix_ddots_int=\count656
 \g__nicematrix_iddots_int=\count657
 \g__nicematrix_delta_x_one_dim=\dimen421
@@ -2009,11 +2010,19 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 \l__nicematrix_final_j_int=\count661
 \l__nicematrix_last_empty_row_int=\count662
 \l__nicematrix_last_empty_column_int=\count663
-)
+\g__nicematrix_block_box_1_box=\box113
+\g__nicematrix_block_box_2_box=\box114
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 118.
+ (C:\Users\Fagner\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+))
 No file documento.gls.
-[28] [29
 
-] [30]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[30] [31] [32
+
+] [33]
 \tf@lof=\write9
 \openout9 = `documento.lof'.
 
@@ -2036,17 +2045,17 @@ Package logreq Info: Writing requests to 'documento.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 58012 strings out of 474370
- 1169468 string characters out of 5740063
- 2235956 words of memory out of 5000000
- 79369 multiletter control sequences out of 15000+600000
- 590888 words of font info for 94 fonts, out of 8000000 for 9000
+ 58300 strings out of 474370
+ 1175203 string characters out of 5740063
+ 2243850 words of memory out of 5000000
+ 79648 multiletter control sequences out of 15000+600000
+ 603830 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,25n,120p,2382b,3559s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Fagner\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on documento.pdf (31 pages, 890404 bytes).
+ <C:\Users\Fagner\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Fagner/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on documento.pdf (34 pages, 887252 bytes).
 PDF statistics:
- 575 PDF objects out of 1000 (max. 8388607)
- 115 named destinations out of 1000 (max. 500000)
- 452 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 608 PDF objects out of 1000 (max. 8388607)
+ 126 named destinations out of 1000 (max. 500000)
+ 468 words of extra memory for PDF output out of 10000 (max. 10000000)
 

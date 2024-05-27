@@ -1,6 +1,8 @@
 \uchapter{Fundamentação teórica}
 \label{cap:fundamentacao-teorica}
 
+Neste capítulo, apresentaremos os conceitos centrais que serviram como base e guia para a elaboração deste trabalho.
+
 \section{Compilador}
 Programas que são executados em computadores são escritos no que é chamada de linguagem de máquina que usa comandos simples que são interpretados pela máquina. Escrever em linguagem de máquina é uma tarefa passível de erro e cansativa, e por essa razão foram criados os compiladores. Os compiladores traduzem linguagens de alto nível em linguagem de máquina e indicam erros cometidos pelos programadores no código-fonte \cite{mogensen2024introduction}.
 
@@ -15,7 +17,7 @@ As fases de um compilador podem ser divididas de várias formas, mas para esse t
     \Fonte{adaptada de \textcite{thain2020introduction}.}}
 \end{figure}
 \FloatBarrier
-% \qbox{remover citação repitida, fases da compilação, imagen das fases, analise sintatica em compilador }
+
 \subsubsection{Análise Léxica}
 Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural.
 
@@ -171,7 +173,7 @@ Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho 
         conjunto de estados newStates = \{s0\} \\
         \ForEach{estado s em newStates} {
             conjunto de estados temp = \{\}\\
-            \ForEach{símbolo a em $T\bigcup NT$}{
+            \ForEach{símbolo a em $T\cup NT$}{
                 estado s1 = \{\}\\
                 \ForEach{produção da forma $A \rightarrow \alpha . a \beta$ em s}{
                     adiciona uma produção da forma $A \rightarrow \alpha a. \beta$ em s1\\
@@ -181,7 +183,7 @@ Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho 
                 
                 \Ifx{s1 não está em m}{
                     adiciona s1 a m\\
-                    adiciona a transição $\hat{\delta}(s, a)=\hat{\delta}(s, a)\bigcup\{s1\}$ a m\\
+                    adiciona a transição $\hat{\delta}(s, a)=\hat{\delta}(s, a)\cup\{s1\}$ a m\\
                     adiciona s1 a temp
                 }
             }
@@ -251,6 +253,16 @@ A construção do autômato LR(1) segue o mesmo algoritmo da construção do aut
     \item Para produções da forma $A \rightarrow \alpha.B\beta$, com \textit{lookahead} de $\{L\}$, deverão ser adicionadas novas produções da forma $B \rightarrow . \gamma$ com \textit{lookahead} da seguinte forma:
     \begin{itemize}
         \item Se $\beta$ não produz $\epsilon$, o \textit{lookahead} é $First(\beta)$.
-        \item Se $\beta$ produz $\epsilon$, o \textit{lookahead} é $First(\beta)\bigcup\{L\}$.
+        \item Se $\beta$ produz $\epsilon$, o \textit{lookahead} é $First(\beta)\cup\{L\}$.
     \end{itemize}
+\end{itemize}
+
+\section{Learning Tools Interoperability}
+Learning Tools Interoperability (LTI) em português interoperabilidade de ferramentas de aprendizagem é um padrão técnico desenvolvido pela 1EdTec\footnote{https://www.1edtech.org/}. Esse padrão especifica métodos de comunicação entre Learning Management System (LMS) em português sistema de gerenciamento de aprendizagem e ferramentas de aprendizagem remotas \cite{1edtech}.
+
+LTI permite a implementação das seguintes funcionalidades:
+\begin{itemize}[label=$\sbullet$]
+    \item Assignment and Grade Services (AGS) que fornece uma maneira de criar uma coluna de boletim de notas e publicar notas associadas a um link de recurso.
+    \item Names and Role Provisioning Services 2.0 (NRPS) que fornece acesso a dados sobre usuários e suas funções nas organizações; uma escola, plataforma (LMS) ou curso são exemplos de organização.
+    \item Deep Linking 2.0 (DL) que permite que um professor ou usuário de plataforma (LMS) integre conteúdo coletado de uma ferramenta externa. Usando este serviço, os usuários da plataforma podem lançar um URI especificado pelo fornecedor do currículo digital (ferramenta externa), selecionar conteúdo específico e, em seguida, receber um URI que outros usuários podem usar para lançar diretamente esse conteúdo.
 \end{itemize}

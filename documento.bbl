@@ -19,6 +19,41 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
+    \entry{1edtech}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2f8abe019cc908dd23b1943af87177ba}{%
+           family={{1EdTech}},
+           familyi={1\bibinitperiod}}}%
+      }
+      \strng{namehash}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{fullhash}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{fullhashraw}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{bibnamehash}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{authorbibnamehash}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{authornamehash}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{authorfullhash}{2f8abe019cc908dd23b1943af87177ba}
+      \strng{authorfullhashraw}{2f8abe019cc908dd23b1943af87177ba}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning Tools Interoperability {|} 1EdTech}
+      \field{urlday}{27}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Learning Tools Interoperability | 1EdTech:C\:\\Users\\Fagner\\Zotero\\storage\\BPMMQHBP\\lti.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.1edtech.org/standards/lti#TechOverview
+      \endverb
+      \verb{url}
+      \verb https://www.1edtech.org/standards/lti#TechOverview
+      \endverb
+    \endentry
     \entry{LR-2024-04-12}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=2b292e087046aa3fd99f09e83530b94f}{%

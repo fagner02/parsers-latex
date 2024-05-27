@@ -11,27 +11,25 @@ A disciplina de compiladores está presente em muitas grades curriculares de cur
 
 Ferramentas criadas para o ensino de conteúdos sobre construção de compiladores como análise sintática usando elementos visuais têm uma resposta positiva dos alunos que usaram as ferramentas. Essas ferramentas podem auxiliar na compreensão do conteúdo não só através das instruções mostradas na visualização do funcionamento dos algoritmos, mas também por oferecer respostas instantâneas que podem ser usadas pelos estudantes como correção sobre os resultados dos algoritmos que podem ser difíceis de se construir manualmente \cite{10.1145/3002136}.
 
-A instabilidade na rede disponível no campus Quixadá da Universidade Federal do Ceará (UFC) é algo recorrente que pode atrapalhar o roteiro normal das aulas e impedir que os alunos concluam tarefas \cite{perez2023impact}. O uso de aplicações desenvolvidas para \textit{web} nas aulas é afetado por eventuais falhas na rede local do campus e em relação a isso uma aplicação \textit{offline} desenvolvida para \textit{desktop} tem a vantagem de poder ser acessada independente do acesso à internet \cite{holzer2012mobile}.
+A instabilidade na rede disponível no campus Quixadá da Universidade Federal do Ceará (UFC) é algo recorrente que pode atrapalhar o roteiro normal das aulas e impedir que os alunos concluam tarefas propostas em aula \cite{perez2023impact}. O uso de aplicações desenvolvidas para \textit{web} nas aulas é afetado por eventuais falhas na rede local do campus e em relação a isso uma aplicação \textit{offline} desenvolvida para \textit{desktop} tem a vantagem de poder ser acessada independente do acesso à internet \cite{holzer2012mobile}.
 
-Muitos alunos entram na vida universitária estando em situação de vulnerabilidade e sem recursos necessários como computadores para acompanhar o conteúdo do curso, por essa razão, a UFC lançou bolsas de inclusão digital para auxiliar na aquisição de computadores \cite{povo_ufc_2020}. Assim, a utilização de uma aplicação \textit{mobile} no lugar de uma aplicação \textit{desktop} nas aulas seria mais inclusiva.
+Muitos alunos entram na vida universitária estando em situação de vulnerabilidade econômica e sem recursos necessários como computadores para acompanhar o conteúdo do curso, algo que faz alusão a essa realidade é a disponibilização de bolsas de inclusão feita pela UFC durante o período da pandemia para auxiliar na aquisição de computadores \cite{povo_ufc_2020}. Assim, a utilização de uma aplicação \textit{mobile} no lugar de uma aplicação \textit{desktop} nas aulas seria mais inclusiva.
 
-Apesar da desvantagem citada nos parágrafos anteriores, uma ferramenta \textit{web} tem outras vantagens notáveis como não haver a necessidade de instalação do \textit{software} para acessá-lo e a facilidade de integração com plataformas como o \textit{Moodle} \cite{desai_web_2022}. 
+Apesar da desvantagem citada nos parágrafos anteriores, uma ferramenta \textit{web} tem outras vantagens notáveis como não haver a necessidade de instalação do \textit{software} para acessá-lo e a facilidade de integração com plataformas como o \textit{Moodle}\footnote{https://moodle2.quixada.ufc.br/} \cite{desai_web_2022}.
 
-Todas as abordagens de desenvolvimento citadas têm suas vantagens e desvantagens, mas não é preciso  escolher uma abordagem em detrimento da outra. \textit{Frameworks} modernos como \textit{Tauri} e \textit{Capacitor} permitem que uma única base de código seja usada para desenvolver software para diferentes plataformas, graças a isso, torna-se possível o desenvolvimento multi-plataforma da ferramenta proposta nesse trabalho \cite{shevtsiv2021cross}.
-
-%\qbox{Falta de computadores para estudantes, aplicação mobile}
+Todas as abordagens de desenvolvimento citadas têm suas vantagens e desvantagens, mas não é preciso  escolher uma abordagem em detrimento da outra. \textit{Frameworks} modernos como \textit{Tauri}\footnote{https://tauri.app/} e \textit{Capacitor}\footnote{https://capacitorjs.com/} permitem que uma única base de código seja usada para desenvolver software para diferentes plataformas, graças a isso, torna-se possível o desenvolvimento multi-plataforma da ferramenta proposta nesse trabalho \cite{shevtsiv2021cross}.
 
 \section{Objetivos}
-O objetivo desse trabalho é criar uma ferramenta multi-plataforma que por meio de elementos visuais ajudem a entender como funcionam os algoritmos de análise sintática e quais os processos necessários para obter a saída de cada passo dos algoritmos.
+O objetivo desse trabalho é criar uma ferramenta multi-plataforma que possa ser acessada \textit{offline} e que por meio de elementos visuais ajudem a entender como funcionam os algoritmos de análise sintática e quais os processos necessários para obter a saída de cada passo dos algoritmos.
 
 Esse trabalho tem os seguintes objetivos específicos:
 \begin{itemize}[label=$\sbullet$]
+    \item Criar a ferramenta usando \textit{svelte}.
     \item Oferecer uma forma de visualização dos algoritmos CLR, SLR e LL(1).
-    \item Integração da ferramenta com a plataforma \textit{Moodle}.
-    \item Validar a ferramenta fazendo uma avaliação com alunos.
     \item Oferecer uma versão \textit{web} da ferramenta
     \item Oferecer uma versão \textit{desktop} da ferramenta
     \item Oferecer uma versão \textit{mobile} da ferramenta
-    \item Criar a ferramenta usando \textit{svelte}.
+    \item Integração da ferramenta com a plataforma \textit{Moodle}.
+    \item Validar a ferramenta fazendo uma avaliação com alunos.
 \end{itemize}
 
