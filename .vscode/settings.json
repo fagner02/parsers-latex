@@ -1,1 +1,76 @@
-{}
+{
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "--shell-escape", // if you want to have the shell-escape flag
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "makeindex",
+            "command": "makeindex",
+            "args": [
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": [
+                "%DOC%"
+            ]
+        }
+    ],
+  "latex-workshop.latex.recipes": [
+    {
+      "tools": ["pdflatex", "makeindex", "biber", "makeglossaries", "pdflatex"],
+      "name": "pdflatexx",
+    }
+  ],
+  "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.clean.fileTypes": [
+    "%DOCFILE%.aux",
+    "%DOCFILE%.bbl",
+    "%DOCFILE%.blg",
+    "%DOCFILE%.idx",
+    "%DOCFILE%.ind",
+    "%DOCFILE%.lof",
+    "%DOCFILE%.lot",
+    "%DOCFILE%.out",
+    "%DOCFILE%.toc",
+    "%DOCFILE%.acn",
+    "%DOCFILE%.acr",
+    "%DOCFILE%.alg",
+    "%DOCFILE%.glg",
+    "%DOCFILE%.glo",
+    "%DOCFILE%.gls",
+    "%DOCFILE%.fls",
+    "%DOCFILE%.log",
+    "%DOCFILE%.fdb_latexmk",
+    "%DOCFILE%.snm",
+    "%DOCFILE%.synctex(busy)",
+    "%DOCFILE%.synctex.gz(busy)",
+    "%DOCFILE%.nav",
+    "%DOCFILE%.vrb",
+    "%DOCFILE%.ist",
+    "%DOCFILE%.loa",
+    "%DOCFILE%.loq",
+    "%DOCFILE%.bcf",
+    "%DOCFILE%.ilg",
+    "%DOCFILE%.run.xml"
+  ],
+  "latex-workshop.latex.autoClean.run": "onBuilt"
+}
