@@ -31,6 +31,7 @@ compile:
 	makeindex $(filename)
 	makeglossaries $(filename)
 	pdflatex $(filename).tex
+	pdflatex $(filename).tex
 	echo "Processo finalizado com sucesso!"
 	
 clean:

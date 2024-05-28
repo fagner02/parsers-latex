@@ -258,16 +258,16 @@ A construção do autômato LR(1) segue o mesmo algoritmo da construção do aut
 \end{itemize}
 
 \section{\textit{Learning Tools Interoperability}}
-\textit{Learning Tools Interoperability} (LTI) em português interoperabilidade de ferramentas de aprendizagem é um padrão técnico desenvolvido pela 1EdTec\footnote{https://www.1edtech.org/}. Esse padrão especifica métodos de comunicação entre \textit{Learning Management System} (LMS) em português sistema de gerenciamento de aprendizagem e ferramentas de aprendizagem remotas \cite{1edtech}.
+\gls{lti} em português interoperabilidade de ferramentas de aprendizagem é um padrão técnico desenvolvido pela 1EdTec\footnote{https://www.1edtech.org/}. Esse padrão especifica métodos de comunicação entre \gls{lms} em português sistema de gerenciamento de aprendizagem e ferramentas de aprendizagem remotas \cite{1edtech}.
 
-LTI permite a implementação das seguintes funcionalidades:
+O padrão \gls{lti} permite a implementação das seguintes funcionalidades:
 \begin{itemize}[label=$\sbullet$]
-    \item \textit{Assignment and Grade Services} 2.0 (AGS) que fornece uma maneira de criar uma coluna de boletim de notas e publicar notas associadas a um \textit{link} de recurso.
-    \item \textit{Names and Role Provisioning Services} 2.0 (NRPS) que fornece acesso a dados sobre usuários e suas funções nas organizações; uma escola, plataforma LMS ou curso são exemplos de organização.
-    \item \textit{Deep Linking} 2.0 (DL) que permite que um professor ou usuário de plataforma LMS integre conteúdo coletado de uma ferramenta externa. Usando este serviço, os usuários da plataforma podem lançar um URI especificado pelo fornecedor do currículo digital (ferramenta externa), selecionar conteúdo específico e, em seguida, receber um URI que outros usuários podem usar para lançar diretamente esse conteúdo.
+    \item \gls{ags} que fornece uma maneira de criar uma coluna de boletim de notas e publicar notas associadas a um \textit{link} de recurso.
+    \item \gls{nrps} que fornece acesso a dados sobre usuários e suas funções nas organizações; uma escola, plataforma \gls{lms} ou curso são exemplos de organização.
+    \item \gls{dl} que permite que um professor ou usuário de plataforma \gls{lms} integre conteúdo coletado de uma ferramenta externa. Usando este serviço, os usuários da plataforma podem lançar um URI especificado pelo fornecedor do currículo digital (ferramenta externa), selecionar conteúdo específico e, em seguida, receber um URI que outros usuários podem usar para lançar diretamente esse conteúdo.
 \end{itemize}
 
-Além disso o LTI oferece os seguintes serviços adicionais:
+Além disso o \gls{lti} oferece os seguintes serviços adicionais:
 
 \begin{itemize}[label=$\sbullet$]
     \item \textit{Dynamic Registration} que é uma forma de automatizar a troca de informação de registro de entre plataformas e ferramentas.
@@ -276,10 +276,10 @@ Além disso o LTI oferece os seguintes serviços adicionais:
 \end{itemize}
 
 \section{Svelte}
-Svelte é um \textit{framework} de componentes criado em 2016 po tornando-o uma tecnologia recente em relação a outras similares. 
+Svelte é um \textit{framework} de componentes criado em 2016 por Harry Rich, é uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}.
 
-Svelte é semelhante aos \textit{frameworks} React e Vue mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigidos a estado (\textit{declarative state-driven}) o que dá mais trabalho de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no DOM usando técnicas como Virtual DOM que é uma representação intermediária do DOM real. 
+Svelte é semelhante aos \textit{frameworks} React e Vue mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigidos a estado (\textit{declarative state-driven}) o que dá mais trabalho de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como Virtual DOM que é uma representação intermediária do DOM real \cite{harris_svelte_2019}.
 
 Ao contrário dos \textit{frameworks} tradicionais Svelte age como um compilador funcionando em \textit{build-time} para transformar os componentes criados em código \textit{Javascript} imperativo altamente eficiente que atualiza o DOM apenas onde necessário. Isso permite escrever código para aplicações robustas sem necessidade de se preocupar muito com optimizações para que as aplicações sejam leves e performáticas.
 
-Além de ter código mais leve e performático a quantidade de código escrito usando Svelte é menor em comparação a outros \textit{frameworks}. Já que Svelte compila o código base, o \textit{framework} é livre para escolher a forma como o código deve ser escrito e para maior simplicidade o código em Svelte segue a sintaxe da linguagem \textit{Javascript}. Tal coisa não é possível com outros \textit{frameworks} como React que funciona em \textit{runtime} e tem sua sintaxe limitada a isso sendo necessárias mais código para estar em conformidade com o funcionamento do \textit{framework}. Um exemplo disso é a atualização do estado de uma variável enquanto usando Svelte é apenas necessário usar o operador de atribuição para dar um novo valor a variável assim como na sintaxe \textit{Javascript}, em React é necessário a utilização de funções chamadas \textit{hooks} para a atribuição do novo valor;
+Além de ter código mais leve e performático a quantidade de código escrito usando Svelte é menor em comparação a outros \textit{frameworks}. Já que Svelte compila o código base, o \textit{framework} é livre para escolher a forma como o código deve ser escrito e para maior simplicidade o código em Svelte segue a sintaxe da linguagem \textit{Javascript}. Tal coisa não é possível com outros \textit{frameworks} como React que funciona em \textit{runtime} e tem sua sintaxe limitada a isso sendo necessárias mais código para estar em conformidade com o funcionamento do \textit{framework}. Um exemplo disso é a atualização do estado de uma variável enquanto usando Svelte é apenas necessário usar o operador de atribuição para dar um novo valor a variável assim como na sintaxe \textit{Javascript}, em React é necessário a utilização de funções chamadas \textit{hooks} para a atribuição do novo valor \cite{harris_write_2019}.

@@ -63,9 +63,9 @@ Para todas as estruturas de dados usadas nos algoritmos serão criadas represent
 As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica. Um exemplo de animação é a animação do estado da estrutura de pilha que é usada em alguns algoritmos. Quando um item é adicionado ou removido da pilha, o elemento visual que representa esse item terá sua posição interpolada do ponto inicial ao ponto final.
 
 \section{Integração com o \textit{Moodle}}
-A plataforma LMS \textit{Moodle} implementa o padrão LTI o que permite a utilização da ferramenta diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão LTI com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma API que manuseia as requisições relacionada ao LTI. 
+A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}. 
 
-Os \textit{endpoints} da API foram definidos de acordo com o Quadro \ref{qua:endpoints}.
+Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{qua:endpoints}.
 
 \setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
 \setlength{\belowcaptionskip}{5pt plus 0pt minus 0pt}
@@ -86,7 +86,7 @@ $\backslash$register & POST & registrar uma nova plataforma\\
 {\Fonte{fornecido pelo autor}}
 \end{table}
 
-Com a API pronta pode ser feita a conexão entre a ferramenta e a LMS. utilizando o serviço LTI de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o endpoint de registro dinâmico da API.
+Com a \gls{api} pronta pode ser feita a conexão entre a ferramenta e a \gls{lms}. utilizando o serviço \gls{lti} de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o endpoint de registro dinâmico da \gls{api}.
 
 \section{Avaliação}
 Será realizado um teste prático com um grupo de estudantes, onde os eles serão solicitados a realizar tarefas específicas utilizando a ferramenta. Serão coletados dados quantitativos, como tempo de execução das tarefas e taxa de acerto, bem como dados qualitativos por meio de questionários e entrevistas para avaliar a percepção dos estudantes sobre a eficácia da ferramenta. Além disso, a comparação dos resultados obtidos com um grupo de controle que não utiliza a ferramenta ajudará a avaliar o impacto da visualização na compreensão e desempenho dos alunos. Essa abordagem abrangente de avaliação garantirá uma análise completa da eficácia e utilidade da ferramenta desenvolvida nesse trabalho.

@@ -36,7 +36,7 @@
     ],
   "latex-workshop.latex.recipes": [
     {
-      "tools": ["pdflatex", "makeindex", "biber", "makeglossaries", "pdflatex"],
+      "tools": ["pdflatex", "makeindex", "biber", "makeglossaries", "pdflatex", "pdflatex"],
       "name": "pdflatexx",
     }
   ],
