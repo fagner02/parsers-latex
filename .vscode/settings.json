@@ -62,7 +62,7 @@
     "%DOCFILE%.fdb_latexmk",
     "%DOCFILE%.snm",
     "%DOCFILE%.synctex(busy)",
-    "%DOCFILE%.synctex.gz(busy)",
+    "%DOCFILE%.synctex.gz",
     "%DOCFILE%.nav",
     "%DOCFILE%.vrb",
     "%DOCFILE%.ist",
