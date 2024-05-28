@@ -23,26 +23,18 @@
 
 filename=documento
 
-all: compile
+all: compile clean
 	
 compile:
-	@echo "*********************************************************"
-	@echo "*                                                       *"
-	@echo "* Package 'ueceTeX2' Release 1.0 -- 17 de Dezembro 2014 *"
-	@echo "*                                                       *"
-	@echo "*********************************************************"
-	@echo "Compilando..."
 	pdflatex $(filename).tex
-	bibtex $(filename)
-	makeglossaries $(filename)
+	biber $(filename)
 	makeindex $(filename)
+	makeglossaries $(filename)
 	pdflatex $(filename).tex
-	pdflatex $(filename).tex
-	@echo "Processo finalizado com sucesso!"
-
+	echo "Processo finalizado com sucesso!"
 	
 clean:
-	@echo -n "Limpando arquivos auxiliares...\n"
-	@rm -f *.out *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
+	echo "Limpando arquivos auxiliares..."
+	rm *-blx.bib *.bcf *.fls *.run.xml *.xdv *.fdb_latexmk *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq
 	@rm -f $(filename).pdf
-	@echo "Processo finalizado com sucesso!"
+	echo "Processo finalizado com sucesso!"
