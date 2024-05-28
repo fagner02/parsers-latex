@@ -65,7 +65,7 @@ As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendida
 \section{Integração com o \textit{Moodle}}
 A plataforma LMS \textit{Moodle} implementa o padrão LTI o que permite a utilização da ferramenta diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão LTI com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma API que manuseia as requisições relacionada ao LTI. 
 
-Os endpoints da API foram definidos de acordo com o Quadro \ref{qua:endpoints}.
+Os \textit{endpoints} da API foram definidos de acordo com o Quadro \ref{qua:endpoints}.
 
 \setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
 \setlength{\belowcaptionskip}{5pt plus 0pt minus 0pt}
@@ -73,18 +73,20 @@ Os endpoints da API foram definidos de acordo com o Quadro \ref{qua:endpoints}.
 \centering\setlength{\extrarowheight}{2pt}
 \captionsetup{width={\textwidth}}
 \captionof{quadro}{Endpoints}\label{qua:endpoints}
-\resizebox{\textwidth}{!}{\begin{NiceTabular}{ccm[c]{10cm}}[corners,hvlines]
+\resizebox{\textwidth}{!}{
+\begin{NiceTabular}{m[c]{3cm}m[c]{3cm}m[c]{10cm}}[corners,hvlines]
 \CodeBefore
   \rowcolor{gray!15}{1-1}
 \Body
 \textbf{Endpoint} & \textbf{Método} & \textbf{Finalidade}  \\
 $\backslash$ & GET & redirecionar para página\\
-$\backslash$login & POST & registrar usuário\\
+$\backslash$login & POST & inicia uma conexão com a plataforma\\
+$\backslash$register & POST & registrar uma nova plataforma\\
 \end{NiceTabular}}
 {\Fonte{fornecido pelo autor}}
 \end{table}
 
-Com a API pronta pode ser feita a conexão entre a ferramenta e a LMS. utilizando o serviço LTI de Dynamic Registration é possível fazer o cadastro da ferramenta na LMS utilizando um link para o endpoint de registro dinâmico da API.
+Com a API pronta pode ser feita a conexão entre a ferramenta e a LMS. utilizando o serviço LTI de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o endpoint de registro dinâmico da API.
 
 \section{Avaliação}
 Será realizado um teste prático com um grupo de estudantes, onde os eles serão solicitados a realizar tarefas específicas utilizando a ferramenta. Serão coletados dados quantitativos, como tempo de execução das tarefas e taxa de acerto, bem como dados qualitativos por meio de questionários e entrevistas para avaliar a percepção dos estudantes sobre a eficácia da ferramenta. Além disso, a comparação dos resultados obtidos com um grupo de controle que não utiliza a ferramenta ajudará a avaliar o impacto da visualização na compreensão e desempenho dos alunos. Essa abordagem abrangente de avaliação garantirá uma análise completa da eficácia e utilidade da ferramenta desenvolvida nesse trabalho.

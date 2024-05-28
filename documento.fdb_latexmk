@@ -1,22 +1,22 @@
 # Fdb version 4
-["biber documento"] 1716820745.3633 "documento.bcf" "documento.bbl" "documento" 1716821159.65366 0
+["biber documento"] 1716820745.3633 "documento.bcf" "documento.bbl" "documento" 1716854139.33565 0
   "3-pos-textuais/referencias.bib" 1716820743 7897 fe0cfdaf5b591b2c216e68f6fb81f410 ""
-  "documento.bcf" 1716821159 116903 46ef359e34b91960bd7cb5847fddd238 "pdflatex"
+  "documento.bcf" 1716854138 116903 46ef359e34b91960bd7cb5847fddd238 "pdflatex"
   (generated)
   "documento.bbl"
   "documento.blg"
   (rewritten before read)
-["makeindex documento.idx"] 1716801409.69105 "documento.idx" "documento.ind" "documento" 1716821159.65327 0
-  "documento.idx" 1716821155 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex documento.idx"] 1716801409.69105 "documento.idx" "documento.ind" "documento" 1716854139.33515 0
+  "documento.idx" 1716854133 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "documento.ilg"
   "documento.ind"
   (rewritten before read)
-["pdflatex"] 1716821153.43236 "c:/Users/Fagner/Downloads/latex/documento.tex" "documento.pdf" "documento" 1716821159.65438 0
+["pdflatex"] 1716854129.96332 "c:/Users/Fagner/Downloads/latex/documento.tex" "documento.pdf" "documento" 1716854139.33652 0
   "1-pre-textuais/lista-de-abreviaturas-e-siglas.tex" 1715899694 1172 3109482c50edf0693369ed320822e871 ""
   "2-textuais/1-introducao.tex" 1716795302 5024 9df18054fbb3eea65ccdc9309c670562 ""
-  "2-textuais/2-fundamentacao-teorica.tex" 1716820693 18164 4dc0a23493cd4aed0695508cdf0eb316 ""
-  "2-textuais/3-metodologia.tex" 1716821146 7760 1bc8a5c61444c180a82a1030d3c3fd80 ""
+  "2-textuais/2-fundamentacao-teorica.tex" 1716853665 20858 45b487715d21df75383827645f8af17f ""
+  "2-textuais/3-metodologia.tex" 1716854119 7896 0b8e102858cd9ca1007c28162ea49da4 ""
   "2-textuais/trabalhos-relacionados.tex" 1715899694 5860 7e5f6c3bfc27cce2c3cf42a10530b155 ""
   "3-pos-textuais/glossario.tex" 1715899694 1325 bece85bf2ed1bad79d64e9c045f5b991 ""
   "C:/Users/Fagner/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1715891312 82507 a9eef8696c92627b87e9975edea03b2a ""
@@ -347,16 +347,16 @@
   "C:/Users/Fagner/AppData/Local/Programs/MiKTeX/tex/latex/xpatch/xpatch.sty" 1585221260 8510 7803f78066c4f9d008405191a4b43073 ""
   "C:/Users/Fagner/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
   "c:/Users/Fagner/Downloads/latex/documento.tex" 1715896157 7660 7b5b6c61b01c807f7aa2fbfdf65ab327 ""
-  "documento.aux" 1716821158 33820 400081dd1f2c71aa5be0dd7501a5f907 "pdflatex"
+  "documento.aux" 1716854138 34401 d731147a97a4d1d96441a5f4f0ec607e "pdflatex"
   "documento.bbl" 1716820748 26373 a45d093004a657538aa56b94097a8aa9 "biber documento"
   "documento.gls" 0 -1 0 ""
   "documento.ind" 1716801410 0 d41d8cd98f00b204e9800998ecf8427e "makeindex documento.idx"
-  "documento.loa" 1716821159 797 b368f867c18975dbd1370598218eef8e "pdflatex"
-  "documento.lof" 1716821159 2214 e6aa9c21df9e618a268cd446af3b1d65 "pdflatex"
-  "documento.loq" 1716821159 177 5a1f84272bb6cfe59c1aad2e4ee81a3f "pdflatex"
-  "documento.run.xml" 1716821159 2628 81d64c0e2ff6227648cd2f5d940ba688 "pdflatex"
+  "documento.loa" 1716854138 797 b368f867c18975dbd1370598218eef8e "pdflatex"
+  "documento.lof" 1716854138 2214 609aaa30f93b481c80b9c295af2c380b "pdflatex"
+  "documento.loq" 1716854138 177 27bca2bb20965f1c2727057d78c0b484 "pdflatex"
+  "documento.run.xml" 1716854138 2628 81d64c0e2ff6227648cd2f5d940ba688 "pdflatex"
   "documento.tex" 1715896157 7660 7b5b6c61b01c807f7aa2fbfdf65ab327 ""
-  "documento.toc" 1716821159 4612 bcdf841145f512d1c9ec2e0e52eafbc5 "pdflatex"
+  "documento.toc" 1716854138 4689 18e7ce1c861e68c2ccee959a64274147 "pdflatex"
   "figuras/Captura de tela 2024-04-20 092130.png" 1715899694 75713 4e38e26356c6181df0dc5d26bdd0e0b8 ""
   "figuras/Captura de tela 2024-04-20 092451.png" 1715899694 43216 29fa99b6ddab4d40f5bf597c7355302c ""
   "figuras/Screenshot_20240420_070346_Chrome-EDIT (1).jpg" 1715899694 23046 c26c6ac4022cbd53781cc85051154914 ""
