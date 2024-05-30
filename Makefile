@@ -26,12 +26,12 @@ filename=documento
 all: compile clean
 	
 compile:
-	pdflatex $(filename).tex
+	pdflatex -interaction=batchmode $(filename).tex
 	biber $(filename)
 	makeindex $(filename)
 	makeglossaries $(filename)
-	pdflatex $(filename).tex
-	pdflatex $(filename).tex
+	pdflatex -interaction=batchmode $(filename).tex
+	pdflatex -interaction=batchmode $(filename).tex
 	echo "Processo finalizado com sucesso!"
 	
 clean:

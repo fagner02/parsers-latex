@@ -1,5 +1,4 @@
-\uchapter{Fundamentação teórica}
-\label{cap:fundamentacao-teorica}
+\chapter{Fundamentação teórica}\label{cap:fundamentacao-teorica}
 
 Neste capítulo, apresentaremos os conceitos centrais que serviram como base e guia para a elaboração deste trabalho.
 
@@ -50,8 +49,8 @@ O conjunto dos símbolos iniciais das produções de uma gramática é chamado c
     \caption{First}\label{alg:first}
     \Input{Gramática G, simbolo X }
     \Output{Conjunto first}
-    first = $\{\}$\\
     \Inicio{
+        first = $\{\}$\\
         \Switch{X}{
             \Case {Terminal}{
                 first = \{X\}
@@ -74,6 +73,8 @@ O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática qu
 
 \begin{algorithm}[htp]
     \caption{Follow}\label{alg:follow}
+    \Input{Gramática G}
+    \Output{Conjunto follow}
     \Inicio{
         Follow(S) = \{\$\} onde S é o símbolo inicial.\\
         \Repeat{ até não houver mais mudanças}{
@@ -91,8 +92,8 @@ Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras
 \begin{algorithm}[htp]
     \caption { Construção da tabela LL(1)}\label{alg:lltable}
     
-    \Input {Grammar G}
-    \Output {Parsing table M }
+    \Input {Gramática G}
+    \Output {Tabela M }
     \Inicio{
         \ForEach {regra A $\rightarrow \alpha$ em G} {
             \ForEach {terminal $a$ (exceto $\epsilon$) em First($\alpha$)} {
