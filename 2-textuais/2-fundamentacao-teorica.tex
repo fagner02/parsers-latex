@@ -65,6 +65,7 @@ O conjunto dos símbolos iniciais das produções de uma gramática é chamado c
                 }
             }
         }
+        \Return{first}
     }
 \end{algorithm}
 
@@ -76,13 +77,16 @@ O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática qu
     \Input{Gramática G}
     \Output{Conjunto follow}
     \Inicio{
-        Follow(S) = \{\$\} onde S é o símbolo inicial.\\
+        follow = \{\} \\
+        follow(S) = \{\$\} onde S é o símbolo inicial.\\
         \Repeat{ até não houver mais mudanças}{
         \Ifx {A → $\alpha B \beta$ }{
-        adiciona First($\beta$) (exceto $\epsilon$) ao Follow(B).}
+        adiciona First($\beta$) (exceto $\epsilon$) follow(B).}
         \Ifx {A → $\alpha B$ ou First($\beta$) contém $\epsilon$} {
-        adiciona Follow(A) ao Follow(B).}
+        adiciona follow(A) ao follow(B).}
         }
+
+        \Return{follow}
     }
 \end{algorithm}
 \FloatBarrier
