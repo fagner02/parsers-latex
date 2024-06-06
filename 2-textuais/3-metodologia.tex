@@ -13,7 +13,7 @@ Como requisitos funcionais foram definidos os seguintes:
     \item Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos  
     \item Permitir que os usuários selecionem o algoritmo a ser visualizado
 \end{itemize}
-
+ 
 Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas, partir delas foram definidos os seguintes requisitos:
 \begin{itemize}[label={$\sbullet$}]
     \item Permitir que os usuários digitem uma \textit{string} a ser analisada
@@ -24,6 +24,36 @@ Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já def
 \end{itemize}
 Com esses requisitos tem-se a base para o desenvolvimento da ferramenta.
 
+\section{Arquitetura do projeto}
+O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramentas, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação. 
+
+O \textit{framework Capacitor} consome essa coleção de arquivos e cria um projeto para plataforma \textit{android} que é usado para criar a versão mobile da ferramenta usando o \textit{Android Studio}. 
+
+O \textit{framework Tauri} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma na qual eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de uma maquiná virtual para construir instaladores para diferentes plataformas \textit{desktop}.
+
+Para a versão \textit{online} da plataforma os serviços de computação em nuvem das empresas \textit{Netlify} e \textit{Render} serão usadas para hospedar respectivamente o \textit{front-end} e \textit{back-end} da aplicação. \textit{Netlify} e \textit{Render} foram escolhidas para hospedagem da aplicação pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho.
+
+A aplicação pode ser acessada através do \textit{Moodle} usando como comunicação entre os dois a \gls{api} da aplicação. O diagrama na Figura \ref{fig:arqremo} mostra o esquema da arquitetura da aplicação hospedada em nuvem com integração ao \textit{Moodle} e o diagrama da Figura \ref{fig:arqlocal} mostra a arquitetura da aplicação hospedada no servidor local do campus Quixadá com integração ao \textit{Moodle}.
+
+\begin{figure}[ht]
+  \centering
+  \captionsetup{width=16cm}
+  \caption{Arquitetura da aplicação em nuvem}
+  \label{fig:arqremo}
+  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/remoto.png}}
+  \Fonte{fornecida pelo próprio autor}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+  \centering
+  \captionsetup{width=16cm}
+  \caption{Arquitetura da aplicação local}
+  \label{fig:arqlocal}
+  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/local.png}}
+  \Fonte{fornecida pelo próprio autor}
+\end{figure}
+\FloatBarrier
 
 \section{Interface de usuário}
 Essa seção irá falar sobre os detalhes de implementação da interface de usuário da ferramenta. 
@@ -63,7 +93,7 @@ Para todas as estruturas de dados usadas nos algoritmos serão criadas represent
 As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica. Um exemplo de animação é a animação do estado da estrutura de pilha que é usada em alguns algoritmos. Quando um item é adicionado ou removido da pilha, o elemento visual que representa esse item terá sua posição interpolada do ponto inicial ao ponto final.
 
 \section{Integração com o \textit{Moodle}}
-A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}. 
+A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta criada nesse trabalho diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}. 
 
 Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{qua:endpoints}.
 
