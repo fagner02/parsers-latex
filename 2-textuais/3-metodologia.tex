@@ -25,15 +25,15 @@ Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já def
 Com esses requisitos tem-se a base para o desenvolvimento da ferramenta.
 
 \section{Arquitetura do projeto}
-O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramentas, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação. 
+O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação. 
 
 O \textit{framework Capacitor} consome essa coleção de arquivos e cria um projeto para plataforma \textit{android} que é usado para criar a versão mobile da ferramenta usando o \textit{Android Studio}. 
 
-O \textit{framework Tauri} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma na qual eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de uma maquiná virtual para construir instaladores para diferentes plataformas \textit{desktop}.
+O \textit{framework Tauri} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma na qual eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
 
-Para a versão \textit{online} da plataforma os serviços de computação em nuvem das empresas \textit{Netlify} e \textit{Render} serão usadas para hospedar respectivamente o \textit{front-end} e \textit{back-end} da aplicação. \textit{Netlify} e \textit{Render} foram escolhidas para hospedagem da aplicação pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho.
+Para a versão \textit{online} da plataforma os serviços de computação em nuvem das empresas \textit{Netlify} e \textit{Render} serão usadas para hospedar respectivamente o \textit{front-end} e \textit{back-end} da aplicação. \textit{Netlify} e \textit{Render} foram escolhidas para hospedagem da aplicação pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho. A versão local da aplicação não utiliza serviços de computação em nuvem.
 
-A aplicação pode ser acessada através do \textit{Moodle} usando como comunicação entre os dois a \gls{api} da aplicação. O diagrama na Figura \ref{fig:arqremo} mostra o esquema da arquitetura da aplicação hospedada em nuvem com integração ao \textit{Moodle} e o diagrama da Figura \ref{fig:arqlocal} mostra a arquitetura da aplicação hospedada no servidor local do campus Quixadá com integração ao \textit{Moodle}.
+A aplicação pode ser acessada através do \textit{Moodle} usando como comunicação entre os dois a \gls{api} da aplicação. O diagrama na Figura \ref{fig:arqremo} mostra o esquema da arquitetura da aplicação hospedada em nuvem com integração ao \textit{Moodle}.
 
 \begin{figure}[ht]
   \centering
@@ -41,16 +41,6 @@ A aplicação pode ser acessada através do \textit{Moodle} usando como comunica
   \caption{Arquitetura da aplicação em nuvem}
   \label{fig:arqremo}
   \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/remoto.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
-\FloatBarrier
-
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Arquitetura da aplicação local}
-  \label{fig:arqlocal}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/local.png}}
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
 \FloatBarrier
@@ -109,9 +99,9 @@ Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{q
   \rowcolor{gray!15}{1-1}
 \Body
 \textbf{Endpoint} & \textbf{Método} & \textbf{Finalidade}  \\
-$\backslash$ & GET & redirecionar para página\\
-$\backslash$login & POST & inicia uma conexão com a plataforma\\
-$\backslash$register & POST & registrar uma nova plataforma\\
+\selectlanguage{brazil}$\backslash$\selectlanguage{brazil}& GET & redirecionar para página\\
+\selectlanguage{brazil}$\backslash$\selectlanguage{brazil}login & POST & inicia uma conexão com a plataforma\\
+\selectlanguage{brazil}$\backslash$\selectlanguage{brazil}register & POST & registrar uma nova plataforma\\
 \end{NiceTabular}}
 {\Fonte{fornecido pelo autor}}
 \end{table}

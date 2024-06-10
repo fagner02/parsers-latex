@@ -1,0 +1,1 @@
+{"rule":"HUNSPELL_RULE","sentence":"^\\QSvelte compila a base de código e cria uma coleção de arquivos estáticos que constituem a página web e a base para o suporte multi-plataforma da aplicação.\\E$"}
