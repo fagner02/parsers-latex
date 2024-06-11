@@ -25,9 +25,9 @@ Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já def
 Com esses requisitos tem-se a base para o desenvolvimento da ferramenta.
 
 \section{Arquitetura do projeto}
-O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação. 
+O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
 
-O \textit{framework Capacitor} consome essa coleção de arquivos e cria um projeto para plataforma \textit{android} que é usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. 
+O \textit{framework Capacitor} consome essa coleção de arquivos e cria um projeto para plataforma \textit{Android} que é usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. 
 
 O \textit{framework Tauri} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma na qual eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
 
