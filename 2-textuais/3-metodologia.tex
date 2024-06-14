@@ -42,9 +42,9 @@ O \textit{framework Capacitor} consome essa coleção de arquivos e cria um proj
 
 O \textit{framework Tauri} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma na qual eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
 
-Para a versão \textit{online} da plataforma os serviços de computação em nuvem das empresas \textit{Netlify} e \textit{Render} serão usadas para hospedar respectivamente o \textit{front-end} e \textit{back-end} da aplicação. \textit{Netlify} e \textit{Render} foram escolhidas para hospedagem da aplicação pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho. A versão local da aplicação não utiliza serviços de computação em nuvem.
+Para a versão \textit{online} da aplicação, os serviços de computação em nuvem das empresas \textit{Netlify} e \textit{Render} serão usados para hospedar respectivamente o \textit{front-end} e \textit{back-end} da aplicação. \textit{Netlify} e \textit{Render} foram escolhidas para hospedagem da aplicação pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho.
 
-A aplicação pode ser acessada através do \textit{Moodle} usando como comunicação entre os dois a \gls{api} da aplicação. O diagrama na Figura \ref{fig:arqremo} mostra o esquema da arquitetura da aplicação hospedada em nuvem com integração ao \textit{Moodle}.
+A aplicação pode ser acessada através do \textit{Moodle} usando como comunicação entre os dois a \gls{api} da aplicação. O diagrama na Figura \ref{fig:arqremo} mostra o esquema da arquitetura da aplicação hospedada em nuvem com integração ao \textit{Moodle}. A versão hospedada localmente da aplicação segue a mesma arquitetura com exceção da utilização de serviços de computação em nuvem.
 
 \begin{figure}[ht]
   \centering
@@ -57,8 +57,6 @@ A aplicação pode ser acessada através do \textit{Moodle} usando como comunica
 \FloatBarrier
 
 \section{Interface de usuário}
-Essa seção irá falar sobre os detalhes de implementação da interface de usuário da ferramenta. 
-
 Para que o usuário selecione um algoritmo para visualizar a ferramenta terá opções no topo da tela que alternam entre abas. Dentre essas abas estarão inclusas uma para a entrada de gramáticas e uma aba para visualização de cada algoritmo disponível.
 
 Para que o usuário possa dar uma gramática de entrada será criado um campo de texto como mostra Figura \ref{fig:mgrammar}.
