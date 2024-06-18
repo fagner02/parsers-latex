@@ -153,64 +153,12 @@
 
 \renewcommand{\labelitemi}{\textendash} %Altera os marcadores de itemize para 
 
+\renewcommand\cftsubsectionfont{\normalsize\normalfont}
+\renewcommand\cftsectionfont{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont}
 
+\tcbset{colback=white!}
 
-
-
-\newcommand*{\monthname}[1]{%
-  \ifcase#1
-  \or
-  jan.%
-  \or
-  fev.%
-  \or
-  mar.%
-  \or
-  abr.%
-  \or
-  maio%
-  \or
-  jun.%
-  \or
-  jul.%
-  \or
-  ago.%
-  \or
-  set.%
-  \or
-  oct.%
-  \or
-  nov.%
-  \or
-  dez.%
-  \fi
-}
-
-\newcommand{\removezero}[1]{%
-\StrMid{#1}{1}{1}[\zero]%
-\StrMid{#1}{2}{3}[\inte]%
-\ifthenelse{\equal{0}{\zero}}{\inte}{#1}%
-}
-\newcommand{\usedate}[1]{%
-\def\x{#1}%
-\setsepchar[.]{-}%
-\readlist\datee{\x}%
-{\removezero{\datee[2]} \monthname{\datee[3]} \datee[1]}%
-}
-
-\DeclareCaptionStyle{mystyle}
-  {format=plain,%
-    textformat=period,
-    justification=RaggedRight,
-    singlelinecheck=true,
-  }% all captions are left aligned
-
-\DeclareCaptionStyle{singlelinecentered}
-  [justification=Centering]% centered if single line and no `singlelinecheck=false`
-  {style=mystyle}% other captions are left aligned
-
-\DeclareCaptionStyle{singlelineraggedleft}
-  [justification=RaggedLeft]% right aligned if single line and no `singlelinecheck=false`
-  {style=mystyle}% other captions are left aligned
-
-\newcommand{\subsubsectionm}[1]{\subsubsection{\underline{#1}}}
+\makeatletter
+    \setlength\@fptop{0cm}
+\makeatother
