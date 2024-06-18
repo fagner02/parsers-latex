@@ -16,7 +16,7 @@ As fases de um compilador podem ser divididas de várias formas, mas para esse t
     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/compfases.png}}{
     \Fonte{adaptada de \textcite{thain2020introduction}.}}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \subsubsection{Análise Léxica}
 Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural.
@@ -90,7 +90,7 @@ O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática qu
         \Return{follow}
     }
 \end{algorithm}
-\FloatBarrier
+%\FloatBarrier
 \selectlanguage{brazil}
 
 Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras a serem usadas na análise de uma trada para todas as combinações de não terminais e \textit{tokens} da entrada. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} usando o Algoritmo \ref{alg:lltable}.
@@ -110,7 +110,7 @@ Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras
         }
     }
 \end{algorithm}
-\FloatBarrier
+%\FloatBarrier
 \selectlanguage{brazil}
 
 Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a análise de uma sequência de \textit{tokens} usando uma \textit{stack}. O Algoritmo \ref{alg:lltparse} mostra a análise sintática usando a tabela. 
@@ -137,7 +137,7 @@ Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a anál
     }
 }
 \end{algorithm}
-\FloatBarrier
+%\FloatBarrier
 \selectlanguage{brazil}
 
 \section{Analisadores Sintáticos Ascendentes}
@@ -166,7 +166,7 @@ O Algoritmo \ref{alg:automaton} mostra como construir o autômato LR(0) com o au
         }
     }
 \end{algorithm}
-\FloatBarrier
+%\FloatBarrier
 \selectlanguage{brazil}
 
 Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não terminal não pode ser derivado, no entanto, quando um não terminal produz outro não terminal, o não terminal produzido terá outras derivações, por isso é preciso levar em consideração as produções dos não terminais que estão sob a posição de leitura dentro da produção de outro não terminal, \textit{closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções. 
@@ -202,7 +202,7 @@ Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho 
         \Return{m}
     }
 \end{algorithm}
-\FloatBarrier 
+%\FloatBarrier 
 \selectlanguage{brazil}
 
 Usando o autômato LR(0) podemos construir uma tabela de ações e \textit{goto} para facilitar o acesso a essas informações durante o processo de análise sintática. Essa pode ser calculada usando o Algoritmo \ref{alg:slrtable}.
@@ -228,7 +228,7 @@ A análise sintática do analisador sintático SLR pode ser feita usando a tabel
         Todos os estados restantes são estados de erro.
     }
 \end{algorithm}
-\FloatBarrier
+%\FloatBarrier
 \selectlanguage{brazil}
 
 \begin{algorithm}[htp]
@@ -254,7 +254,7 @@ A análise sintática do analisador sintático SLR pode ser feita usando a tabel
         }
     }
 \end{algorithm}
-\FloatBarrier
+%\FloatBarrier
 \selectlanguage{brazil}
 
 \subsection{Analisadores Sintáticos CLR}

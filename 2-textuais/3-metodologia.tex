@@ -10,7 +10,7 @@ Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento 
   \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/fluxograma.png}}
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \section{Definição dos requisitos}
 A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. 
@@ -51,10 +51,11 @@ A aplicação pode ser acessada através do \textit{Moodle} usando como comunica
   \captionsetup{width=16cm}
   \caption{Arquitetura da aplicação em nuvem}
   \label{fig:arqremo}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/remote.png}}
+  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{
+    \includegraphics[width=15.6cm]{figuras/remote.png}}
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \section{Interface de usuário}
 Para que o usuário selecione um algoritmo para visualizar a ferramenta terá opções no topo da tela que alternam entre abas. Dentre essas abas estarão inclusas uma para a entrada de gramáticas e uma aba para visualização de cada algoritmo disponível.
@@ -69,7 +70,7 @@ Para que o usuário possa dar uma gramática de entrada será criado um campo de
     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mgrammar.png}}
     \Fonte{fornecida pelo próprio autor}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 Para a visualização dos algoritmos a ferramenta terá uma composição de elementos como mostra a Figura \ref{fig:mfirst}, esses elementos são modificados de acordo com a execução do algoritmo selecionado. Os passos da execução do algoritmo podem ser controlados pelo conjunto de controles acima dos elementos do algoritmo como mostra a Figura \ref{fig:mfirst}.
 
@@ -81,7 +82,7 @@ Para a visualização dos algoritmos a ferramenta terá uma composição de elem
     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mfirst.png}}
     \Fonte{fornecida pelo próprio autor}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 Nas abas de visualização de algoritmos serão inclusos um campo de texto no qual o usuário poderá inserir uma \textit{string} de entrada para ser analisada pelo algoritmo, um campo de texto para copiar os resultados dos algoritmos em forma de texto e um campo de texto para copiar a implementação do algoritmo.
 
