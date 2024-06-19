@@ -1,9 +1,9 @@
 \chapter{Fundamentação teórica}
 \label{cap:fundamentacao-teorica}
 
-Neste capítulo apresentaremos os conceitos centrais que serviram como base e guia para a elaboração deste trabalho.
+Neste capítulo apresentaremos os conceitos centrais que serviram como base e guia para a elaboração deste trabalho. Ao início é falado sobre o conhecimento básico sobre compiladores, depois sobre o \textit{framework} utilizado para construção da ferramenta e por fim, sobre a tecnologia usada para fazer a integração com o \textit{Moodle}.
 
-\section{Compilador}
+\section{Compiladores}
 Programas que são executados em computadores são escritos no que é chamada de linguagem de máquina que usa comandos simples que são interpretados pela máquina. Escrever em linguagem de máquina é uma tarefa passível de erro e cansativa, e por essa razão foram criados os compiladores. Os compiladores traduzem linguagens de alto nível em linguagem de máquina e indicam erros cometidos pelos programadores no código-fonte \cite{mogensen2024introduction}.
 
 \subsection{Fases do compilador}
@@ -16,7 +16,6 @@ As fases de um compilador podem ser divididas de várias formas, mas para esse t
     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/compfases.png}}{
     \Fonte{adaptada de \textcite{thain2020introduction}.}}
 \end{figure}
-%\FloatBarrier
 
 \subsubsection{Análise Léxica}
 Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural.
@@ -45,7 +44,6 @@ Analisadores sintáticos LL(1) são um tipo de analisador sintático descendente
 
 O conjunto dos símbolos iniciais das produções de uma gramática é chamado conjunto \textit{first}, a construção desse conjunto pode ser feita seguindo o Algoritmo \ref{alg:first}. As definições dos algoritmos foram tiradas do trabalho de \textcite{thain2020introduction}.
 
-
 \begin{algorithm}[htp]
     \caption{First}\label{alg:first}
     \Input{Gramática G, simbolo X }
@@ -73,6 +71,10 @@ O conjunto dos símbolos iniciais das produções de uma gramática é chamado c
 
 O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática que podem ocorrer depois de qualquer uma das derivações de um não terminal \selectlanguage{brazil}$A$\selectlanguage{brazil}, o conjunto também inclui o símbolo \$ usado para se referir ao fim da \textit{string} Esse conjunto é usado no analisador LL para lidar com produções que derivam uma \textit{string} vazia. A construção do conjunto \textit{follow} pode ser feita seguindo o Algoritmo \ref{alg:follow}.
 
+Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras a serem usadas na análise de uma trada para todas as combinações de não terminais e \textit{tokens} da entrada. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} usando o Algoritmo \ref{alg:lltable}.
+
+Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a análise de uma sequência de \textit{tokens} usando uma \textit{stack}. O Algoritmo \ref{alg:lltparse} mostra a análise sintática usando a tabela. 
+
 \begin{algorithm}[htp]
     \caption{Follow}\label{alg:follow}
     \Input{Gramática G}
@@ -90,10 +92,13 @@ O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática qu
         \Return{follow}
     }
 \end{algorithm}
-%\FloatBarrier
 \selectlanguage{brazil}
 
-Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras a serem usadas na análise de uma trada para todas as combinações de não terminais e \textit{tokens} da entrada. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} usando o Algoritmo \ref{alg:lltable}.
+\section{Analisadores Sintáticos Ascendentes}
+Os analisadores sintáticos ascendentes levam uma abordagem oposta aos analisadores sintáticos descendentes. Ao invés de começar com o símbolo inicial da gramática, os analisadores sintáticos ascendentes procuram sequências de \textit{tokens} que façam par com o lado direito das produções da gramática e substituem as sequências de \textit{tokens} pelo símbolo não terminal do lado esquerdo da produção. Esse processo é repetido até que toda a sequência de \textit{tokens} seja reescrita e apenas reste o símbolo inicial da gramática.
+
+\subsection{Analisadores Sintáticos SLR}
+Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de LR(1). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não terminais, quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática a análise da entrada teve sucesso, caso contrário há um erro na entrada.
 
 \begin{algorithm}[htp]
     \caption { Construção da tabela LL(1)}\label{alg:lltable}
@@ -110,10 +115,7 @@ Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras
         }
     }
 \end{algorithm}
-%\FloatBarrier
 \selectlanguage{brazil}
-
-Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a análise de uma sequência de \textit{tokens} usando uma \textit{stack}. O Algoritmo \ref{alg:lltparse} mostra a análise sintática usando a tabela. 
 
 \begin{algorithm}[htp]
 \caption{Analise com tabela LL(1)}\label{alg:lltparse}
@@ -137,16 +139,7 @@ Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a anál
     }
 }
 \end{algorithm}
-%\FloatBarrier
 \selectlanguage{brazil}
-
-\section{Analisadores Sintáticos Ascendentes}
-Os analisadores sintáticos ascendentes levam uma abordagem oposta aos analisadores sintáticos descendentes. Ao invés de começar com o símbolo inicial da gramática, os analisadores sintáticos ascendentes procuram sequências de \textit{tokens} que façam par com o lado direito das produções da gramática e substituem as sequências de \textit{tokens} pelo símbolo não terminal do lado esquerdo da produção. Esse processo é repetido até que toda a sequência de \textit{tokens} seja reescrita e apenas reste o símbolo inicial da gramática.
-
-\subsection{Analisadores Sintáticos SLR}
-
-Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de LR(1). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não terminais, quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática a análise da entrada teve sucesso, caso contrário há um erro na entrada.
-
 Todas as ações de \textit{shift-reduce} possíveis podem ser calculadas para uma gramática construindo um autômato LR(0), que também pode ser chamado coleção de itens canônicos. Esse autômato guarda todas as possíveis posições de leitura das produções da gramática representadas por um ponto escrito no lado direito das produções.
 
 As ações de \textit{shift-reduce} são definidas pelas transições do autômato e pela posição de leitura, caso uma transição seja feita com um terminal a ação será de \textit{shift}, caso uma transição seja feita com um não terminal a ação será de \textit{goto}, caso a posição de leitura esteja no fim da produção a ação será de \textit{reduce}. 
@@ -166,7 +159,6 @@ O Algoritmo \ref{alg:automaton} mostra como construir o autômato LR(0) com o au
         }
     }
 \end{algorithm}
-%\FloatBarrier
 \selectlanguage{brazil}
 
 Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não terminal não pode ser derivado, no entanto, quando um não terminal produz outro não terminal, o não terminal produzido terá outras derivações, por isso é preciso levar em consideração as produções dos não terminais que estão sob a posição de leitura dentro da produção de outro não terminal, \textit{closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções. 
@@ -231,6 +223,10 @@ A análise sintática do analisador sintático SLR pode ser feita usando a tabel
 %\FloatBarrier
 \selectlanguage{brazil}
 
+
+\subsection{Analisadores Sintáticos CLR}
+O analisador sintático \textit{canonical} LR (CLR) é um analisador sintático descendente para gramáticas LR(1). O analisador sintático CLR usa o autômato LR(1) para construção da tabela de ações e \textit{goto}, esse autômato é parecido com o autômato LR(0), o que diferencia os dois é que todos os itens do autômato LR(1) tem uma anotação do conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto é chamado \textit{lookahead}. 
+
 \begin{algorithm}[htp]
     \caption{Analise com tabela SLR}\label{alg:slrparsing}
     \Input{Tabela de ações ACTION, Tabela goto GOTO}
@@ -254,11 +250,7 @@ A análise sintática do analisador sintático SLR pode ser feita usando a tabel
         }
     }
 \end{algorithm}
-%\FloatBarrier
 \selectlanguage{brazil}
-
-\subsection{Analisadores Sintáticos CLR}
-O analisador sintático \textit{canonical} LR (CLR) é um analisador sintático descendente para gramáticas LR(1). O analisador sintático CLR usa o autômato LR(1) para construção da tabela de ações e \textit{goto}, esse autômato é parecido com o autômato LR(0), o que diferencia os dois é que todos os itens do autômato LR(1) tem uma anotação do conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto é chamado \textit{lookahead}. 
 
 A construção do autômato LR(1) segue o mesmo algoritmo da construção do autômato LR(0) com algumas modificações. A primeira produção a ser adicionada no primeiro estado do autômato vai ser adicionada com o \textit{lookahead}, esse \textit{lookahead} tem \selectlanguage{brazil}$\$$\selectlanguage{brazil} como único elemento. Ao computar o \textit{closure} serão considerados dois casos:
 \begin{itemize}[label=$\sbullet$]
