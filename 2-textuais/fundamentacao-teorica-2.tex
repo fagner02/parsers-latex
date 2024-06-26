@@ -18,10 +18,10 @@ As fases de um compilador podem ser divididas de várias formas, mas para esse t
 \end{figure}
 
 \subsubsection{Análise Léxica}
-Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural.
+Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural, esse agrupamento é feito usando expressões regulares implementadas através de autômatos.
 
 \subsubsection{Análise Sintática}
-A fase de análise sintática da compilação rearranja os \textit{tokens} gerados pela fase de análise léxica, gerando assim uma estrutura chamada árvore sintática. Árvores sintáticas são estruturas de árvore como diz o nome, as folhas dessa árvore são os \textit{tokens} e a leitura em ordem da árvore dá a sequência de \textit{tokens} do texto de entrada dado ao analisador sintático. Ao construir a árvore sintática, o analisador sintático também checa se há erros de sintaxe no texto de entrada.
+Análise de sintática será o foco do trabalho sendo discutida de forma mais aprofundada nas próximas seções. A fase de análise sintática da compilação rearranja os \textit{tokens} gerados pela fase de análise léxica, gerando assim uma estrutura chamada árvore sintática. Árvores sintáticas são estruturas de árvore como diz o nome, as folhas dessa árvore são os \textit{tokens} e a leitura em ordem da árvore dá a sequência de \textit{tokens} do texto de entrada dado ao analisador sintático. Ao construir a árvore sintática, o analisador sintático também checa se há erros de sintaxe no texto de entrada.
 
 \subsubsection{Análise semântica}
 Na fase de análise semântica, as rotinas semânticas percorrem a árvore sintática e buscam significado na entrada a partir das regras da gramática e da relação entre os elementos da entrada. Depois das rotinas semânticas, a árvore de análise sintática é convertida em uma representação intermediária que é uma versão simplificada de \textit{assembly} que permite uma análise detalhada.
@@ -33,14 +33,14 @@ Na fase de otimização, otimizadores são aplicados na representação intermed
 Na fase de geração de código, o gerador de código consome a representação intermediária otimizada e a transforma em um programa em \textit{assembly} concreto. Para otimizar o uso dos registradores físicos limitados e gerar instruções de montagem de maneira eficiente, o gerador de código precisa executar as tarefas de alocação de registradores, seleção de instruções e sequenciamento de instruções.
 
 \section{Analisadores Sintáticos Descendentes}
-Analisadores sintáticos descendentes, também chamados \textit{parsers top-down}, são métodos de análise sintática que iniciam a análise a partir do símbolo inicial da gramática, eles fazem comparações entre os \textit{tokens} do texto de entrada e os símbolos da gramática para encontrar a produção que deve ser escrita no lugar dos símbolos da gramática, essas comparações são feitas até sobrar apenas símbolos terminais, esses símbolos terminais devem coincidir com a sequência de \textit{tokens} da entrada caso contrário será considerado um erro.
+Analisadores sintáticos descendentes, também chamados \textit{parsers top-down}, são métodos de análise sintática que iniciam a análise a partir do símbolo inicial da gramática. Eles fazem comparações entre os \textit{tokens} do texto de entrada e os símbolos da gramática para encontrar a produção que deve ser escrita no lugar dos símbolos da gramática. Essas comparações são feitas até sobrar apenas símbolos terminais, esses símbolos terminais devem coincidir com a sequência de \textit{tokens} da entrada caso contrário será considerado um erro.
 
 \subsection{Descendentes Recursivos}
-O conjunto de gramáticas que pode ser analisados usando algoritmos usando apenas um não terminal e o próximo símbolo da entrada é chamado conjunto de gramáticas LL(1). Uma das formas de fazer a análise dessas gramáticas é usando o analisador sintático descendente recursivo que usa funções recursivas para cada não terminal para processar a entrada. É um algoritmo que funciona como uma forma recursiva dos analisadores sintáticos LL(1) além de não seguirem estruturas fixas e determinísticas, por isso não será abordado na ferramenta.
+O conjunto de gramáticas que pode ser analisados usando algoritmos usando apenas um não terminal e o próximo símbolo da entrada é chamado conjunto de gramáticas LL(1). Uma das formas de fazer a análise dessas gramáticas é usando o analisador sintático descendente recursivo que usa funções recursivas para cada não terminal para processar a entrada. É um algoritmo que funciona como uma forma recursiva dos analisadores sintáticos LL(1) que já são tratados nesse trabalho, além disso, esse algoritmo não segue estruturas fixas e determinísticas, por isso não será abordado na ferramenta.
 
 \subsection{Analisadores Sintáticos LL(1)} 
 % \ctext[RGB]{180, 250, 180}{Escrever mais detalhado sobre LL(1)} \newline
-Analisadores sintáticos LL(1) são um tipo de analisador sintático descendente, esse analisador sintático leva em consideração um \textit{lookahead} que nesse algoritmo é o símbolo inicial do lado direito das produções, o \textit{lookahead} é usado para decidir qual produção deve ser escrita, por essa razão apenas gramaticas não ambíguas podem ser analisadas pelos analisadores sintáticos LL(1).
+Analisadores sintáticos LL(1) são um tipo de analisador sintático descendente, esses analisadores sintáticos levam em consideração um \textit{lookahead} que nesse algoritmo é o símbolo inicial do lado direito das produções. O \textit{lookahead} é usado para decidir qual produção deve ser escrita, por essa razão apenas gramaticas não ambíguas podem ser analisadas pelos analisadores sintáticos LL(1).
 
 O conjunto dos símbolos iniciais das produções de uma gramática é chamado conjunto \textit{first}, a construção desse conjunto pode ser feita seguindo o Algoritmo \ref{alg:first}. As definições dos algoritmos foram tiradas do trabalho de \textcite{thain2020introduction}.
 
@@ -69,7 +69,7 @@ O conjunto dos símbolos iniciais das produções de uma gramática é chamado c
 \end{algorithm}
 \selectlanguage{brazil}
 
-O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática que podem ocorrer depois de qualquer uma das derivações de um não terminal \selectlanguage{brazil}$A$\selectlanguage{brazil}, o conjunto também inclui o símbolo \$ usado para se referir ao fim da \textit{string} Esse conjunto é usado no analisador LL para lidar com produções que derivam uma \textit{string} vazia. A construção do conjunto \textit{follow} pode ser feita seguindo o Algoritmo \ref{alg:follow}.
+O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática que podem ocorrer depois de qualquer uma das derivações de um não terminal \selectlanguage{brazil}$A$\selectlanguage{brazil}, o conjunto também inclui o símbolo \$ usado para se referir ao fim da \textit{string}. Esse conjunto é usado no analisador LL para lidar com produções que derivam uma \textit{string} vazia. A construção do conjunto \textit{follow} pode ser feita seguindo o Algoritmo \ref{alg:follow}.
 
 Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras a serem usadas na análise de uma trada para todas as combinações de não terminais e \textit{tokens} da entrada. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} usando o Algoritmo \ref{alg:lltable}.
 
@@ -98,7 +98,7 @@ Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a anál
 Os analisadores sintáticos ascendentes levam uma abordagem oposta aos analisadores sintáticos descendentes. Ao invés de começar com o símbolo inicial da gramática, os analisadores sintáticos ascendentes procuram sequências de \textit{tokens} que façam par com o lado direito das produções da gramática e substituem as sequências de \textit{tokens} pelo símbolo não terminal do lado esquerdo da produção. Esse processo é repetido até que toda a sequência de \textit{tokens} seja reescrita e apenas reste o símbolo inicial da gramática.
 
 \subsection{Analisadores Sintáticos SLR}
-Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de LR(1). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não terminais, quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática a análise da entrada teve sucesso, caso contrário há um erro na entrada.
+Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de LR(0). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não terminais, quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática a análise da entrada teve sucesso, caso contrário há um erro na entrada.
 
 \begin{algorithm}[htp]
     \caption { Construção da tabela LL(1)}\label{alg:lltable}
@@ -118,7 +118,7 @@ Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \tex
 \selectlanguage{brazil}
 
 \begin{algorithm}[htp]
-\caption{Analise com tabela LL(1)}\label{alg:lltparse}
+\caption{Análise com tabela LL(1)}\label{alg:lltparse}
 \Input{Gramática G com simbolo inicial P, tabela T}
 \Inicio{
     cria uma stack S.\\
@@ -161,7 +161,7 @@ O Algoritmo \ref{alg:automaton} mostra como construir o autômato LR(0) com o au
 \end{algorithm}
 \selectlanguage{brazil}
 
-Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não terminal não pode ser derivado, no entanto, quando um não terminal produz outro não terminal, o não terminal produzido terá outras derivações, por isso é preciso levar em consideração as produções dos não terminais que estão sob a posição de leitura dentro da produção de outro não terminal, \textit{closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções. 
+Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não terminal não pode ser derivado, no entanto, quando um não terminal produz outro não terminal, o não terminal produzido terá outras derivações. Por essa razão é preciso levar em consideração as produções dos não terminais que estão sob a posição de leitura dentro da produção de outro não terminal. \textit{Closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções. 
 
 \begin{algorithm}[ht]
     \caption{Construção do autômato LR(0)}\label{alg:automaton}
@@ -283,9 +283,7 @@ Além disso, o \gls{lti} oferece os seguintes serviços adicionais:
 \end{itemize}
 
 \section{\textit{Svelte}}
-\textit{Svelte} é um \textit{framework} de componentes criado em 2016 por Harry Rich, é uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}.
-
-\textit{Svelte} é semelhante aos \textit{frameworks} \textit{React} e \textit{Vue}, mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigidos a estado (\textit{declarative state-driven}) o que dá mais trabalho de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como \textit{Virtual} DOM que é uma representação intermediária do DOM real \cite{harris_svelte_2019}.
+\textit{Svelte} é um \textit{framework} de componentes criado em 2016 por Harry Rich, e pode ser considerado uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}. \textit{Svelte} é semelhante aos \textit{frameworks} \textit{React} e \textit{Vue}, mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigidos a estado (\textit{declarative state-driven}) o que aumenta a carga de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como \textit{Virtual} DOM que é uma representação intermediária do DOM real \cite{harris_svelte_2019}.
 
 Ao contrário dos \textit{frameworks} tradicionais \textit{Svelte} age como um compilador funcionando em \textit{build-time} para transformar os componentes criados em código \textit{Javascript} imperativo altamente eficiente que atualiza o DOM apenas onde necessário. Isso permite escrever código para aplicações robustas sem necessidade de se preocupar muito com optimizações para que as aplicações sejam leves e performáticas.
 
