@@ -184,8 +184,10 @@
 \SetKwBlock{Inicio}{inicio}{fim}
 \SetKwInput{Input}{Entrada}
 \SetKwInput{Output}{Saida}
-\SetKwIF{Ifx}{Elseifx}{Elsex}{se}{então}{senão se}{senão}{fim}
-\SetKwIF{If}{Elseif}{Else}{se}{então}{senão se}{senão}{}
+\SetKwIF{Ifx}{Elseifx}{Elsex}{se}{então}{senão, se}{senão}{fim}
+\SetKwIF{If}{Elseif}{Else}{se}{então}{senão, se}{senão}{}
+\SetKwIF{Ifx}{ElseIfx}{Elsex}{se}{então}{senão, se}{senão}{fim}
+\SetKwIF{If}{ElseIf}{Else}{se}{então}{senão, se}{senão}{}
 \SetKwRepeat{Repeat}{repetir}{até que}
 \SetKwFor{While}{enquanto}{fazer}{fim enquanto}%
 \SetKw{Return}{retornar}%

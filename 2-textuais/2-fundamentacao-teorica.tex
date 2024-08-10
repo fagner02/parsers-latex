@@ -168,25 +168,25 @@ Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho 
     \Input{Gramática G}
     \Output{Autômato LR(0)}
     \Inicio{
-        cria um autômato m \\
+        cria um autômato m. \\
         estado s0 = \{P | para a produção do símbolo inicial \selectlanguage{brazil}$A \rightarrow \gamma$, P é uma produção da forma \selectlanguage{brazil}$A \rightarrow .\gamma$\selectlanguage{brazil} \}.\\
-        closure(s0)\\
-        adiciona s0 a m\\
-        conjunto de estados newStates = \{s0\} \\
+        closure(s0).\\
+        adiciona s0 a m.\\
+        conjunto de estados newStates = \{s0\}. \\
         \ForEach{estado s em newStates} {
-            conjunto de estados temp = \{\}\\
+            conjunto de estados temp = \{\}.\\
             \ForEach{símbolo a em \selectlanguage{brazil}$T\cup NT$}{
-                estado s1 = \{\}\\
+                estado s1 = \{\}.\\
                 \ForEach{produção da forma \selectlanguage{brazil}$A \rightarrow \alpha . a \beta$\selectlanguage{brazil} em s}{
-                    adiciona uma produção da forma \selectlanguage{brazil}$A \rightarrow \alpha a. \beta$\selectlanguage{brazil} em s1\\
+                    adiciona uma produção da forma \selectlanguage{brazil}$A \rightarrow \alpha a. \beta$\selectlanguage{brazil} em s1.\\
                 }
                 
-                closure(s1)\\
+                closure(s1).\\
                 
                 \Ifx{s1 não está em m}{ 
-                    adiciona s1 a m\\
-                    adiciona a transição \selectlanguage{brazil}$\hat{\delta}(s, a)=\hat{\delta}(s, a)\cup\{s1\}$\selectlanguage{brazil} a m\\
-                    adiciona s1 a temp
+                    adiciona s1 a m.\\
+                    adiciona a transição \selectlanguage{brazil}$\hat{\delta}(s, a)=\hat{\delta}(s, a)\cup\{s1\}$\selectlanguage{brazil} a m.\\
+                    adiciona s1 a temp.
                 }
             }
             newStates = temp
@@ -213,7 +213,7 @@ A análise sintática do analisador sintático SLR pode ser feita usando a tabel
                 GOTO[s, B] = goto para o estado t de acordo com o autômato LR(0).}
             \ForEach {item da forma \selectlanguage{brazil}$A \rightarrow \alpha .$}{
                 \ForEach{ terminal a em FOLLOW(A)}{
-                    ACTION[s, a] = reduce pela regra \selectlanguage{brazil}$A \rightarrow \alpha$
+                    ACTION[s, a] = reduce pela regra \selectlanguage{brazil}$A \rightarrow \alpha$.
                 }
             }
         }
@@ -263,6 +263,72 @@ A construção do autômato LR(1) segue o mesmo algoritmo da construção do aut
 \end{itemize}
 \selectlanguage{brazil}
 
+Com essas modificações chegamos aos algoritmos de \textit{closure} LR(1) e construção do autômato LR(1) que podem ser vistos nos algoritmos \ref{alg:closurelr1} e \ref{alg:automatonlr1} respectivamente.
+
+\begin{algorithm}[ht]
+    \caption{Closure LR(1)}\label{alg:closurelr1}
+    \Input{Gramática G, Estado S}
+    \Inicio{
+        \Repeat{não tenha itens a serem adicionados}{ 
+            \ForEach {item da forma \selectlanguage{brazil}$A \rightarrow \alpha . B$\selectlanguage{brazil} em S com lookahead de \{L\}$\selectlanguage{brazil}$ } {
+                adiciona as produções da forma \selectlanguage{brazil}$B \rightarrow .\gamma$\selectlanguage{brazil} a S
+                
+            }
+            \ForEach {item da forma \selectlanguage{brazil}$A \rightarrow \alpha . B \beta$\selectlanguage{brazil} em S com lookahead de \{L\}$\selectlanguage{brazil}$ } {
+                \ForEach {item da forma $B \rightarrow \gamma$ em G }
+                { 
+                    \If{
+                        $\beta$ não produz $\epsilon$
+                    } {
+                        adiciona uma produção da forma $B \rightarrow .\gamma$ com lookahead de $First(\beta)$ a S.
+                    }
+                    \Elsex {
+                        adiciona uma produção da forma $B \rightarrow .\gamma$ com lookahead de $First(\beta)\cup$\{L\} a S.
+                    }
+                }
+            }
+        }
+    }
+\end{algorithm}
+\selectlanguage{brazil}
+
+
+\begin{algorithm}[ht]
+    \caption{Construção do autômato LR(1)}\label{alg:automatonlr1}
+    \Input{Gramática G}
+    \Output{Autômato LR(1)}
+    \Inicio{
+        cria um autômato m. \\
+        estado s0 = \{P | para a produção do símbolo inicial $A \rightarrow \gamma$, P é uma produção da forma $A \rightarrow .\gamma$ com \textit{lookahead} de \{\$\} \}.\\
+        closure(s0).\\
+        adiciona s0 a m.\\
+        conjunto de estados newStates = \{s0\}. \\
+        \ForEach{estado s em newStates} {
+            conjunto de estados temp = \{\}.\\
+            \ForEach{
+                símbolo a em \selectlanguage{brazil}$T\cup NT$
+            } {
+                estado s1 = \{\}.\\
+                \ForEach{
+                    produção da forma $A \rightarrow \alpha . a \beta$ com \textit{lookahead} de $\{L\}$ em s
+                } {
+                    adiciona uma produção da forma $A \rightarrow \alpha a. \beta$ com \textit{lookahead} de $\{L\}$ em s1.\\
+                }
+                
+                closure(s1).\\
+                
+                \Ifx{s1 não está em m}{ 
+                    adiciona s1 a m.\\
+                    adiciona a transição \selectlanguage{brazil}$\hat{\delta}(s, a)=\hat{\delta}(s, a)\cup\{s1\}$\selectlanguage{brazil} a m.\\
+                    adiciona s1 a temp.
+                }
+            }
+            newStates = temp.
+        }
+        \Return{m}.
+    }
+\end{algorithm}
+\selectlanguage{brazil}
 
 \section{\textit{Learning Tools Interoperability}}
 \gls{lti} em português interoperabilidade de ferramentas de aprendizagem é um padrão técnico desenvolvido pela 1EdTec\footnote{https://www.1edtech.org/}. Esse padrão especifica métodos de comunicação entre \gls{lms} em português sistema de gerenciamento de aprendizagem e ferramentas de aprendizagem remotas \cite{1edtech}.
