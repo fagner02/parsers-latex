@@ -12,7 +12,7 @@ Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento 
 \end{figure}
 %\FloatBarrier
 
-\section{Definição dos requisitos}
+\section{Definir os requisitos}
 A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
 \begin{itemize}[label={$\sbullet$}]
     \item Permitir que os usuários digitem a gramática a ser analisada.
@@ -32,7 +32,7 @@ Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já def
 
 Com esses requisitos tem-se a base para o desenvolvimento da ferramenta.
 
-\section{Arquitetura do projeto}
+\section{Definir a arquitetura do projeto}
 O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
 
 O \textit{framework Capacitor} consome essa coleção de arquivos e cria um projeto para plataforma \textit{Android} que é usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. 
@@ -54,7 +54,7 @@ A aplicação pode ser acessada através do \textit{Moodle} usando como comunica
 \end{figure}
 %\FloatBarrier
 
-\section{Interface de usuário}
+\section{Implementar da interface de usuário}
 Para que o usuário selecione um algoritmo para visualizar a ferramenta terá opções no topo da tela que alternam entre abas. Dentre essas abas estarão inclusas uma para a entrada de gramáticas e uma aba para visualização de cada algoritmo disponível.
 
 Para que o usuário possa dar uma gramática de entrada será criado um campo de texto como mostra Figura \ref{fig:mgrammar}.
@@ -83,13 +83,13 @@ Para a visualização dos algoritmos a ferramenta terá uma composição de elem
 
 Nas abas de visualização de algoritmos serão inclusos um campo de texto no qual o usuário poderá inserir uma \textit{string} de entrada para ser analisada pelo algoritmo, um campo de texto para copiar os resultados dos algoritmos em forma de texto e um campo de texto para copiar a implementação do algoritmo.
 
-\section{Integração dos algoritmos}
+\section{Integrar os algoritmos à ferramenta}
 Para todas as estruturas de dados usadas nos algoritmos serão criadas representações visuais, dessa forma todos os passos do funcionamento poderão ser representados como estados dessas estruturas. Calculando antecipadamente os estados dessas estruturas em cada passo dos algoritmos podemos fazer um controle de fluxo entre os passos dos algoritmos.
 
-\section{Animações}
+\section{Implementar as animações dos algoritmos}
 As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica. Um exemplo de animação é a animação do estado da estrutura de pilha que é usada em alguns algoritmos. Quando um item é adicionado ou removido da pilha, o elemento visual que representa esse item terá sua posição interpolada do ponto inicial ao ponto final.
 
-\section{Integração com o \textit{Moodle}}
+\section{Integrar a ferramenta com o \textit{Moodle}}
 A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta criada nesse trabalho diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}. 
 
 Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{qua:endpoints}.
@@ -115,7 +115,7 @@ Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{q
 
 Com a \gls{api} pronta pode ser feita a conexão entre a ferramenta e a \gls{lms}. Utilizando o serviço \gls{lti} de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o \textit{endpoint} de registro dinâmico da \gls{api}.
 
-\section{Avaliação}
+\section{Avaliar a ferramenta}
 Será realizado um teste prático com um grupo de estudantes, onde os eles serão solicitados a realizar tarefas específicas utilizando a ferramenta. Serão coletados dados quantitativos, como tempo de execução das tarefas e taxa de acerto, bem como dados qualitativos por meio de questionários e entrevistas para avaliar a percepção dos estudantes sobre a eficácia da ferramenta. Além disso, a comparação dos resultados obtidos com um grupo de controle que não utiliza a ferramenta ajudará a avaliar o impacto da visualização na compreensão e desempenho dos alunos. Essa abordagem abrangente de avaliação garantirá uma análise completa da eficácia e utilidade da ferramenta desenvolvida nesse trabalho.
 
 O desenvolvimento desse trabalho seguirá o cronograma mostrado no Quadro \ref{qua:cronograma}.
