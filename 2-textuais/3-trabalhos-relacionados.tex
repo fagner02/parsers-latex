@@ -72,8 +72,15 @@ O sistema foi desenvolvido usando Java Server Page, já que a versão desktop do
 No estudo foi feita uma análise comparativa entre as versões web e desktop do sistema. A partir dessa análise foi concluído que a versão web criada tem melhor acessibilidade, visualização, controle da simulação e feedback. Também foi feita uma avaliação quantitativa da eficiência do sistema, os resultados mostram que os estudantes que usaram o sistema tiveram melhor desempenho do que aqueles que não usaram o sistema.
 
 
-\section{\textit{A Tool for Visualization of Parsers: JFLAP}}
-JFLAP (\textit{Java Formal Languages and Automata Package}) é uma ferramenta \textit{desktop} criada por \textcite{jflap} que pode ser usada para visualização dos algoritmos LL(1), SLR e de força bruta. Como mostra a Figura \ref{fig:jflap}, a ferramenta apresenta os conjuntos \textit{first} e \textit{follow}, o autômato dos estados do analisador sintático e a tabela de ações. O processo de \textit{parsing} também é disponibilizado assim como a árvore sintática. Apesar de a visualização ser feita por meio de uma interface gráfica, assim como na ferramenta citada na seção anterior, JFLAP não dá instruções de como chegar nos resultados mostrados.
+% \section{\textit{A Tool for Visualization of Parsers: JFLAP}}
+% JFLAP (\textit{Java Formal Languages and Automata Package}) é uma ferramenta \textit{desktop} criada por \textcite{jflap} que pode ser usada para visualização dos algoritmos LL(1), SLR e de força bruta. Como mostra a Figura \ref{fig:jflap}, a ferramenta apresenta os conjuntos \textit{first} e \textit{follow}, o autômato dos estados do analisador sintático e a tabela de ações. O processo de \textit{parsing} também é disponibilizado assim como a árvore sintática. Apesar de a visualização ser feita por meio de uma interface gráfica, assim como na ferramenta citada na seção anterior, JFLAP não dá instruções de como chegar nos resultados mostrados.
+
+% \begin{figure}[h]
+%     \captionsetup{width=16cm}
+%     \Caption{\label{fig:jflap}Imagem da ferramenta JFLAP}
+%     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm, height=7.95cm]{figuras/jflap.png}}{
+%     \Fonte{\textcite{jflap}.}}
+% \end{figure}
 
 \section{Considerações}
 Apesar de já existirem ferramentas de visualização de \textit{parsers}, algumas desvantagens ainda precisam ser consideradas. Uma limitação é que o conteúdo não tem muita interatividade, a ferramenta PAVT, por exemplo, apresenta apenas em um arquivo de texto. Isso pode dificultar a compreensão dos conceitos. A ferramenta \textit{Parser Generator Web Tools} não oferece a visualização da árvore sintática que é um elemento fundamental para entender a estrutura da análise sintática. Outro ponto fraco é a falta de detalhamento do passo a passo dos algoritmos, o que impede que os estudantes acompanhem o funcionamento interno dos processos de análise. A variedade de algoritmos de análise sintática disponíveis nas ferramentas pode ser limitada, restringindo a exposição dos alunos a diferentes abordagens e técnicas. Por fim, nenhuma das ferramentas apresenta uma versão \textit{mobile}. Essas lacunas representam oportunidades de melhoria para que as ferramentas de visualização de \textit{parsers} se tornem ainda mais eficazes no apoio ao ensino e aprendizagem de análise sintática. No Quadro \ref{qua:comparativo} pode-se ver o resumo do comparativo dos trabalhos citados anteriormente.
@@ -92,8 +99,8 @@ Apesar de já existirem ferramentas de visualização de \textit{parsers}, algum
 
 &LL(1)&SLR&CLR&Mobile&Desktop&Web\\
 \textcite{munozquestions}                   &x& & & & & \\
-\textcite{sangal2018pavt}   & &x&x& & & \\
-\textcite{webbased}   & &x&x& & & \\
+\textcite{sangal2018pavt}   & &x&x& &x& \\
+\textcite{webbased}   & &x&x& &x&x\\
 % \textcite{jflap}               & & &x&x&x& \\
 Este trabalho &x&x&x&x&x&x&x \\
 \end{NiceTabular}}
@@ -101,12 +108,7 @@ Este trabalho &x&x&x&x&x&x&x \\
 \end{table}
 
 
-% \begin{figure}[h]
-%     \captionsetup{width=16cm}
-%     \Caption{\label{fig:jflap}Imagem da ferramenta JFLAP}
-%     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm, height=7.95cm]{figuras/jflap.png}}{
-%     \Fonte{\textcite{jflap}.}}
-% \end{figure}
+
 
 % \begin{figure}[t!]
 %     \captionsetup{width=16cm}
