@@ -560,6 +560,9 @@
 	Tese apresentada ao \imprimirprogramadoutorado\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do título de doutor em \imprimirdoutorem. Área de Concentração: \imprimirareadeconcentracaodoutorado. \\
 }
 
+\newcommand{\preambulopesquisa}{
+	Projeto de Pesquisa apresentado ao Curso de Graduação em \imprimirgraduacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do grau de \imprimirhabilitacao\ em \imprimirgraduacaoem. \\
+}
 \preambulo{
 	\ifthenelse{\boolean{ufctex@ehqualificacao}}{ %
 		Proposta de qualificacao apresentada ao Curso de \imprimirmestrado\  da \imprimiries\ (\imprimiriessigla) como requisito parcial para a defesa de dissertação.
@@ -573,7 +576,9 @@
 				\ifthenelse{\boolean{ufctex@ehtccgraduacao}}{ %
 					\preambulotccgraduacao	 %
 				}{
-					\preambulotccespecializacao %
+                                        \ifthenelse{\boolean{utfctex@ehpesquisa}}{ %
+					       \preambulopesquisa %
+                                        }{ \preambulotccespecializacao % }
 				}
 			}
 		}
