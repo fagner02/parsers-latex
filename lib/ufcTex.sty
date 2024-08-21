@@ -316,21 +316,18 @@
 \provideboolean{ufctex@ehtccespecializacao}
 \provideboolean{ufctex@ehdissertacao}
 \provideboolean{ufctex@ehtese}
-\provideboolean{ufctex@ehpesquisa}
 
 % Valores Iniciais
 \setboolean{ufctex@ehtccgraduacao}{false}
 \setboolean{ufctex@ehtccespecializacao}{false}
 \setboolean{ufctex@ehdissertacao}{true}
 \setboolean{ufctex@ehtese}{false}
-\setboolean{ufctex@ehpesquisa}{false}
 
 \newcommand{\trabalhoacademico}[1]{
 	\setboolean{ufctex@ehtccgraduacao}{false}
 	\setboolean{ufctex@ehtccespecializacao}{false}
 	\setboolean{ufctex@ehdissertacao}{false}
 	\setboolean{ufctex@ehtese}{false}
-        \setboolean{ufctex@ehpesquisa}{false}
 	
 	\ifthenelse{\equal{#1}{tccgraduacao}}{%
 		\setboolean{ufctex@ehtccgraduacao}{true}
@@ -349,9 +346,6 @@
 			}
 		}	
 	}
-        \ifthenelse{\equal{#1}{pesquisa}}{
-                \setboolean{ufctex@ehpesquisa}{true}
-        }
 }
 
 \AtBeginDocument{ %
@@ -545,7 +539,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\preambulotccgraduacao}{
-	Trabalho de Conclusão de Curso apresentado ao Curso de Graduação em \imprimirgraduacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do grau de \imprimirhabilitacao\ em \imprimirgraduacaoem. \\
+	Projeto de Pesquisa apresentado ao Curso de Graduação em \imprimirgraduacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do grau de \imprimirhabilitacao\ em \imprimirgraduacaoem. \\
 }
 
 \newcommand{\preambulotccespecializacao}{
@@ -560,9 +554,6 @@
 	Tese apresentada ao \imprimirprogramadoutorado\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do título de doutor em \imprimirdoutorem. Área de Concentração: \imprimirareadeconcentracaodoutorado. \\
 }
 
-\newcommand{\preambulopesquisa}{
-	Projeto de Pesquisa apresentado ao Curso de Graduação em \imprimirgraduacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do grau de \imprimirhabilitacao\ em \imprimirgraduacaoem. \\
-}
 \preambulo{
 	\ifthenelse{\boolean{ufctex@ehqualificacao}}{ %
 		Proposta de qualificacao apresentada ao Curso de \imprimirmestrado\  da \imprimiries\ (\imprimiriessigla) como requisito parcial para a defesa de dissertação.
@@ -576,9 +567,7 @@
 				\ifthenelse{\boolean{ufctex@ehtccgraduacao}}{ %
 					\preambulotccgraduacao	 %
 				}{
-                                        \ifthenelse{\boolean{utfctex@ehpesquisa}}{ %
-					       \preambulopesquisa %
-                                        }{ \preambulotccespecializacao % }
+					\preambulotccespecializacao %
 				}
 			}
 		}
@@ -664,7 +653,7 @@
 
         \includegraphics[scale=0.10]{lib/logo-ufc} \\
         
-        \vspace{-0.4cm}
+        \vspace{-0.4cm}+
 		\MakeUppercase{\imprimiries} \\
 		\MakeUppercase{\imprimircentro} 
 		\MakeUppercase{\imprimirdepartamento}
