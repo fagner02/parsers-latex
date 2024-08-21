@@ -316,18 +316,21 @@
 \provideboolean{ufctex@ehtccespecializacao}
 \provideboolean{ufctex@ehdissertacao}
 \provideboolean{ufctex@ehtese}
+\provideboolean{ufctex@ehpesquisa}
 
 % Valores Iniciais
 \setboolean{ufctex@ehtccgraduacao}{false}
 \setboolean{ufctex@ehtccespecializacao}{false}
 \setboolean{ufctex@ehdissertacao}{true}
 \setboolean{ufctex@ehtese}{false}
+\setboolean{ufctex@ehpesquisa}{false}
 
 \newcommand{\trabalhoacademico}[1]{
 	\setboolean{ufctex@ehtccgraduacao}{false}
 	\setboolean{ufctex@ehtccespecializacao}{false}
 	\setboolean{ufctex@ehdissertacao}{false}
 	\setboolean{ufctex@ehtese}{false}
+        \setboolean{ufctex@ehpesquisa}{false}
 	
 	\ifthenelse{\equal{#1}{tccgraduacao}}{%
 		\setboolean{ufctex@ehtccgraduacao}{true}
@@ -346,6 +349,9 @@
 			}
 		}	
 	}
+        \ifthenelse{\equal{#1}{pesquisa}}{
+                \setboolean{ufctex@ehpesquisa}{true}
+        }
 }
 
 \AtBeginDocument{ %
