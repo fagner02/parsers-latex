@@ -72,15 +72,15 @@ O sistema foi desenvolvido usando \textit{Java Server Page}, já que a versão \
 No estudo foi feita uma análise comparativa entre as versões \textit{web} e \textit{desktop} do sistema. A partir dessa análise os autores concluíram que a versão \textit{web} criada tem melhor acessibilidade, visualização, controle da simulação e \textit{feedback}. Também foi feita uma avaliação quantitativa da eficiência do sistema, os resultados mostram que os estudantes que usaram o sistema tiveram melhor desempenho do que aqueles que não usaram o sistema.
 
 
-% \section{\textit{A Tool for Visualization of Parsers: JFLAP}}
-% JFLAP (\textit{Java Formal Languages and Automata Package}) é uma ferramenta \textit{desktop} criada por \textcite{jflap} que pode ser usada para visualização dos algoritmos LL(1), SLR e de força bruta. Como mostra a Figura \ref{fig:jflap}, a ferramenta apresenta os conjuntos \textit{first} e \textit{follow}, o autômato dos estados do analisador sintático e a tabela de ações. O processo de \textit{parsing} também é disponibilizado assim como a árvore sintática. Apesar de a visualização ser feita por meio de uma interface gráfica, assim como na ferramenta citada na seção anterior, JFLAP não dá instruções de como chegar nos resultados mostrados.
+\section{\textit{A Tool for Visualization of Parsers: JFLAP}}
+JFLAP (\textit{Java Formal Languages and Automata Package}) é uma ferramenta \textit{desktop} criada por \textcite{jflap} primariamente para a construção e simulação de autômatos e gramáticas livres de contexto. O trabalho de \textcite{jflapparser} introduz os algoritmos LL(1) e SLR na ferramenta, dessa forma, JFLAP também pode ser usado para visualização dos algoritmos LL(1), SLR e de força bruta. Como mostra a Figura \ref{fig:jflap}, a ferramenta apresenta os conjuntos \textit{first} e \textit{follow}, o autômato dos estados do analisador sintático e a tabela de ações. O processo de \textit{parsing} também é disponibilizado assim como a árvore sintática.
 
-% \begin{figure}[h]
-%     \captionsetup{width=16cm}
-%     \Caption{\label{fig:jflap}Imagem da ferramenta JFLAP}
-%     \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm, height=7.95cm]{figuras/jflap.png}}{
-%     \Fonte{\textcite{jflap}.}}
-% \end{figure}
+\begin{figure}[h]
+    \captionsetup{width=16cm}
+    \Caption{\label{fig:jflap}Imagem da ferramenta JFLAP}
+    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/jflap.png}}{
+    \Fonte{\textcite{jflap}.}}
+\end{figure}
 
 \section{Considerações}
 Apesar de já existirem ferramentas de visualização de \textit{parsers}, algumas desvantagens ainda precisam ser consideradas. Uma limitação é que o conteúdo não tem muita interatividade, a ferramenta apresentada no trabalho de \textcite{sangal2018pavt}, por exemplo, apresenta apenas em um arquivo de texto. Isso pode dificultar a compreensão dos conceitos. Outra limitação é a falta de detalhamento do passo a passo dos algoritmos, por exemplo a ferramenta apresentada no trabalho de \textcite{webbased} foca apenas no último passo da análise sintática, excluindo a parte de construção das tabelas de \textit{parsing} e conjuntos de itens. Isso impede que os estudantes acompanhem o funcionamento interno dos processos de análise. Por fim, nenhuma das ferramentas apresenta uma versão \textit{mobile}. Essas lacunas representam oportunidades de melhoria para que as ferramentas de visualização de \textit{parsers} se tornem ainda mais eficazes no apoio ao ensino e aprendizagem de análise sintática. No Quadro \ref{qua:comparativo} pode-se ver o resumo do comparativo dos trabalhos citados anteriormente.
@@ -98,10 +98,10 @@ Apesar de já existirem ferramentas de visualização de \textit{parsers}, algum
 \Block{2-1}{Trabalho}&\Block{1-3}{Algoritmos}&&&\Block{1-3}{Plataformas}&&&\Block{2-1}{Integração com Moodle}\\
 
 &LL(1)&SLR&CLR&Mobile&Desktop&Web\\
-\textcite{munozquestions}                   &x& & & & & \\
-\textcite{sangal2018pavt}   & &x&x& &x& \\
-\textcite{webbased}   & &x&x& &x&x\\
-% \textcite{jflap}               & & &x&x&x& \\
+\textcite{munozquestions}                   &x&x& & & &x\\
+\textcite{sangal2018pavt}                   & &x&x& &x& \\
+\textcite{webbased}                         & &x&x& &x&x\\
+\textcite{jflapparser}                      &x&x& & &x& \\
 Este trabalho &x&x&x&x&x&x&x \\
 \end{NiceTabular}}
 {\Fonte{fornecido pelo autor}}
