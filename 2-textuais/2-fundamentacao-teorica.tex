@@ -222,7 +222,7 @@ Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho 
                 
                 \Ifx{$s1$ não está em $M$}{ 
                     adiciona $s1$ a $M$\\
-                    adiciona a transição $\hat{\delta}(s, a) \gets \hat{\delta}(s, a)\cup\{s1\}$ a $M$\\
+                    adiciona a transição $\hat{\delta}(s, a) \rightarrow \hat{\delta}(s, a)\cup\{s1\}$ a $M$\\
                     $temp$ $\gets$ $temp$ $\cup$ \{$s1$\}
                 }
             }
@@ -314,22 +314,22 @@ Com essas modificações chegamos aos algoritmos de \textit{closure} LR(1) e con
 
 \begin{algorithm}[ht]
     \caption{Closure LR(1)}\label{alg:closurelr1}
-    \Input{Gramática G, Estado S}
+    \Input{Gramática G, Estado s}
     \Inicio{
         \Repeat{não tenha itens a serem adicionados}{ 
-            \ForEach {item da forma $A \rightarrow \alpha . B$ em $S$ com lookahead de \{$L$\} }{
-                $S$ $\gets$ $S$ $\cup$ \{produções da forma $B \rightarrow .\gamma$\}
+            \ForEach {item da forma $A \rightarrow \alpha . B$ em $s$ com lookahead de \{$L$\} }{
+                $s$ $\gets$ $s$ $\cup$ \{produções da forma $B \rightarrow .\gamma$\}
             }
-            \ForEach {item da forma $A \rightarrow \alpha . B \beta$ em $S$ com lookahead de \{$L$\} }{
+            \ForEach {item da forma $A \rightarrow \alpha . B \beta$ em $s$ com lookahead de \{$L$\} }{
                 \ForEach {item da forma $B \rightarrow \gamma$ em $G$ }
                 { 
                     \If{
                         $\beta$ não produz $\epsilon$
                     } {
-                        $S$ $\gets$ $S$ $\cup$ \{produção da forma $B \rightarrow .\gamma$ com lookahead de $First(G,\beta)$\}
+                        $s$ $\gets$ $s$ $\cup$ \{produção da forma $B \rightarrow .\gamma$ com lookahead de $First(G,\beta)$\}
                     }
                     \Elsex {
-                        $S$ $\gets$ $S$ $\cup$ \{produção da forma $B \rightarrow .\gamma$ com lookahead de $First(G,\beta)\cup$\{$L$\}\}
+                        $s$ $\gets$ $s$ $\cup$ \{produção da forma $B \rightarrow .\gamma$ com lookahead de $First(G,\beta)\cup$\{$L$\}\}
                     }
                 }
             }
@@ -365,7 +365,7 @@ Com essas modificações chegamos aos algoritmos de \textit{closure} LR(1) e con
                 
                 \Ifx{$s1$ não está em $M$}{ 
                     adiciona $s1$ a $M$\\
-                    adiciona a transição $\hat{\delta}(s, a) \gets \hat{\delta}(s, a)\cup\{s1\}$ a $M$\\
+                    adiciona a transição $\hat{\delta}(s, a) \rightarrow \hat{\delta}(s, a)\cup\{s1\}$ a $M$\\
                     $temp$ $\gets$ $temp$ $\cup$ \{$s1$\} 
                 }
             }
