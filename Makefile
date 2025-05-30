@@ -21,24 +21,22 @@
 ##                                                                    ##
 ########################################################################
 filename = documento
+cleancmd = @echo "Limpando arquivos auxiliares..." & rm -f *-blx.bib *.bcf *.fls *.run.xml *.xdv *.fdb_latexmk *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq & echo "Processo finalizado com sucesso!"
+pdflatex = pdflatex -interaction=errorstopmode -synctex=1 $(filename).tex
+all: clean compile postclean
 
 compile:
-	pdflatex -interaction=errorstopmode $(filename).tex
+	$(pdflatex)
 	biber $(filename)
 	makeindex $(filename)
 	makeglossaries $(filename)
-	pdflatex -interaction=errorstopmode $(filename).tex
-	pdflatex -interaction=errorstopmode $(filename).tex
+	$(pdflatex)
+	$(pdflatex)
 	@echo "Processo de compilação finalizado com sucesso!"
 
 clean:
-	@echo "Limpando arquivos auxiliares..."
-	@rm -f *-blx.bib *.bcf *.fls *.run.xml *.xdv *.fdb_latexmk *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq
-	@echo "Processo finalizado com sucesso!"
+	$(cleancmd)
 
-
-all: 
-	make clean
-	make compile
-	make clean
+postclean:
+	$(cleancmd)
 
