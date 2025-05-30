@@ -20,21 +20,25 @@
 ## are available on http://abntex2.googlecode.com/                    ##
 ##                                                                    ##
 ########################################################################
+filename = documento
 
-filename=documento
-
-all: compile clean
-	
 compile:
-	pdflatex -interaction=batchmode $(filename).tex
+	pdflatex -interaction=errorstopmode $(filename).tex
 	biber $(filename)
 	makeindex $(filename)
 	makeglossaries $(filename)
-	pdflatex -interaction=batchmode $(filename).tex
-	pdflatex -interaction=batchmode $(filename).tex
-	echo "Processo finalizado com sucesso!"
-	
+	pdflatex -interaction=errorstopmode $(filename).tex
+	pdflatex -interaction=errorstopmode $(filename).tex
+	@echo "Processo de compilação finalizado com sucesso!"
+
 clean:
-	echo "Limpando arquivos auxiliares..."
-	rm -f *-blx.bib *.bcf *.fls *.run.xml *.xdv *.fdb_latexmk *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq
-	echo "Processo finalizado com sucesso!"
+	@echo "Limpando arquivos auxiliares..."
+	@rm -f *-blx.bib *.bcf *.fls *.run.xml *.xdv *.fdb_latexmk *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq
+	@echo "Processo finalizado com sucesso!"
+
+
+all: 
+	make clean
+	make compile
+	make clean
+
