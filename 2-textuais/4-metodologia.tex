@@ -10,24 +10,23 @@ Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento 
   \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/fluxograma.png}}
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
-%\FloatBarrier
 
 \section{Definir os requisitos}
 A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
 \begin{itemize}[label={$\sbullet$}]
-    \item Permitir que os usuários digitem a gramática a ser analisada.
-    \item Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
-    \item Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos.  
-    \item Permitir que os usuários selecionem o algoritmo a ser visualizado.
-\end{itemize} 
- 
+  \item Permitir que os usuários digitem a gramática a ser analisada.
+  \item Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
+  \item Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos.
+  \item Permitir que os usuários selecionem o algoritmo a ser visualizado.
+\end{itemize}
+
 Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas, partir delas foram definidos os seguintes requisitos:
 \begin{itemize}[label={$\sbullet$}]
-    \item Permitir que os usuários digitem uma \textit{string} a ser analisada.
-    \item Permitir que os usuários visualizem a análise de uma \textit{string}.
-    \item Permitir que os usuários visualizem a árvore sintática de uma \textit{string}. 
-    \item Permitir que os usuários copiem em formato de texto os resultados da análise de uma \textit{string}.
-    \item Permitir que os usuários copiem implementações dos algoritmos. 
+  \item Permitir que os usuários digitem uma \textit{string} a ser analisada.
+  \item Permitir que os usuários visualizem a análise de uma \textit{string}.
+  \item Permitir que os usuários visualizem a árvore sintática de uma \textit{string}.
+  \item Permitir que os usuários copiem em formato de texto os resultados da análise de uma \textit{string}.
+  \item Permitir que os usuários copiem implementações dos algoritmos.
 \end{itemize}
 
 Com esses requisitos tem-se a base para o desenvolvimento da ferramenta.
@@ -57,26 +56,24 @@ A aplicação pode ser acessada através do \textit{Moodle} usando como comunica
 Para que o usuário selecione um algoritmo para visualizar a ferramenta terá opções no topo da tela que alternam entre abas. Dentre essas abas estarão inclusas uma para a entrada de gramáticas e uma aba para visualização de cada algoritmo disponível. Para que o usuário possa dar uma gramática de entrada será criado um campo de texto como mostra Figura \ref{fig:mgrammar}.
 
 \begin{figure}[ht]
-    \centering
-    \captionsetup{width=16cm}
-    \caption{Aba de entrada da gramática}
-    \label{fig:mgrammar}
-    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mgrammar.png}}
-    \Fonte{fornecida pelo próprio autor}
+  \centering
+  \captionsetup{width=16cm}
+  \caption{Aba de entrada da gramática}
+  \label{fig:mgrammar}
+  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mgrammar.png}}
+  \Fonte{fornecida pelo próprio autor}
 \end{figure}
-%\FloatBarrier
 
 Para a visualização dos algoritmos a ferramenta terá uma composição de elementos como mostra a Figura \ref{fig:mfirst}, esses elementos são modificados de acordo com a execução do algoritmo selecionado. Os passos da execução do algoritmo podem ser controlados pelo conjunto de controles acima dos elementos do algoritmo como mostra a Figura \ref{fig:mfirst}.
 
 \begin{figure}[ht]
-    \centering
-    \captionsetup{width=16cm}
-    \caption{Aba de visualização dos algoritmos}
-    \label{fig:mfirst}
-    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mfirst.png}}
-    \Fonte{fornecida pelo próprio autor}
+  \centering
+  \captionsetup{width=16cm}
+  \caption{Aba de visualização dos algoritmos}
+  \label{fig:mfirst}
+  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mfirst.png}}
+  \Fonte{fornecida pelo próprio autor}
 \end{figure}
-%\FloatBarrier
 
 Nas abas de visualização de algoritmos serão inclusos um campo de texto no qual o usuário poderá inserir uma \textit{string} de entrada para ser analisada pelo algoritmo, um campo de texto para copiar os resultados dos algoritmos em forma de texto e um campo de texto para copiar a implementação do algoritmo.
 
@@ -87,27 +84,27 @@ Para todas as estruturas de dados usadas nos algoritmos serão criadas represent
 As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica. Um exemplo de animação é a animação do estado da estrutura de pilha que é usada em alguns algoritmos. Quando um item é adicionado ou removido da pilha, o elemento visual que representa esse item terá sua posição interpolada do ponto inicial ao ponto final.
 
 \section{Integrar a ferramenta com o \textit{Moodle}}
-A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta criada nesse trabalho diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}. 
+A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta criada nesse trabalho diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}.
 
 Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{qua:endpoints}.
 
 \setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
 \setlength{\belowcaptionskip}{5pt plus 0pt minus 0pt}
 \begin{table}[h]
-\centering\setlength{\extrarowheight}{2pt}
-\captionsetup{width={\textwidth}}
-\captionof{quadro}{Endpoints}\label{qua:endpoints}
-\resizebox{\textwidth}{!}{
-\begin{NiceTabular}{m[c]{3cm}m[c]{3cm}m[c]{10cm}}[corners,hvlines]
-\CodeBefore
-  \rowcolor{gray!15}{1-1}
-\Body
-\textbf{Endpoint} & \textbf{Método} & \textbf{Finalidade}  \\
-\selectlanguage{brazil}$\backslash$\selectlanguage{brazil}& GET & redirecionar para página\\
-\selectlanguage{brazil}$\backslash$\selectlanguage{brazil}login & POST & inicia uma conexão com a plataforma\\
-\selectlanguage{brazil}$\backslash$\selectlanguage{brazil}register & POST & registrar uma nova plataforma\\
-\end{NiceTabular}}
-{\Fonte{fornecido pelo autor}}
+  \centering\setlength{\extrarowheight}{2pt}
+  \captionsetup{width={\textwidth}}
+  \captionof{quadro}{Endpoints}\label{qua:endpoints}
+  \resizebox{\textwidth}{!}{
+    \begin{NiceTabular}{m[c]{3cm}m[c]{3cm}m[c]{10cm}}[corners,hvlines]
+      \CodeBefore
+      \rowcolor{gray!15}{1-1}
+      \Body
+      \textbf{Endpoint}                                                  & \textbf{Método} & \textbf{Finalidade}                 \\
+      \selectlanguage{brazil}$\backslash$\selectlanguage{brazil}         & GET             & redirecionar para página            \\
+      \selectlanguage{brazil}$\backslash$\selectlanguage{brazil}login    & POST            & inicia uma conexão com a plataforma \\
+      \selectlanguage{brazil}$\backslash$\selectlanguage{brazil}register & POST            & registrar uma nova plataforma       \\
+    \end{NiceTabular}}
+  {\Fonte{fornecido pelo autor}}
 \end{table}
 
 Com a \gls{api} pronta pode ser feita a conexão entre a ferramenta e a \gls{lms}. Utilizando o serviço \gls{lti} de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o \textit{endpoint} de registro dinâmico da \gls{api}.
@@ -119,26 +116,26 @@ O desenvolvimento desse trabalho seguirá o cronograma mostrado no Quadro \ref{q
 \setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
 \setlength{\belowcaptionskip}{5pt plus 0pt minus 0pt}
 \begin{table}[h]
-\centering\setlength{\extrarowheight}{2pt}
-\captionsetup{width={\textwidth}}
-\captionof{quadro}{Cronograma}\label{qua:cronograma}
-\resizebox{\textwidth}{!}{\begin{NiceTabular}{l*{6}{c}}[corners,hvlines]
-\CodeBefore
-  \rowcolor{gray!15}{1-3}
-\Body
-\Block{3-1}{Atividades}  & \Block{1-6}{Período}  \\
-&\Block{1-3}{2024}& &&\Block{1-3}{2025} \\
-&Outubro&Novembro&Dezembro&Janeiro&Fevereiro&Março\\
+  \centering\setlength{\extrarowheight}{2pt}
+  \captionsetup{width={\textwidth}}
+  \captionof{quadro}{Cronograma}\label{qua:cronograma}
+  \resizebox{\textwidth}{!}{\begin{NiceTabular}{l*{6}{c}}[corners,hvlines]
+      \CodeBefore
+      \rowcolor{gray!15}{1-3}
+      \Body
+      \Block{3-1}{Atividades}             & \Block{1-6}{Período}                                                               \\
+                                          & \Block{1-3}{2024}    &          &          & \Block{1-3}{2025}                     \\
+                                          & Outubro              & Novembro & Dezembro & Janeiro           & Fevereiro & Março \\
 
-Definir dos requisitos                &x& & & & & \\
-Definir arquitetura do projeto        &x& & & & & \\
-Implementar da interface de usuário   & &x&x& & & \\
-Integrar os algoritmos                & & &x&x&x& \\
-Implementar as animações              & & &x&x&x& \\
-Integrar ao Moodle                    & & & &x&x& \\
-Avaliar a ferramenta                  & & & & &x& \\
-Escrita do TCC II                     &x&x&x&x&x&x\\
-Defesa do TCC II                      & & & & & &x\\
-\end{NiceTabular}}
-{\Fonte{fornecido pelo autor}}
+      Definir dos requisitos              & x                    &          &          &                   &           &       \\
+      Definir arquitetura do projeto      & x                    &          &          &                   &           &       \\
+      Implementar da interface de usuário &                      & x        & x        &                   &           &       \\
+      Integrar os algoritmos              &                      &          & x        & x                 & x         &       \\
+      Implementar as animações            &                      &          & x        & x                 & x         &       \\
+      Integrar ao Moodle                  &                      &          &          & x                 & x         &       \\
+      Avaliar a ferramenta                &                      &          &          &                   & x         &       \\
+      Escrita do TCC II                   & x                    & x        & x        & x                 & x         & x     \\
+      Defesa do TCC II                    &                      &          &          &                   &           & x     \\
+    \end{NiceTabular}}
+  {\Fonte{fornecido pelo autor}}
 \end{table}

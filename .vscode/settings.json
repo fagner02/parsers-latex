@@ -1,4 +1,42 @@
 {
-    "latex-workshop.intellisense.citation.backend": "biblatex",
-    
+  "latex-workshop.intellisense.citation.backend": "biblatex",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "make",
+      "tools": ["clean", "pdf", "biber", "pdf", "pdf", "clean"]
+    }
+  ],
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "make",
+      "command": "make",
+      "args": [],
+      "env": {}
+    },
+    {
+      "name": "biber",
+      "command": "make",
+      "args": ["biber"],
+      "env": {}
+    },
+    {
+      "name": "comp",
+      "command": "make",
+      "args": ["compile"],
+      "env": {}
+    },
+    {
+      "name": "pdf",
+      "command": "make",
+      "args": ["pdf"],
+      "env": {}
+    },
+    {
+      "name": "clean",
+      "command": "make",
+      "args": ["clean"],
+      "env": {}
+    }
+  ]
 }
