@@ -142,6 +142,7 @@
  
 
 \begin{document}
+\ExpandArgs{c}\let{NC@find@X}\relax % Remove X is already defined warning
 \imprimircapa
 \imprimirfolhaderosto{}
 %\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
@@ -160,8 +161,9 @@
 % \imprimirlistadecodigosfonte
 % \imprimirlistadeabreviaturasesiglas
 
-% \imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}   
+\imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}
 \imprimirsumario
+% \printglossary
 
 \setcounter{table}{0}% Deixe este comando antes da primeira tabela.
 
@@ -173,15 +175,13 @@
 \input{2-textuais/4-metodologia}
 % \input{2-textuais/5-resultados}
 %\input{2-textuais/6-conclusao}
-\printglossary
+%\printglossary
 
 \urlstyle{same}
 \begin{SingleSpace}
     \printbibliography
 \end{SingleSpace}
 
-%\printglossary
-%\imprimirglossario 
 % \imprimirapendices
 
 % \imprimiranexos

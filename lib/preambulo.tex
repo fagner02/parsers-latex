@@ -80,19 +80,17 @@
 \newcommand{\qbox}[1]{\ctext[RGB]{180, 180, 250}{#1}}
 \newcommand\sbullet[1][.7]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
 
+\usepackage{nicematrix}
 \usepackage{etoolbox}
 \usepackage{titlesec}
 \usepackage{listofitems}
 \usepackage{xstring}
 \DisemulatePackage{setspace}
 \usepackage{setspace}
-
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{nicematrix}
 \usepackage{soul}
-\usepackage[most]{tcolorbox}
+\usepackage[many]{tcolorbox}
 \usepackage{placeins}
-\usepackage{hhline}
+
 % \usepackage{fontspec}
 % Importações de pacotes
 \usepackage[brazil]{babel}
@@ -101,19 +99,14 @@
 \usepackage{amsfonts, amssymb, amsmath}             % Fonte e símbolos matemáticos
 \usepackage{booktabs}                               % Comandos para tabelas
 \usepackage{verbatim}                               % Texto é interpretado como escrito no documento
-\usepackage{multirow, array}                        % Múltiplas linhas e colunas em tabelas
 \usepackage{indentfirst}                            % Endenta o primeiro parágrafo de cada seção.
 \usepackage{listings}                               % Utilizar codigo fonte no documento
 
 % \usepackage{microtype}                              % Para melhorias de justificação?
 \usepackage[portuguese,ruled,lined]{algorithm2e}    % Escrever algoritmos
 \usepackage{algorithmic}                            % Criar Algoritmos  
-%\usepackage{float}                                 % Utilizado para criação de floats
 \usepackage{amsgen}
-\usepackage{lipsum}                                 % Usar a simulação de texto Lorem Ipsum
-%\usepackage{titlesec}                              % Permite alterar os títulos do documento
 \usepackage{tocloft}                                % Permite alterar a formatação do Sumário
-\usepackage{etoolbox}                               % Usado para alterar a fonte da Section no Sumário
 \usepackage[noredefwarn,nogroupskip,nonumberlist]{glossaries}   % Permite fazer o glossario. A apcao "sort=use" faz com que as siglas aparecam na lista conformse sao usadas no texto.
 
 \usepackage[format=plain,justification=justified,skip=0pt,singlelinecheck = false,labelsep=colon]{ caption}            % Altera o comportamento da tag caption. Algumas opcoes do caption so podem ser alternada no arquivo "antex2.cls, linhas 334 a 348.
@@ -122,6 +115,27 @@
 
 \usepackage[style=abnt, backend=biber]{biblatex}
 \addbibresource{3-pos-textuais/referencias.bib}
+
+\newcommand\commentstyle[1]{\textcolor{black!50}{#1}}
+\SetCommentSty{commentstyle}
+\DontPrintSemicolon
+\SetArgSty{textnormal}
+\SetKwFor{For}{para}{fazer}{fim para}
+\SetKwFor{ForEach}{para cada}{fazer}{fim para cada}
+\SetKwBlock{Inicio}{inicio}{fim}
+\SetKwInput{Input}{Entrada}
+\SetKwInput{Output}{Saida}
+\SetKwIF{Ifx}{Elseifx}{Elsex}{se}{então}{senão, se}{senão}{fim}
+\SetKwIF{If}{Elseif}{Else}{se}{então}{senão, se}{senão}{}
+\SetKwIF{Ifx}{ElseIfx}{Elsex}{se}{então}{senão, se}{senão}{fim}
+\SetKwIF{If}{ElseIf}{Else}{se}{então}{senão, se}{senão}{}
+\SetKwRepeat{Repeat}{repetir}{até que}
+\SetKwFor{While}{enquanto}{fazer}{fim enquanto}%
+\SetKw{Return}{retornar}%
+\SetKwSwitch{Switch}{Casex}{Other}{selecionar}{fazer}{caso}{senão}{fim}{fim}
+\SetKwSwitch{Switchx}{Case}{Otherx}{selecionar}{fazer}{caso}{senão}{}{}
+\SetKw{Continue}{continue}
+
 % \usepackage{natbib}
 % \usepackage[alf, abnt-emphasize=bf, recuo=0cm, abnt-etal-cite=2, abnt-etal-list=0, abnt-etal-text=it]{lib/ufcTexCite}  % Citações padrão UFC/ABNT NBR 6023 de 2018
 % \usepackage[bottom]{footmisc}                      % Mantém as notas de rodapé sempre na mesma posição
@@ -156,9 +170,8 @@
 \renewcommand\cftsubsectionfont{\normalsize\normalfont}
 \renewcommand\cftsectionfont{\normalsize}
 \renewcommand{\ABNTEXsubsectionfont}{\normalfont}
-
 \tcbset{colback=white!}
 
 \makeatletter
-    \setlength\@fptop{0cm}
+\setlength\@fptop{0cm}
 \makeatother

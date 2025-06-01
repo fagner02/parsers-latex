@@ -38,78 +38,111 @@ Na fase de geração de código, o gerador de código consome a representação 
 O conjunto de gramáticas que pode ser analisados usando algoritmos usando apenas um não terminal e o próximo símbolo da entrada é chamado conjunto de gramáticas LL(1). Uma das formas de fazer a análise dessas gramáticas é usando o analisador sintático descendente recursivo que usa funções recursivas para cada não terminal para processar a entrada. É um algoritmo que funciona como uma forma recursiva dos analisadores sintáticos LL(1) que já são tratados nesse trabalho, além disso, esse algoritmo não segue estruturas fixas e determinísticas, por isso não será abordado na ferramenta.
 
 \subsection{Analisadores Sintáticos LL(1)}
-% \ctext[RGB]{180, 250, 180}{Escrever mais detalhado sobre LL(1)} \newline
-Analisadores sintáticos LL(1) são um tipo de analisador sintático descendente, esses analisadores sintáticos levam em consideração um \textit{lookahead} que nesse algoritmo é o símbolo inicial do lado direito das produções. O \textit{lookahead} é usado para decidir qual produção deve ser escrita, por essa razão apenas gramaticas não ambíguas podem ser analisadas pelos analisadores sintáticos LL(1).
+Analisadores sintáticos LL(1) são um tipo de analisador sintático descendente, esses analisadores sintáticos levam em consideração um único \textit{lookahead} que nesse algoritmo é o símbolo inicial do lado direito das produções. O \textit{lookahead} é usado para decidir qual produção deve ser escrita, por essa razão apenas gramaticas não ambíguas podem ser analisadas pelos analisadores sintáticos LL(1).
 
-O conjunto dos símbolos iniciais das produções de uma gramática é chamado conjunto \textit{first}, a construção desse conjunto pode ser feita seguindo o Algoritmo \ref{alg:first}. As definições dos algoritmos foram tiradas do trabalho de \textcite{thain2020introduction}.
+O conjunto dos símbolos iniciais das produções de uma gramática é chamado conjunto \textit{first}. No algoritmo LL(1) o conjunto \textit{lookahead} corresponde ao conjunto \textit{first}, a construção desse conjunto pode ser feita seguindo o Algoritmo \ref{alg:first}. As definições dos algoritmos foram tiradas do trabalho de \textcite{thain2020introduction}.
 
-\DontPrintSemicolon
-\SetArgSty{textnormal}
-\begin{algorithm}[htp]
+\begin{algorithm}[ht]
     \caption{First}\label{alg:first}
-    \Input{Gramática G, Símbolo X }
-    \Output{Conjunto first}
+    \Input{Gramática $G$, Símbolo $X$}
+    \Output{Conjunto $\mathit{first}$}
     \Inicio{
-        first $\gets$ $\varnothing $\\
+        $\mathit{first} \gets \varnothing$ \\
 
-        \If{$X$ é Terminal}{
-            first $\gets$ \{$X$\}
+        \Ifx{$X$ é terminal}{
+            $\mathit{first} \gets \{ X \}$
         }
         \Elsex{
             \Repeat{não haja mais mudanças}{
-                \ForEach{regra da forma $X \rightarrow Y_1Y_2...Y_k$\selectlanguage{brazil} na Gramática $G$}{
-                    \Ifx {
-                        $a$ está em First($G$,$Y_1$) ou $a$ está em First($G$,$Y_n$) e \selectlanguage{brazil}$Y_1.. Y_{n-1} \Rightarrow \epsilon$
+                \ForEach{regra $X \rightarrow Y_1 Y_2 \dots Y_k$ em $G$}{
+                    \Ifx{
+                        $a \in \textsc{First}(Y_1) \lor (a \in \textsc{First}(Y_n) \land Y_1 \dots Y_{n-1} \Rightarrow^* \epsilon)$
                     }{
-                        first $\gets$ first[$X$] $\cup$ $\{a\}$
+                        $\mathit{first} \gets \mathit{first} \cup \{ a \}$
                     }
-                    \Ifx{$Y_1...Y_k \Rightarrow \epsilon$
-                    }{
-                        first $\gets$ first[$X$] $\cup$ $\{\epsilon\}$
+                    \Ifx{$Y_1 \dots Y_k \Rightarrow^* \epsilon$}{
+                        $\mathit{first} \gets \mathit{first} \cup \{ \epsilon \}$
                     }
                 }
             }
         }
-
-        \Return{first}
+        \Return{$\mathit{first}$}
     }
 \end{algorithm}
-\selectlanguage{brazil}
 
 O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática que podem ocorrer depois de qualquer uma das derivações de um não terminal \selectlanguage{brazil}$A$\selectlanguage{brazil}, o conjunto também inclui o símbolo \$ usado para se referir ao fim da \textit{string}. Esse conjunto é usado no analisador LL para lidar com produções que derivam uma \textit{string} vazia. A construção do conjunto \textit{follow} pode ser feita seguindo o Algoritmo \ref{alg:follow}.
 
-Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras a serem usadas na análise de uma trada para todas as combinações de não terminais e \textit{tokens} da entrada. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} usando o Algoritmo \ref{alg:lltable}.
-
-Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a análise de uma sequência de \textit{tokens} usando uma \textit{stack}. O Algoritmo \ref{alg:lltparse} mostra a análise sintática usando a tabela.
-
-\begin{algorithm}[htp]
+\begin{algorithm}[ht]
     \caption{Follow}\label{alg:follow}
-    \Input{Gramática G}
-    \Output{Dicionário follow}
+    \Input{Gramática $G$}
+    \Output{Dicionário $\mathit{follow}$}
     \Inicio{
-        follow $\gets$ Dicionário<Símbolo, Conjunto> \\
+        $\mathit{follow} \gets \text{Dicionário}\langle\text{Símbolo}, \text{Conjunto}\rangle$ \\
+        $\mathit{follow}[S] \gets \{ \$ \}$, {Onde $S$ é o símbolo inicial}
 
-        follow[$S$] $\gets$ \{\$\} onde $S$ é o símbolo inicial
-
-        \Repeat{ até não houver mais mudanças}{
-            \ForEach{produção $P$ em $G$}{
-                \Ifx {
-                    $P$ é da forma $A$ → $\alpha B \beta$
-                }{
-                    follow[$B$] $\gets$ follow $\cup$ First($G$,$\beta$) (exceto $\epsilon$)
+        \Repeat{até não haver mudanças}{
+            \ForEach{produção $A \rightarrow \alpha$ em $G$}{
+                \Ifx{$A \rightarrow \alpha B \beta$}{
+                    $\mathit{follow}[B] \gets \mathit{follow}[B] \cup \left( \textsc{First}(\beta) - \{ \epsilon \} \right)$
                 }
-                \Ifx {
-                    $P$ é da forma $A$ → $\alpha B$ ou First($G$,$\beta$) contém $\epsilon$
-                }{
-                    follow[$A$] $\gets$ follow[$A$] $\cup$ follow[$B$]
+                \Ifx{$A \rightarrow \alpha B \lor \epsilon \in \textsc{First}(\beta)$}{
+                    $\mathit{follow}[B] \gets \mathit{follow}[B] \cup \mathit{follow}[A]$
                 }
             }
         }
-
-        \Return{follow}
+        \Return{$\mathit{follow}$}
     }
 \end{algorithm}
-\selectlanguage{brazil}
+
+Uma tabela de análise sintática LL(1) pode ser usada para determinar as regras a serem usadas na análise de uma trada para todas as combinações de não terminais e \textit{tokens} da entrada. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} usando o Algoritmo \ref{alg:lltable}. Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a análise de uma sequência de \textit{tokens} usando uma \textit{stack}. O Algoritmo \ref{alg:llparse} mostra a análise sintática usando a tabela.
+
+\begin{algorithm}[htp]
+    \caption{Construção da Tabela LL(1)}\label{alg:lltable}
+    \Input{Gramática $G$}
+    \Output{Tabela $M$}
+    \Inicio{
+        $\mathit{follow} \gets \textsc{Follow}(G)$ \\
+        \ForEach{regra $A \rightarrow \alpha$ em $G$}{
+            \ForEach{terminal $a \in \textsc{First}(\alpha) - \{ \epsilon \}$}{
+                $M[A, a] \gets (A \rightarrow \alpha)$
+            }
+            \Ifx{$\epsilon \in \textsc{First}(\alpha)$}{
+                \ForEach{terminal $b \in \mathit{follow}[A]$}{
+                    $M[A, b] \gets (A \rightarrow \alpha)$
+                }
+            }
+        }
+    }
+\end{algorithm}
+\begin{algorithm}[htp]
+    \caption{Análise LL(1)}\label{alg:llparse}
+    \Input{Gramática $G$, Tabela $M$}
+    \Inicio{
+        $\mathit{pilha} \gets [\$, S]$, {Onde $S$ é o símbolo inicial} \\
+        $\mathit{token} \gets \text{pr\'oximo token}$ \\
+        \While{$\mathit{pilha} \neq \varnothing$}{
+            $X \gets \text{topo}(\mathit{pilha})$ \\
+            \If{$X$ é terminal}{
+                \If{$X = \mathit{token}$}{
+                    $\text{desempilhe}(\mathit{pilha})$ \\
+                    $\mathit{token} \gets \text{pr\'oximo token}$
+                }
+                \Elsex{
+                    $\text{erro}(\text{``Token inesperado''})$
+                }
+            }
+            \Elsex{
+                \If{$M[X, \mathit{token}] = (X \rightarrow \alpha)$}{
+                    $\text{desempilhe}(\mathit{pilha})$ \\
+                    $\text{empilhe}(\alpha)$, {da direita para a esquerda}
+                }
+                \Elsex{
+                    $\text{erro}(\text{``Regra não encontrada''})$
+                }
+            }
+        }
+    }
+\end{algorithm}
 
 \section{Analisadores Sintáticos Ascendentes}
 \textcite{cooper2022engineering,mogensen2024introduction, thain2020introduction} falam sobre analisadores sintáticos ascendentes, mas para esse trabalhos será seguida a definiçã de \textcite{thain2020introduction}. Os analisadores sintáticos ascendentes levam uma abordagem oposta aos analisadores sintáticos descendentes. Ao invés de começar com o símbolo inicial da gramática, os analisadores sintáticos ascendentes procuram sequências de \textit{tokens} que façam par com o lado direito das produções da gramática e substituem as sequências de \textit{tokens} pelo símbolo não terminal do lado esquerdo da produção. Esse processo é repetido até que toda a sequência de \textit{tokens} seja reescrita e apenas reste o símbolo inicial da gramática.
@@ -117,187 +150,138 @@ Tendo a tabela de análise sintática LL(1) em mãos, é possível fazer a anál
 \subsection{Analisadores Sintáticos SLR}
 Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de LR(0). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não terminais, quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática a análise da entrada teve sucesso, caso contrário há um erro na entrada.
 
-\begin{algorithm}[htp]
-    \caption { Construção da tabela LL(1)}\label{alg:lltable}
-
-    \Input {Gramática G}
-    \Output {Tabela M }
-    \Inicio{
-        \ForEach {regra da forma $A$ \selectlanguage{brazil}$\rightarrow \alpha$\selectlanguage{brazil} em $G$
-        }{
-            \ForEach {
-                terminal $a$ (exceto $\epsilon$) em First($G$,$\alpha$)
-            }{
-                $T [A, a]$ $\gets$ ($A$ $\rightarrow \alpha$)
-            }
-            \Ifx {
-                $\epsilon$ está em First($G$,$\alpha$)
-            }{
-                \ForEach {
-                    terminal $b$ (incluindo $\$$) em Follow($G$)[$A$]
-                }{
-                    $T [A, b]$ $\gets$ (A $\rightarrow \alpha$)
-                }
-            }
-        }
-    }
-\end{algorithm}
-\selectlanguage{brazil}
-
-\begin{algorithm}[htp]
-    \caption{Análise com tabela LL(1)}\label{alg:lltparse}
-    \Input{Gramática G, Tabela T}
-    \Inicio{
-        Pilha $P$ \\
-        monta \$\ e $S$ em $P$ \\
-        Token $c$ $\gets$ o primeiro token na entrada\\
-        \While {$P$ não está vazio} {
-            Símbolo $X$ $\gets$ o topo de $P$ \\
-            \Ifx {$X$ faz par com $c$} {
-                remova $X$ de $P$\\
-                $c$ $\gets$ proximo token da entrada\\
-                \Continue
-            }
-            \Ifx {$X$ é um terminal} {
-                para com um erro
-            }
-            \Ifx {
-                T [$X$, $c$] aponta para a regra \selectlanguage{brazil}$X \rightarrow \alpha$
-            }{
-                remova $X$ de $P$\\
-                monta os símbolos $\alpha$ em $P$\\
-                \Continue
-            }
-            \Ifx {
-                T [$X$, $c$] aponta para um estado de erro
-            } {
-                para com um erro
-            }
-        }
-    }
-\end{algorithm}
-\selectlanguage{brazil}
 Todas as ações de \textit{shift-reduce} possíveis podem ser calculadas para uma gramática construindo um autômato LR(0), que também pode ser chamado coleção de itens canônicos. Esse autômato guarda todas as possíveis posições de leitura das produções da gramática representadas por um ponto escrito no lado direito das produções.
 
-As ações de \textit{shift-reduce} são definidas pelas transições do autômato e pela posição de leitura, caso uma transição seja feita com um terminal a ação será de \textit{shift}, caso uma transição seja feita com um não terminal a ação será de \textit{goto}, caso a posição de leitura esteja no fim da produção a ação será de \textit{reduce}.
-
-O Algoritmo \ref{alg:automaton} mostra como construir o autômato LR(0) com o auxílio do \textit{closure} mostrado no Algoritmo \ref{alg:closure}.
+As ações de \textit{shift-reduce} são definidas pelas transições do autômato e pela posição de leitura, caso uma transição seja feita com um terminal a ação será de \textit{shift}, caso uma transição seja feita com um não terminal a ação será de \textit{goto}, caso a posição de leitura esteja no fim da produção a ação será de \textit{reduce}. O Algoritmo \ref{alg:automaton} mostra como construir o autômato LR(0) com o auxílio do \textit{closure} mostrado no Algoritmo \ref{alg:closure}.
 
 \begin{algorithm}[ht]
-    \caption{Closure LR(0)}\label{alg:closure}
-    \Input{Gramática G, Estado S}
+    \caption{Autômato LR(0)}\label{alg:automaton}
+    \Input{Gramática $G$}
+    \Output{Autômato $\mathit{M}$}
     \Inicio{
-        \Repeat{não tenha itens a serem adicionados}{
-            \ForEach {item da forma \selectlanguage{brazil}$A \rightarrow \alpha .X \beta$\selectlanguage{brazil} em S com \selectlanguage{brazil}$X \in NT$\selectlanguage{brazil} } {
-                \ForEach{produção da forma \selectlanguage{brazil}$X \rightarrow \gamma \selectlanguage{brazil}$\selectlanguage{brazil} em G}{
-                    adiciona uma produção da forma \selectlanguage{brazil}$X \rightarrow .\gamma$\selectlanguage{brazil} a S
+        $\mathit{M} \gets \varnothing$ \\
+        $s_0 \gets \{ [S' \rightarrow \cdot S] \}$, {Onde $S'$ é o novo símbolo inicial} \\
+        $\textsc{Closure}(s_0)$ \\
+        $\mathit{M} \gets \mathit{M} \cup \{ s_0 \}$ \\
+        $\mathit{newStates} \gets \{ s_0 \}$ \\
+
+        \ForEach{$s \in \mathit{newStates}$}{
+            \ForEach{$X \in T \cup NT$}{
+                $s' \gets \varnothing$ \\
+                \ForEach{item $[A \rightarrow \alpha \cdot X \beta] \in s$}{
+                    $s' \gets s' \cup \{ [A \rightarrow \alpha X \cdot \beta] \}$ \\
+                }
+                \Ifx{$s' \neq \varnothing$}{
+                    continua para a práxima iteração \\
+                }
+                $\textsc{Closure}(s')$ \\
+                \Ifx{$s' \notin \mathit{M}$}{
+                    $\mathit{M} \gets \mathit{M} \cup \{ s' \}$ \\
+                    $\mathit{newStates} \gets \mathit{newStates} \cup \{ s' \}$ \\
+                }
+                adicione transição $s \xrightarrow{X} s'$ \\
+            }
+            $\mathit{newStates} \gets \mathit{newStates} - \{ s \}$ \\
+        }
+
+        \Return{$\mathit{M}$}
+    }
+\end{algorithm}
+\begin{algorithm}[ht]
+    \caption{Closure LR(0)}\label{alg:closure}
+    \Input{Gramática $G$, Estado $S$}
+    \Inicio{
+        \Repeat{não haja novos itens}{
+            \ForEach{item $[A \rightarrow \alpha \cdot X \beta] \in S$}{
+                \ForEach{produção $X \rightarrow \gamma \in G$}{
+                    adicione $[X \rightarrow \cdot \gamma]$ a $S$, {se não existir}
                 }
             }
         }
     }
 \end{algorithm}
-\selectlanguage{brazil}
 
 Quando um símbolo não terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não terminal não pode ser derivado, no entanto, quando um não terminal produz outro não terminal, o não terminal produzido terá outras derivações. Por essa razão é preciso levar em consideração as produções dos não terminais que estão sob a posição de leitura dentro da produção de outro não terminal. \textit{Closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções.
 
+Usando o autômato LR(0) podemos construir uma tabela de ações e \textit{goto} para facilitar o acesso a essas informações durante o processo de análise sintática. Essa pode ser calculada usando o Algoritmo \ref{alg:slrtable}. A análise sintática do analisador sintático SLR pode ser feita usando a tabela de ações e \textit{goto} seguindo o Algoritmo \ref{alg:slrparsing}.
+
 \begin{algorithm}[ht]
-    \caption{Construção do autômato LR(0)}\label{alg:automaton}
-    \Input{Gramática G}
-    \Output{Autômato LR(0)}
+    \caption{Construção da Tabela SLR}\label{alg:slrtable}
+    \Input{Autômato LR(0) $\mathit{M}$}
     \Inicio{
-        Autômato $M$ \\
-        Estado $s0$ $\gets$ \{$P$ | para a produção do símbolo inicial $A \rightarrow \gamma$, $P$ é uma produção da forma $A \rightarrow .\gamma$\}\\
-        Closure($s0$)\\
-        adiciona $s0$ a $M$\\
-        conjunto de estados $newStates$ $\gets$ \{$s0$\} \\
-        \ForEach{Estado $s$ em $newStates$} {
-            conjunto de estados $temp$ $\gets$ $\varnothing$\\
-            \ForEach{símbolo $a$ em $T\cup NT$}{
-                Estado $s1$ $\gets$ $\varnothing$\\
-                \ForEach{produção da forma $A \rightarrow \alpha . a \beta$ em $s$}{
-                    $s1$ $\gets$ $s1$ $\cup$ $\{A \rightarrow \alpha a. \beta\}$ \\
-                }
-
-                Closure($s1$)\\
-
-                \Ifx{$s1$ não está em $M$}{
-                    adiciona $s1$ a $M$\\
-                    adiciona a transição $\hat{\delta}(s, a) \rightarrow \hat{\delta}(s, a)\cup\{s1\}$ a $M$\\
-                    $temp$ $\gets$ $temp$ $\cup$ \{$s1$\}
+        \ForEach{estado $s_i \in \mathit{M}$}{
+            \ForEach{item $[A \rightarrow \alpha \cdot a \beta] \in s_i$}{
+                $s_j \gets \delta(s_i, a)$ \\
+                \Ifx{$s_j \neq \varnothing$}{
+                    $\textsc{Action}[s_i, a] \gets \text{``shift } s_j \text{''}$ \\
                 }
             }
-            $newStates$ $\gets$ $temp$
-        }
-        \Return{$M$}
-    }
-\end{algorithm}
-%\FloatBarrier 
-\selectlanguage{brazil}
-
-Usando o autômato LR(0) podemos construir uma tabela de ações e \textit{goto} para facilitar o acesso a essas informações durante o processo de análise sintática. Essa pode ser calculada usando o Algoritmo \ref{alg:slrtable}.
-
-A análise sintática do analisador sintático SLR pode ser feita usando a tabela de ações e \textit{goto} seguindo o Algoritmo \ref{alg:slrparsing}.
-\begin{algorithm}[htp]
-    \caption{Construção da tabela SLR}\label{alg:slrtable}
-    \Input{Autômato LR(0)}
-    \Inicio{
-        Tabela ACTION\\
-        Tabela GOTO\\
-        \ForEach {Estado $s$} {
-            \ForEach {item da forma $A \rightarrow \alpha . a \beta$}{
-                ACTION[$s, a$] $\gets$ shift para o estado $t$ de acordo com o autômato LR(0)
+            \ForEach{item $[A \rightarrow \alpha \cdot] \in s_i$}{
+                \ForEach{$a \in \mathit{Follow}[A]$}{
+                    $\textsc{Action}[s_i, a] \gets \text{``reduce } A \rightarrow \alpha \text{''}$ \\
+                }
             }
-            \ForEach {item da forma $A \rightarrow \alpha . B \beta$}{
-                GOTO[$s, B$] $\gets$ goto para o estado $t$ de acordo com o autômato LR(0)
-            }
-            \ForEach {item da forma $A \rightarrow \alpha .$}{
-                \ForEach{ terminal $a$ em Follow($G$)[$A$]}{
-                    ACTION[$s, a$] $\gets$ reduce pela regra $A \rightarrow \alpha$
+            \ForEach{não-terminal $A$}{
+                $s_j \gets \delta(s_i, A)$ \\
+                \Ifx{$s_j \neq \varnothing$}{
+                    $\textsc{Goto}[s_i, A] \gets s_j$ \\
                 }
             }
         }
-        Todos os estados restantes são estados de erro
     }
 \end{algorithm}
-%\FloatBarrier
-\selectlanguage{brazil}
-
 
 \subsection{Analisadores Sintáticos CLR}
 O analisador sintático \textit{canonical} LR (CLR) é um analisador sintático descendente para gramáticas LR(1). O analisador sintático CLR usa o autômato LR(1) para construção da tabela de ações e \textit{goto}, esse autômato é parecido com o autômato LR(0), o que diferencia os dois é que todos os itens do autômato LR(1) tem uma anotação do conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto é chamado \textit{lookahead}.
 
-\begin{algorithm}[htp]
-    \caption{Analise com tabela SLR}\label{alg:slrparsing}
-    \Input{Tabela de ações ACTION, Tabela goto GOTO}
+\begin{algorithm}[ht]
+    \caption{Análise SLR}\label{alg:slrparsing}
+    \Input{Tabelas $\textsc{Action}$, $\textsc{Goto}$}
     \Inicio{
-        Pilha de estados $P$\\
-        monta $s0$ em $P$ onde $s0$ é o estado inicial\\
-        Token $a$ $\gets$ primeiro token da entrada\\
-        \While{verdade}{
-            Estado $s$ $\gets$ topo de $P$\\
-            \If {
-                ACTION[$s, a$] for aceite
-            }{
-                análise completa
+        $\mathit{pilha} \gets [s_0]$ \\
+        $\mathit{token} \gets \text{pr\'oximo token}$ \\
+        \Repeat{até ação de aceitação ou erro}{
+            $s \gets \text{topo}(\mathit{pilha})$ \\
+            \If{$\textsc{Action}[s, \mathit{token}] = \text{``shift } s_j \text{''}$}{
+                $\text{empilhe}(\mathit{token})$ \\
+                $\text{empilhe}(s_j)$ \\
+                $\mathit{token} \gets \text{pr\'oximo token}$ \\
             }
-            \ElseIf {ACTION[$s, a$] for shift $t$}{
-                monta estado $t$ em $P$\\
-                $a$ $\gets$ próximo token da entrada
+            \ElseIf{$\textsc{Action}[s, \mathit{token}] = \text{``reduce } A \rightarrow \beta \text{''}$}{
+                $\text{desempilhe}(2 \times |\beta|)$, {remove símbolos e estados} \\
+                $s' \gets \text{topo}(\mathit{pilha})$ \\
+                $\text{empilhe}(A)$ \\
+                $\text{empilhe}(\textsc{Goto}[s', A])$ \\
             }
-            \ElseIf {
-                ACTION[$s, a$] for reduce $A \rightarrow \beta$
-            }{
-                desmonta estados correspondentes a $\beta$ de $P$\\
-                Estado $t$ $\gets$ topo de $P$\\
-                monta GOTO[$t, A$] em $P$
+            \ElseIf{$\textsc{Action}[s, \mathit{token}] = \text{``aceitar''}$}{
+                $\text{retorne}(\text{sucesso})$ \\
             }
             \Elsex{
-                para com um erro
+                $\text{erro}(\text{``Erro de sintaxe''})$ \\
             }
         }
     }
 \end{algorithm}
-\selectlanguage{brazil}
+\FloatBarrier
+\begin{algorithm}[htp]
+    \caption{Closure LR(1)}\label{alg:closurelr1}
+    \Input{Gramática $G$, Estado $s$}
+    \Inicio{
+        \Repeat{não haja novos itens}{
+            \ForEach{item $[A \rightarrow \alpha \cdot B \beta, \ell] \in s$}{
+                \ForEach{produção $B \rightarrow \gamma \in G$}{
+                    $\mathit{lookahead} \gets \textsc{First}(\beta)$ \\
+                    \Ifx{$\epsilon \in \textsc{First}(\beta)$}{
+                        $\mathit{lookahead} \gets \mathit{lookahead} \cup \{ \ell \}$ \\
+                    }
+                    \ForEach{$a \in \mathit{lookahead}$}{
+                        adicione $[B \rightarrow \cdot \gamma, a]$ a $s$, {se não existir}
+                    }
+                }
+            }
+        }
+    }
+\end{algorithm}
 
 A construção do autômato LR(1) segue o mesmo algoritmo da construção do autômato LR(0) com algumas modificações. A primeira produção a ser adicionada no primeiro estado do autômato vai ser adicionada com o \textit{lookahead}, esse \textit{lookahead} tem \selectlanguage{brazil}$\$$\selectlanguage{brazil} como único elemento. Ao computar o \textit{closure} serão considerados dois casos:
 \begin{itemize}[label=$\sbullet$]
@@ -310,71 +294,70 @@ A construção do autômato LR(1) segue o mesmo algoritmo da construção do aut
 \end{itemize}
 \selectlanguage{brazil}
 
-Com essas modificações chegamos aos algoritmos de \textit{closure} LR(1) e construção do autômato LR(1) que podem ser vistos nos algoritmos \ref{alg:closurelr1} e \ref{alg:automatonlr1} respectivamente.
+Com essas modificações chegamos aos algoritmos de \textit{closure} LR(1) e construção do autômato LR(1), que podem ser vistos no Algoritmo \ref{alg:closurelr1} e no Algoritmo \ref{alg:automatonlr1}, respectivamente. O algoritmo de construção da tabela LR(1), mostrado no Algoritmo \ref{alg:lr1table}, também é parecido com o algoritmo de construção da tabela SLR, a única diferença é que o \textit{lookahead} serão usados no lugar do conjunto follow para definir as ações de \textit{reduce}. Quanto ao algoritmo de \textit{parsing} usando a tabela LR(1), ele é o mesmo algoritmo de \textit{parsing} usando a tabela SLR.
 
 \begin{algorithm}[ht]
-    \caption{Closure LR(1)}\label{alg:closurelr1}
-    \Input{Gramática G, Estado s}
+    \caption{Autômato LR(1)}\label{alg:automatonlr1}
+    \Input{Gramática $G$}
+    \Output{Autômato $\mathit{M}$}
     \Inicio{
-        \Repeat{não tenha itens a serem adicionados}{
-            \ForEach {item da forma $A \rightarrow \alpha . B$ em $s$ com lookahead de \{$L$\} }{
-                $s$ $\gets$ $s$ $\cup$ \{produções da forma $B \rightarrow .\gamma$\}
+        $s_0 \gets \{ [S' \rightarrow \cdot S, \$] \}$ \\
+        $\textsc{Closure}(s_0)$ \\
+        $\mathit{M} \gets \{ s_0 \}$ \\
+        $\mathit{newStates} \gets \{ s_0 \}$ \\
+        \ForEach{$s \in \mathit{newStates}$}{
+            \ForEach{$X \in T \cup NT$}{
+                $s' \gets \varnothing$ \\
+                \ForEach{item $[A \rightarrow \alpha \cdot X \beta, \ell] \in s$}{
+                    $s' \gets s' \cup \{ [A \rightarrow \alpha X \cdot \beta, \ell] \}$ \\
+                }
+                \Ifx{$s' \neq \varnothing$}{
+                    $\textsc{Closure}(s')$ \\
+                    \Ifx{$s' \notin \mathit{M}$}{
+                        $\mathit{M} \gets \mathit{M} \cup \{ s' \}$ \\
+                        $\mathit{newStates} \gets \mathit{newStates} \cup \{ s' \}$ \\
+                    }
+                    adicione transição $s \xrightarrow{X} s'$ \\
+                }
             }
-            \ForEach {item da forma $A \rightarrow \alpha . B \beta$ em $s$ com lookahead de \{$L$\} }{
-                \ForEach {item da forma $B \rightarrow \gamma$ em $G$ }
-                {
-                    \If{
-                        $\beta$ não produz $\epsilon$
-                    } {
-                        $s$ $\gets$ $s$ $\cup$ \{produção da forma $B \rightarrow .\gamma$ com lookahead de $First(G,\beta)$\}
-                    }
-                    \Elsex {
-                        $s$ $\gets$ $s$ $\cup$ \{produção da forma $B \rightarrow .\gamma$ com lookahead de $First(G,\beta)\cup$\{$L$\}\}
-                    }
+            $\mathit{newStates} \gets \mathit{newStates} - \{ s \}$ \\
+        }
+
+        \Return{$\mathit{M}$}
+    }
+\end{algorithm}
+
+
+\begin{algorithm}[ht]
+    \caption{Construção da Tabela LR(1)}\label{alg:lr1table}
+    \Input{Autômato LR(1) $\mathit{M}$}
+    \Output{Tabelas $\textsc{Action}$, $\textsc{Goto}$}
+    \Inicio{
+        \ForEach{estado $s_i \in \mathit{M}$}{
+            \ForEach{item $[A \rightarrow \alpha \cdot a \beta, \ell] \in s_i$}{
+                $s_j \gets \delta(s_i, a)$ \\
+                \Ifx{$s_j \neq \varnothing$}{
+                    $\textsc{Action}[s_i, a] \gets \text{``shift } s_j \text{''}$
+                }
+            }
+            \ForEach{item $[A \rightarrow \alpha \cdot, \ell] \in s_i$}{
+                \ForEach{$a \in \ell$}{
+                    $\textsc{Action}[s_i, a] \gets \text{``reduce } A \rightarrow \alpha \text{''}$
+                }
+            }
+            \Ifx{item $[S' \rightarrow S \cdot, \$] \in s_i$}{
+                $\textsc{Action}[s_i, \$] \gets \text{``aceitar''}$
+            }
+            \ForEach{não-terminal $A$}{
+                $s_j \gets \delta(s_i, A)$ \\
+                \Ifx{$s_j \neq \varnothing$}{
+                    $\textsc{Goto}[s_i, A] \gets s_j$
                 }
             }
         }
+        \Return{$(\textsc{Action}, \textsc{Goto})$}
     }
 \end{algorithm}
-\selectlanguage{brazil}
-
-
-\begin{algorithm}[ht]
-    \caption{Construção do autômato LR(1)}\label{alg:automatonlr1}
-    \Input{Gramática G}
-    \Output{Autômato LR(1)}
-    \Inicio{
-        Autômato $M$ \\
-        Estado $s0$ $\gets$ \{$P$ | para a produção do símbolo inicial $A \rightarrow \gamma$, $P$ é uma produção da forma $A \rightarrow .\gamma$ com \textit{lookahead} de \{\$\} \}\\
-        Closure($s0$) \\
-        adiciona $s0$ a $M$\\
-        conjunto de estados $newStates$ $\gets$ \{$s0$\} \\
-        \ForEach{estado $s$ em $newStates$} {
-            conjunto de estados $temp$ $\gets$ $\varnothing$\\
-            \ForEach{
-                Símbolo $a$ em $T\cup NT$
-            } {
-                Estado $s1$ $\gets$ $\varnothing$\\
-                \ForEach{
-                    produção da forma $A \rightarrow \alpha . a \beta$ com \textit{lookahead} de $\{L\}$ em $s$
-                } {
-                    $s1$ $\gets$ $s1$ $cup$ \{produção da forma $A \rightarrow \alpha a. \beta$ com \textit{lookahead} de $\{L\}$\} \\
-                }
-
-                Closure($s1$)\\
-
-                \Ifx{$s1$ não está em $M$}{
-                    adiciona $s1$ a $M$\\
-                    adiciona a transição $\hat{\delta}(s, a) \rightarrow \hat{\delta}(s, a)\cup\{s1\}$ a $M$\\
-                    $temp$ $\gets$ $temp$ $\cup$ \{$s1$\}
-                }
-            }
-            $newStates$ $\gets$ $temp$
-        }
-        \Return{$M$}
-    }
-\end{algorithm}
-\selectlanguage{brazil}
 
 \section{\textit{Svelte}}
 \textit{Svelte} é um \textit{framework} de componentes criado em 2016 por Harry Rich, e pode ser considerado uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}. \textit{Svelte} é semelhante aos \textit{frameworks} \textit{React} e \textit{Vue}, mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigidos a estado (\textit{declarative state-driven}) o que aumenta a carga de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como \textit{Virtual} DOM que é uma representação intermediária do DOM real \cite{harris_svelte_2019}.
