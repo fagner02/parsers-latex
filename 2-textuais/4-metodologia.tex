@@ -12,7 +12,8 @@ Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento 
 \end{figure}
 
 \section{Definição dos requisitos}
-O primeiro passo no desenvolvimento de software é a definição dos requisitos, com eles tem-se um direcionamento sobre o que deve ser feito. A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
+O primeiro passo no desenvolvimento de \textit{software} é a definição dos requisitos, com eles tem-se um direcionamento sobre o que deve ser feito. A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
+
 \begin{itemize}[label={$\sbullet$}]
   \item Permitir que os usuários digitem uma gramática para ser analisada.
   \item Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
@@ -21,10 +22,7 @@ O primeiro passo no desenvolvimento de software é a definição dos requisitos,
   \item Permitir que os usuários acessem o pseudocódigo dos algoritmos.
   \item Permitir que os usuários adicionem \textit{breakpoints} no pseudocódigo.
   \item Permitir que os usuários visualizem o autômato dos algoritmos LR.
-\end{itemize}
-
-Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas, partir delas foram definidos os seguintes requisitos:
-\begin{itemize}[label={$\sbullet$}]
+  \item Permitir que os usuários visualizem uma descrição dos botões da interface.
   \item Permitir que os usuários digitem uma \textit{string} para ser analisada.
   \item Permitir que os usuários visualizem a análise de uma \textit{string}.
   \item Permitir que os usuários visualizem a árvore sintática de uma \textit{string}.
@@ -32,7 +30,7 @@ Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já def
 \end{itemize}
 
 \section{Definição da arquitetura do projeto}
-O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para que seja possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
+O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para ser possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
 \begin{figure}[ht]
   \centering
   \captionsetup{width=16cm}
@@ -43,9 +41,11 @@ O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, p
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
 
-O \textit{framework Capacitor}\footnote{https://capacitorjs.com} consome essa coleção de arquivos e cria um projeto para plataforma \textit{Android} que é usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. O \textit{framework Tauri}\footnote{https://tauri.app} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma na qual eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
+O \textit{framework Capacitor}\footnote{https://capacitorjs.com} consome essa coleção de arquivos e cria um projeto para plataforma \textit{Android} usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. O \textit{framework Tauri}\footnote{https://tauri.app} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma em que eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
 
-Para a versão \textit{online} da aplicação, os serviços  de computação em nuvem \textit{Netlify}\footnote{https://www.netlify.com} e \textit{Supabase}\footnote{https://supabase.com} serão usados para hospedar respectivamente a aplicação e a database usada por ela. \textit{Netlify} e \textit{Supabase} foram escolhidos pela facilidade de uso e pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho. O projeto da aplicação foi hospedado em um repositório no \textit{Github}\footnote{https://github.com} que é uma plataforma \textit{web} de hospedagem de repositórios do sistema de versionamento \textit{Git}\footnote{https://git-scm.com}. Graças a integração entre \textit{Netlify} e \textit{Github}, a aplicação é atualizada automaticamente com cada \textit{commit} feito para o repositório do projeto. Por fim, a plataforma \textit{Supabase} será utilizada para armazenar arquivos de \textit{log} da utilização da aplicação durante os testes.
+Para a versão \textit{online} da aplicação, os serviços  de computação em nuvem \textit{Netlify}\footnote{https://www.netlify.com} e \textit{Supabase}\footnote{https://supabase.com} serão usados para hospedar respectivamente a aplicação e a data-base usada por ela. \textit{Netlify} e \textit{Supabase} foram escolhidos pela facilidade de uso e pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta nesse trabalho.
+
+O projeto da aplicação foi hospedado em um repositório no \textit{Github}\footnote{https://github.com} que é uma plataforma \textit{web} de hospedagem de repositórios do sistema de versionamento \textit{Git}\footnote{https://git-scm.com}. Graças a integração entre \textit{Netlify} e \textit{Github}, a aplicação é atualizada automaticamente com cada \textit{commit} feito para o repositório do projeto. Por fim, a plataforma \textit{Supabase} será utilizada para armazenar arquivos de \textit{log} da utilização da aplicação durante os testes.
 
 \section{Implementação da interface de usuário}
 Nesta seção estão descritos o \textit{layout} da ferramenta e os elementos que o constituem. Começando pela barra de navegação, que contém abas que levam para guias de entrada da gramática e dos algoritmos. A primeira aba é a de entrada da gramática, nessa aba há apenas uma caixa de texto para digitar a entrada. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:mgrammar}.
@@ -59,7 +59,9 @@ Nesta seção estão descritos o \textit{layout} da ferramenta e os elementos qu
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
 
-Na aba dos algoritmos há uma barra de ações com butões separados em dois grupos. No grupo da esquerda, os dois primeiros butões abrem respectivamente uma jenela de diálogo com os resultados em formato de texto e uma janela de diálogo com uma descrição do algoritmo. Os outros dois butões do grupo da esquerda alternam entre a visualização da construção do \textit{parser} e a visualização da análise de uma \textit{string} usando o \textit{parser} construído. No grupo de butões da direita estão os controles de fluxo da execução do algoritmo. O primeiro butão vai para o passo da execução digitado no campo de texto ao lado desse butão, os demais butões realizam as respectivas ações: ir para o passo anterior, reiniciar, ir para o passo seguinte e pular para o fim da execução. Logo abaixo da barra de ações há uma lista de butões, cada um deles abre a visualização de um algoritmo secundário usado na construção do parser selecionado e abaixo desses butões estão os elementos que representam as estruturas de dados dos algoritmos. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:malg}.
+Na aba dos algoritmos há uma barra de ações com botões separados em dois grupos. No grupo da esquerda, os dois primeiros botões abrem respectivamente uma janele de diálogo com os resultados em formato de texto e uma janela de diálogo com uma descrição do algoritmo. Os outros dois botões do grupo da esquerda alternam entre a visualização da construção do \textit{parser} e a visualização da análise de uma \textit{string} usando o \textit{parser} construído. No grupo de botões da direita estão os controles de fluxo da execução do algoritmo. O primeiro botão vai para o passo da execução digitado no campo de texto ao lado desse botão, os demais botões realizam as respectivas ações: ir para o passo anterior, reiniciar, ir para o passo seguinte e pular para o fim da execução.
+
+Logo abaixo da barra de ações há uma lista de botões, cada um deles abre a visualização de um algoritmo secundário usado na construção do parser selecionado e abaixo desses botões estão os elementos que representam as estruturas de dados dos algoritmos. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:malg}.
 
 \begin{figure}[ht]
   \centering
@@ -70,7 +72,9 @@ Na aba dos algoritmos há uma barra de ações com butões separados em dois gru
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
 
-Ainda na aba dos algoritmos, existem janelas flutuantes onde são mostrados os pseudocódigos dos algoritmos e autômatos. Essas janelas flutuantes são abertas clicando em um botão flutuante com um icóne e título descrevendo a janela. Dentro dessas janelas, no canto superior direito existe uma bandeja de ações com alguns butões. O primeiro butão minimiza a janela, o segundo ativa a ação de mover a janela ao clicar e arrastar ela e o terceiro ativa a interação com a janela. Na janela flutuante que mostra um autômato há um quarto botão na bandeja de ações. Esse botão permite que os estados do autômato sejam movidos. Por fim, nos cantos das janelas flutuantes existem pequenos quadrados que servem para redimensionar a janela. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:malgjan}.
+Ainda na aba dos algoritmos, existem janelas flutuantes onde são mostrados os pseudocódigos dos algoritmos e autômatos. Essas janelas flutuantes são abertas clicando em um botão flutuante com um ícone e título descrevendo a janela. Dentro dessas janelas, no canto superior direito existe uma bandeja de ações com alguns botões. O primeiro botão minimiza a janela, o segundo ativa a ação de mover a janela ao clicar e arrastar ela e o terceiro ativa a interação com a janela.
+
+Na janela flutuante que mostra um autômato há um quarto botão na bandeja de ações. Esse botão permite que os estados do autômato sejam movidos. Na janela flutuante de pseudocódigo os números das linhas são clicáveis para que o usuário adicione \textit{breakpoints}. Por fim, nos cantos das janelas flutuantes existem pequenos quadrados que servem para redimensionar a janela. Os elementos descritos nesse parágrafo e no parágrafo anterior podem ser vistos na Figura \ref{fig:malgjan}.
 
 \begin{figure}[ht]
   \centering
@@ -92,7 +96,7 @@ Dentro da aba de análise de \textit{strings}, no lado esquerdo está uma área 
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
 
-As janelas de diálogo aparecem contidas na área de visualização da execução dos algoritmos. Acima de cada janela está um botão de fechar que cobre o comprimento inteiro da janela. Dentro da janela de diálogo para copiar os resultados dos algoritmos em formato de texto estão os resultados de cada algoritmo divididos em seções e ao lado do título de cada seção está um butão de copiar. Na janela de diálogo de descrição do algoritmo tem apenas conteúdo textual. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:mpopup}.
+As janelas de diálogo aparecem contidas na área de visualização da execução dos algoritmos. Acima de cada janela está um botão de fechar que cobre o comprimento inteiro da janela. Dentro da janela de diálogo para copiar os resultados dos algoritmos em formato de texto estão os resultados de cada algoritmo divididos em seções e ao lado do título de cada seção está um botão de copiar. Na janela de diálogo de descrição do algoritmo tem apenas conteúdo textual. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:mpopup}.
 
 \begin{figure}[ht]
   \centering
@@ -103,13 +107,36 @@ As janelas de diálogo aparecem contidas na área de visualização da execuçã
   \Fonte{fornecida pelo próprio autor}
 \end{figure}
 
-Nas abas de visualização de algoritmos serão inclusos um campo de texto no qual o usuário poderá inserir uma \textit{string} de entrada para ser analisada pelo algoritmo, um campo de texto para copiar os resultados dos algoritmos em forma de texto e um campo de texto para copiar a implementação do algoritmo.
+Por fim foi implementado um caixa de texto que mostra uma descrição dos elementos da interface de usuário ao passar o mouse por cima de um desses elementos. Essa caixa de texto funciona como um \textit{tooltip} sendo escondida quando o mouse sai de perto dos elementos.
 
 \section{Integração dos algoritmos à ferramenta}
-Para todas as estruturas de dados usadas nos algoritmos serão criadas representações visuais, dessa forma todos os passos do funcionamento poderão ser representados como estados dessas estruturas. Calculando antecipadamente os estados dessas estruturas em cada passo dos algoritmos podemos fazer um controle de fluxo entre os passos dos algoritmos.
+O primeiro passo da integração dos algoritmos é a criação de elementos gráficos representando as estruturas de dados usados nesses algoritmos. Foram criados em total seis elementos para as estruturas de pilha, conjunto, tabela(matriz), estado de autômato, autômato e árvore sintática.
+
+Os quatro primeiros elementos são caixas criadas com \textit{HTML} já que seus dados podem ser representados com simples listas de texto. Na parte inferior dessas caixas está o título do elemento e na parte superior estão elementos textuais mostrando os dados das estruturas com destaques de cor nas chaves dos conjuntos e tabelas. Os dois últimos elementos são criados com SVG já que seus dados precisam ser estruturados de forma complexas.
+
+Com os elementos criados para representar as estruturas é possível mostrar os passos da execução atualizando os dados desses elementos conforme as mudanças feitas nas estruturas. Após a sincronização dos elementos com os passos de execução é possível criar o controle de fluxo.
+
+A primeira forma de implementação do controle de fluxo usada na aplicação foi usar uma única função que modifica as estruturas de dados e atualiza os elementos da interface em simultâneo. Essa função é controlada usando os mecanismos de execução assíncrona do \textit{JavasScript} sendo eles \textit{async}, \textit{await} e \textit{Promises}.
+
+Nessa implementação as pausas são feitas usando uma \textit{Promise} com retorno indefinido. A ação de ir para o próximo passo é feita rejeitando a \textit{Promise} o que resume a execução da função. E por fim a ação de voltar, pular e reiniciar são feitas retornando uma nova chamada da função e executando a função e pulando as pausas até chegar no passo esperado.
+
+O problema com a forma de implementação citada acima é que os passos da execução não são pré-calculados. Por essa razão, se a execução de um algoritmo tiver uma quantidade muito grande de passos, quando a ação de voltar ou pular for performada, vários passos serão executados em sequência até chegar no passo esperado.
+
+Dessa forma, dado o fato que funções de atualização da interface também serão executadas, a aplicação vai requerer uma quantidade maior de poder computacional e vai parar de responder até que a execução dos passos seja finalizada.
+
+Pela razão citada acima foi necessário criar uma segunda forma de implementação de controle de fluxo. Nessa implementação o estado das estruturas em cada passo é salvo em uma \textit{array} usando apenas as estruturas de dados sem modificar a interface. Dessa forma, a aplicação consegue pré-calcular os passos da execução sem muito esforço. Assim, quando as ações de controle de fluxo são performadas, os estados salvos são carregados e a interface é atualizada de acordo com eles.
 
 \section{Implementação das animações dos algoritmos}
-As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica. Um exemplo de animação é a animação do estado da estrutura de pilha que é usada em alguns algoritmos. Quando um item é adicionado ou removido da pilha, o elemento visual que representa esse item terá sua posição interpolada do ponto inicial ao ponto final.
+As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendidas se poderem ser visualizadas como transições ao invés de mostrar as mudanças saltando do estado inicial para o estado final. Usar animações torna a visualização das mudanças muito mais dinâmica.
+
+As primeiras animações implementadas são as transições de estilo usando a propriedade \textit{CSS transition} que aplica uma transição suave entre mudanças de estilo dos elementos como tamanho e cor. As animações seguintes foram implementadas usando \textit{JavasScript} para serem atualizadas dinamicamente a medida que os elementos fossem modificados mudando de tamanho ou posição na interface.
+
+Começando com a animação de destaque dos dados dentro de um elemento da interface. Essa animação é usada quando um dado de um elemento é utilizado, seja quando um item é adicionado a um elemento ou quando um item é usado como chave para acessar o item de outro elemento. Essa animação põe um item em destaque com um bloco colorido exibido atrás do item. Quando itens são adicionados aos elementos de tabela, as linhas e colunas também são destacadas com uma cor de fundo.
+
+Vários elementos têm iterações feitas sobre seus itens dispostos na vertical. Para demonstrar cada iteração, uma moldura se movimenta sobre os elementos deixando claro a qual item cada iteração se refere. Alguns elementos têm itens que são listas de itens dispostos na horizontal. Para demonstrar iterações sobre essas listas de itens a animação de destaque citada no parágrafo anterior é usada para cada iteração.
+
+Alguns dados são movidos entre elementos como no algoritmo \textit{first} que move símbolos da direita de uma produção para o conjunto \textit{first}. Para demonstrar essa transferência entre os elementos uma linha é exibida que se estende do item de origem até o elemento de destino com uma animação.
+
 
 % \section{Integrar a ferramenta com o \textit{Moodle}}
 % A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta criada nesse trabalho diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}.
@@ -138,7 +165,7 @@ As mudanças de estados que ocorrem nos algoritmos podem ser melhor compreendida
 % Com a \gls{api} pronta pode ser feita a conexão entre a ferramenta e a \gls{lms}. Utilizando o serviço \gls{lti} de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o \textit{endpoint} de registro dinâmico da \gls{api}.
 
 \section{Avaliação da ferramenta}
-Será realizado um teste prático com um grupo de estudantes, onde os eles serão solicitados a realizar tarefas específicas utilizando a ferramenta. Serão coletados dados quantitativos, como tempo de execução das tarefas e taxa de acerto, bem como dados qualitativos por meio de questionários e entrevistas para avaliar a percepção dos estudantes sobre a eficácia da ferramenta. Além disso, a comparação dos resultados obtidos com um grupo de controle que não utiliza a ferramenta ajudará a avaliar o impacto da visualização na compreensão e desempenho dos alunos. Essa abordagem abrangente de avaliação garantirá uma análise completa da eficácia e utilidade da ferramenta desenvolvida nesse trabalho.
+Será realizado um teste prático com um grupo de estudantes, onde os eles serão solicitados a realizar tarefas específicas utilizando a ferramenta. Serão coletados dados quantitativos, como tempo de execução das tarefas e taxa de acerto, bem como dados qualitativos por questionários e entrevistas para avaliar a percepção dos estudantes sobre a eficácia da ferramenta. Além disso, a comparação dos resultados obtidos com um grupo de controle que não utiliza a ferramenta ajudará a avaliar o impacto da visualização na compreensão e desempenho dos alunos. Essa abordagem abrangente de avaliação garantirá uma análise completa da eficácia e utilidade da ferramenta desenvolvida nesse trabalho.
 
 % O desenvolvimento desse trabalho seguirá o cronograma mostrado no Quadro \ref{qua:cronograma}.
 % \setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
