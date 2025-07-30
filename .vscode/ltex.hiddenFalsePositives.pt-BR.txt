@@ -3,3 +3,4 @@
 {"rule":"PORTUGUESE_WORD_REPEAT_RULE","sentence":".*[xX].*"}
 {"rule":"IRREGULAR_PAST_PARTICIPLES","sentence":".*seja aceita.*"}
 {"rule":"BARBARISMS","sentence":".*campus.*"}
+{"rule":"HUNSPELL_RULE","sentence":".*Dummy.*"}
