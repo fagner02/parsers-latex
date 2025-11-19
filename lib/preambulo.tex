@@ -1,75 +1,3 @@
-% Para utilizar este template siga o tutorial disponível em http://www.biblioteca.ufc.br/wp-content/uploads/2015/09/tutorial-sharelatex.pdf
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Você deve criar uma conta no Overleaf. Depois,    %%
-%% vá nas opções no canto esquerdo superior da tela  %%
-%% e clique em "Copiar Projeto". Dê um novo nome pa- %%
-%% ra o projeto.                                     %%
-%%                                                   %%
-%% Os principais desenvolvedores deste template são: %%
-%%                                                   %%
-%%            Ednardo Moreira Rodrigues              %%
-%%       (Doutor em Engenharia Elétrica - UFC)       %%
-%%(Coord. do Grupo de Astronomia da Seara da Ciência)%%
-%%                      &                            %%
-%%            Alan Batista de Oliveira               %%
-%%           (Engenheiro Eletricista - UFC)          %%
-%%                                                   %%
-%% Consultoria Bibliotecária                         %%
-%%                                                   %%
-%%  Versão 2016 - ShareLaTeX:                        %% 
-%%                                                   %%
-%% - Francisco Edvander Pires Santos;                %%
-%% - Juliana Soares Lima;                            %%
-%% - Izabel Lima dos Santos;                         %%
-%% - Kalline Yasmin Soares Feitosa;                  %%
-%% - Eliene Maria Vieira de Moura.                   %%
-%%                                                   %% 
-%%  Versão 2019 - Overleaf:                          %%
-%%                                                   %%
-%%  Biblioteca de Ciências Humanas:                  %%
-%% - Francisco Edvander Pires Santos;                %%
-%% - Juliana Soares Lima;                            %%
-%% - Eliene Maria Vieira de Moura;                   %%
-%% - Edmundo Moreira de Sousa Filho.                 %%
-%%                                                   %%
-%% Biblioteca da FEAAC:                              %%
-%% - Izabel Lima dos Santos;                         %%
-%% - Kalline Yasmin Soares Feitosa;                  %%
-%% - Kleber Lima dos Santos.                         %%
-%%                                                   %%
-%%  Biblioteca do Curso de Física:                   %%
-%% - Aline Rodrigues de Lima Mendes;                 %%
-%% - Maria de Jesus Silva dos Santos.                %%
-%%                                                   %%
-%%  Biblioteca Central do Campus do Pici:            %%
-%% - Raquel da Silva Nascimento.                     %%
-%% - Felipe Ferreira da Silva                        %%
-%%                                                   %%
-%% Colaboradores                                     %%
-%%                                                   %%
-%% -Andrei Bosco Bezerra Torres                      %% 
-%% (Professor - Sistemas e Mídias Digitais -         %%
-%% Instituto Universidade Virtual - UFC)             %%
-%% Tiago Alves Lima                                  %% 
-%% (Aluno de Mestrado em Eng. Elétrica)              %%
-%%                                                   %%
-%% Grande parte do trabalho foi adaptado do template %%
-%% da UECE elaborado por:                            %%
-%% Thiago Nascimento  (UECE)                         %%
-%% Project available on:                             %%
-%% https://github.com/thiagodnf/uecetex2             %%
-%%                                                   %%
-%% "Dúvidas, esclarecimentos ou sugestões podem ser  %%
-%% enviadas para o seguinte e-mail:                  %%
-%%                                                   %%
-%%             atendimentobch@ufc.br                 %%
-%%                                                   %%
-%% As últimas atualizações estão descritas no inicio %%
-%% do arquivo "README.md".                           %%
-%%                                                   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcommand{\ctext}[3][RGB]{
   \begingroup
   \definecolor{color}{#1}{#2}\sethlcolor{color}
@@ -79,44 +7,180 @@
 
 \newcommand{\qbox}[1]{\ctext[RGB]{180, 180, 250}{#1}}
 \newcommand\sbullet[1][.7]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+\newcommand{\Fonte}[1]{%
+  \vspace*{5pt}%
+  \noindent
+  \footnotesize
+  Fonte: #1%
+  \normalsize
+}
 
-\usepackage{nicematrix}
-\usepackage{etoolbox}
-\usepackage{titlesec}
+% main.tex - TCC ABNT 2025 (NBR 14724:2024 + NBR 6023:2025)
+% NÃO USA ABNTEX2 - Usa memoir + biblatex-abnt
+
+% PACOTES ESSENCIAIS
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[brazil]{babel}
+\usepackage[
+  top=3cm, left=3cm, bottom=2cm, right=2cm,
+  headheight=1cm, headsep=1cm
+]{geometry}
+\usepackage{graphicx}
+\usepackage{microtype}
 \usepackage{listofitems}
+\usepackage{glossaries}
 \usepackage{xstring}
-\DisemulatePackage{setspace}
 \usepackage{setspace}
 \usepackage{soul}
 \usepackage[many]{tcolorbox}
 \usepackage{placeins}
 \usepackage{adjustbox}
-% \usepackage{fontspec}
-% Importações de pacotes
-\usepackage[brazil]{babel}
-\usepackage[T1]{fontenc}                            % Codificação da fonte em 8 bits
-\usepackage{graphicx}                               % Inserir figuras
-\usepackage{amsfonts, amssymb, amsmath}             % Fonte e símbolos matemáticos
-\usepackage{booktabs}                               % Comandos para tabelas
-\usepackage{verbatim}                               % Texto é interpretado como escrito no documento
-\usepackage{indentfirst}                            % Endenta o primeiro parágrafo de cada seção.
-\usepackage{listings}                               % Utilizar codigo fonte no documento
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage[ruled]{algorithm2e}
+\usepackage[format=plain,justification=justified,skip=10pt,singlelinecheck = false,labelsep=colon]{caption}
+\usepackage{newfloat}
+\usepackage{amsmath}
+\usepackage{paracol}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{nicematrix}
+\usepackage{titletoc}
+\usepackage{calc}
+\usepackage{ragged2e}
 
-% \usepackage{microtype}                              % Para melhorias de justificação?
-\usepackage[portuguese,ruled,lined]{algorithm2e}    % Escrever algoritmos
-\usepackage{algorithmic}                            % Criar Algoritmos  
-\usepackage{amsgen}
-\usepackage{tocloft}                                % Permite alterar a formatação do Sumário
-\usepackage[noredefwarn,nogroupskip,nonumberlist]{glossaries}   % Permite fazer o glossario. A apcao "sort=use" faz com que as siglas aparecam na lista conformse sao usadas no texto.
+\makeatletter
+\setlength\@fptop{0cm}
+\makeatother
 
-\usepackage[format=plain,justification=justified,skip=0pt,singlelinecheck = false,labelsep=colon]{ caption}            % Altera o comportamento da tag caption. Algumas opcoes do caption so podem ser alternada no arquivo "antex2.cls, linhas 334 a 348.
+\tcbset{ % This targets the standard \tcbox
+  colback=white,   % New default background color
+  colframe=black!75
+}
 
-\usepackage{csquotes}
+\DeclareFloatingEnvironment[
+  fileext=loq,
+  listname={Lista de Quadros},
+  name=Quadro,
+  placement=htbp,
+  within=chapter
+]{quadro}
+\usepackage{tocloft}
+\counterwithout{figure}{chapter}
+\counterwithout{quadro}{chapter}
 
-\usepackage[style=abnt, backend=biber]{biblatex}
+
+% BIBLIOGRAFIA CORRETA - NBR 6023:2025
+\usepackage[
+  backend=biber,
+  style=abnt,          % Estilo ABNT (biblatex-abnt package)
+  ittitles=true,       % Títulos em itálico (booleano válido)
+  justify=true
+]{biblatex}
+
+
 \addbibresource{3-pos-textuais/referencias.bib}
+\AtEveryBibitem{\global\expandafter\let\csname bbx@lasthash\endcsname\relax}
+
+\AtEveryCitekey{\renewcommand*{\mkbibnamefamily}[1]{#1}}
+
+\xpatchbibmacro{name:andothers}{\bibstring{andothers}}{\mkbibemph{\bibstring{andothers}}}{}{}
+\DeclareFieldFormat{url}{\url{#1}}
+\setlength{\bibitemsep}{1\baselineskip}
+\renewcommand*{\finentrypunct}{}
+
+\DeclareFieldFormat[online]{title}{\textbf{#1}} % Bold article titles
+\DeclareFieldFormat[book]{title}{\textbf{#1}}    % Bold book titles
+\DeclareFieldFormat{journaltitle}{\textbf{#1}}   % Bold journal names
+\DeclareFieldFormat[inproceedings]{booktitle}{\textbf{#1}}
+\DefineBibliographyStrings{brazil}{
+  sineloco = {\mkbibemph{S}\adddot\addabbrvspace \mkbibemph{l}\adddot},
+  sinenomine = {\mkbibemph{s}\adddot\addabbrvspace \mkbibemph{l}\adddot},
+}
+
+\renewbibmacro*{publisher+location+date}{%
+  \iflistundef{location}
+  {\iflistundef{publisher}
+    {\printtext{[{\bibstring{sineloco}\addcolon\addspace\bibstring{sinenomine}}]}}
+    {\printtext{[{\bibstring{sineloco}}]}\setunit*{\addcolon\space}\printlist{publisher}} % [S. l.]: Publisher
+  }
+  {\iflistundef{publisher}
+    {\printlist{location}\setunit*{\addcolon\space}\printtext{[{\bibstring{sinenomine}}]}} % Location: [s. n.]
+    {\printlist{location}\setunit*{\addcolon\space}\printlist{publisher}} % Location: Publisher
+    %
+  }
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+\makeglossaries
+\input{1-pre-textuais/lista-de-abreviaturas-e-siglas.tex}
+
+\makeindex
+\setlength{\parskip}{0pt}
+
+\titleformat{\chapter}[hang]
+{\normalfont\bfseries\fontsize{12}{14.4}\selectfont}
+{\thechapter}
+{1em}
+{\MakeUppercase}
+
+% Optional: adjust spacing before/after chapter title
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+\titleformat{\section}
+{\bfseries\fontsize{12}{14.4}\selectfont}
+{\thesection}
+{1em}
+{}
+
+% Subsection
+\titleformat{\subsection}
+{\normalfont\fontsize{12}{14.4}\selectfont}
+{\thesubsection}
+{1em}
+{}
+
+\titleformat{\subsubsection}
+{\normalfont\fontsize{12}{14.4}\selectfont}
+{\thesubsubsection}
+{1em}
+{}
+
+% ESTILO DE CAPÍTULOS E SEÇÕES
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+\pagestyle{plain}
+
+\makeatletter
+\patchcmd{\@makechapterhead}
+{\thispagestyle{plain}}
+{\thispagestyle{abnt2025}}
+{}{}
+\makeatother
+
+\setcounter{tocdepth}{3}
+
+% Optional: also number subsubsections (ABNT allows it)
+\setcounter{secnumdepth}{3}
+
+\SetAlgoCaptionLayout{leftline}
 
 \newcommand\commentstyle[1]{\textcolor{black!50}{#1}}
+\SetAlgorithmName{Algoritmo}{Lista de Algoritmos}{algoritmo}
+
 \SetCommentSty{commentstyle}
 \DontPrintSemicolon
 \SetArgSty{textnormal}
@@ -135,43 +199,60 @@
 \SetKwSwitch{Switch}{Casex}{Other}{selecionar}{fazer}{caso}{senão}{fim}{fim}
 \SetKwSwitch{Switchx}{Case}{Otherx}{selecionar}{fazer}{caso}{senão}{}{}
 \SetKw{Continue}{continue}
+% LEGENDAS - ALINHADO À ESQUERDA
 
-% \usepackage{natbib}
-% \usepackage[alf, abnt-emphasize=bf, recuo=0cm, abnt-etal-cite=2, abnt-etal-list=0, abnt-etal-text=it]{lib/ufcTexCite}  % Citações padrão UFC/ABNT NBR 6023 de 2018
-% \usepackage[bottom]{footmisc}                      % Mantém as notas de rodapé sempre na mesma posição
-%\usepackage{times}                                 % Usa a fonte Times
-%%%%%%%%%%%%%%%%%%% AVISO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%descomente as duas linhas abaixo para alterar o texto de Times New Roman para Arial:
 
-% \usepackage{helvet}
-% \renewcommand{\familydefault}{\sfdefault}  % Usa a fonte Arial              
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{quadrocount}
+\NewDocumentEnvironment{myquadro}{ m m +b }
+{
+  \stepcounter{quadrocount}
+  \begin{table}[ht]
+    \setlength{\extrarowheight}{2pt}
+    \captionsetup{width={\textwidth}}
+    \captionof{quadro}{#2}#1
+    \noindent
 
-\usepackage{mathptmx}         % Usa a fonte Times New Roman			%\usepackage{lmodern}         % Usa a fonte Latin Modern
-%\usepackage{subfig}          % Posicionamento de figuras
-%\usepackage{scalefnt}        % Permite redimensionar tamanho da fonte
-%\usepackage{color, colortbl} % Comandos de cores
-%\usepackage{lscape}          % Permite páginas em modo "paisagem"
-%\usepackage{ae, aecompl}     % Fontes de alta qualidade
-%\usepackage{picinpar}        % Dispor imagens em parágrafos
-%\usepackage{latexsym}        % Símbolos matemáticos
-%\usepackage{upgreek}         % Fonte letras gregas
-\usepackage{appendix}         % Gerar o apendice no final do documento
-\usepackage{paracol}          % Criar paragrafos sem identacao
-\usepackage{lib/ufcTex}	      % Biblioteca com as normas da UFC para trabalhos academicos
-\usepackage{pdfpages}         % Incluir pdf no documento
-\usepackage{amsmath}          % Usar equacoes matematicas
+    % Create unique box name using counter
+    \expandafter\newsavebox\csname quadrobox\thequadrocount\endcsname
+    \expandafter\sbox\csname quadrobox\thequadrocount\endcsname{%
+      \begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
+    }
+    \pgfmathsetlengthmacro{\tableheight}{\ht\csname quadrobox\thequadrocount\endcsname + \dp\csname quadrobox\thequadrocount\endcsname}
 
-\makeglossaries % Organiza e gera a lista de abreviaturas, simbolos e glossario
-\makeindex      % Gera o Indice do documento         
+    \begin{tikzpicture}
+      \begin{scope}
+        \clip[rounded corners=5pt] (0,0) rectangle (\textwidth, \tableheight);
+        \node[anchor=south west, inner sep=0pt] at (0,0) {\expandafter\usebox\csname quadrobox\thequadrocount\endcsname};
+      \end{scope}
+      \draw[rounded corners=5pt, line width=1.5pt, black] (0,0) rectangle (\textwidth, \tableheight);
+    \end{tikzpicture}
+    {\vspace*{5pt}\Fonte{fornecido pelo autor}}
+  \end{table}
+}
+{}
 
-\renewcommand{\labelitemi}{\textendash} %Altera os marcadores de itemize para 
 
-\renewcommand\cftsubsectionfont{\normalsize\normalfont}
-\renewcommand\cftsectionfont{\normalsize}
-\renewcommand{\ABNTEXsubsectionfont}{\normalfont}
-\tcbset{colback=white!}
+\newlength{\myimgwidth}
+\newlength{\myimgheight}
+\NewDocumentEnvironment{mypicture}{m m m m +b}{
+  \begin{figure}[!ht]
+    \captionsetup{width=\textwidth}
+    \caption{#1#2}
+    \begin{tikzpicture}
+      \setlength{\myimgwidth}{\textwidth}
 
-\makeatletter
-\setlength\@fptop{0cm}
-\makeatother
+      % Calculate height based on image's natural aspect ratio
+
+      \settototalheight{\myimgheight}{\includegraphics[width=\myimgwidth]{#3}}
+
+      \begin{scope}
+        \clip[rounded corners=5pt] (0,0) rectangle (\myimgwidth, \myimgheight);
+        \node (image) at (0.5\myimgwidth,0.5\myimgheight) {
+          \includegraphics[width=\myimgwidth, height=\myimgheight]{#3}
+        };
+      \end{scope}
+      \draw[rounded corners=5pt, line width=1.5pt] (0,0) rectangle (\myimgwidth, \myimgheight);
+    \end{tikzpicture}
+    {\Fonte{#4}}
+  \end{figure}
+}{}

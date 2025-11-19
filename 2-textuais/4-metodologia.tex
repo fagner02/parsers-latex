@@ -2,14 +2,8 @@
 \label{chap:metodologia}
 Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento desse trabalho. As etapas a serem seguidas estão representadas no fluxograma da Figura \ref{fig:etapas}.
 
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Fluxograma das etapas}
-  \label{fig:etapas}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/fluxograma.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+\begin{mypicture}{\label{fig:etapas}}{Fluxograma das etapas}{figuras/fluxograma.png}{fornecida pelo próprio autor}
+\end{mypicture}
 
 \section{Definição dos requisitos}
 O primeiro passo no desenvolvimento de \textit{software} é a definição dos requisitos, com eles tem-se um direcionamento sobre o que deve ser feito. A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
@@ -31,15 +25,9 @@ O primeiro passo no desenvolvimento de \textit{software} é a definição dos re
 
 \section{Definição da arquitetura do projeto}
 O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para ser possível o funcionamento \textit{offline} da ferramenta, já que a ferramenta não teria acesso ao servidor não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Arquitetura da aplicação em nuvem}
-  \label{fig:arqremo}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{
-    \includegraphics[width=15.6cm]{figuras/remote.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+
+\begin{mypicture}{\label{fig:arqremo}}{Arquitetura da aplicação em nuvem}{figuras/remote.png}{fornecida pelo próprio autor}
+\end{mypicture}
 
 O \textit{framework Capacitor}\footnote{https://capacitorjs.com} consome essa coleção de arquivos e cria um projeto para plataforma \textit{Android} usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. O \textit{framework Tauri}\footnote{https://tauri.app} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma em que eles são construídos, já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
 
@@ -50,62 +38,43 @@ O projeto da aplicação foi hospedado em um repositório no \textit{Github}\foo
 \section{Implementação da interface de usuário}
 Nesta seção estão descritos o \textit{layout} da ferramenta e os elementos que o constituem. Começando pela barra de navegação, que contém abas que levam para guias de entrada da gramática e dos algoritmos. A primeira aba é a de entrada da gramática, nessa aba há apenas uma caixa de texto para digitar a entrada. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:mgrammar}.
 
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Aba de entrada da gramática}
-  \label{fig:mgrammar}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mgrammar.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+
+\begin{mypicture}{\label{fig:mgrammar}}{Aba de entrada da gramática}
+  {figuras/mgrammar.png}{fornecida pelo próprio autor}
+\end{mypicture}
 
 Na aba dos algoritmos há uma barra de ações com botões separados em dois grupos. No grupo da esquerda, os dois primeiros botões abrem respectivamente uma janele de diálogo com os resultados em formato de texto e uma janela de diálogo com uma descrição do algoritmo. Os outros dois botões do grupo da esquerda alternam entre a visualização da construção do \textit{parser} e a visualização da análise de uma \textit{string} usando o \textit{parser} construído. No grupo de botões da direita estão os controles de fluxo da execução do algoritmo. O primeiro botão vai para o passo da execução digitado no campo de texto ao lado desse botão, os demais botões realizam as respectivas ações: ir para o passo anterior, reiniciar, ir para o passo seguinte e pular para o fim da execução.
 
+
 Logo abaixo da barra de ações há uma lista de botões, cada um deles abre a visualização de um algoritmo secundário usado na construção do parser selecionado e abaixo desses botões estão os elementos que representam as estruturas de dados dos algoritmos. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:malg}.
 
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Aba de visualização do algoritmo SLR}
-  \label{fig:malg}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/malg.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+
+\begin{mypicture}{ \label{fig:malg}}{Aba de visualização do algoritmo SLR}{figuras/malg.png}{fornecida pelo próprio autor}
+\end{mypicture}
+\FloatBarrier
+
+
+
 
 Ainda na aba dos algoritmos, existem janelas flutuantes onde são mostrados os pseudocódigos dos algoritmos e autômatos. Essas janelas flutuantes são abertas clicando em um botão flutuante com um ícone e título descrevendo a janela. Dentro dessas janelas, no canto superior direito existe uma bandeja de ações com alguns botões. O primeiro botão minimiza a janela, o segundo ativa a ação de mover a janela ao clicar e arrastar ela e o terceiro ativa a interação com a janela.
 
+
+\begin{mypicture}{\label{fig:malgjan}}{Aba de visualização do algoritmo LR(1)}{figuras/malgjan.png}{fornecida pelo próprio autor}
+\end{mypicture}
+
 Na janela flutuante que mostra um autômato há um quarto botão na bandeja de ações. Esse botão permite que os estados do autômato sejam movidos. Na janela flutuante de pseudocódigo os números das linhas são clicáveis para que o usuário adicione \textit{breakpoints}. Por fim, nos cantos das janelas flutuantes existem pequenos quadrados que servem para redimensionar a janela. Os elementos descritos nesse parágrafo e no parágrafo anterior podem ser vistos na Figura \ref{fig:malgjan}.
 
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Aba de visualização do algoritmo LR(1)}
-  \label{fig:malgjan}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/malgjan.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+
 
 Dentro da aba de análise de \textit{strings}, no lado esquerdo está uma área de visualização da árvore sintática, no lado direito está um campo de texto para digitar a \textit{string} de entrada e logo abaixo estão os elementos que representam as estruturas de dados dos algoritmos. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:manalise}.
 
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Aba de visualização da análise de uma \textit{string}}
-  \label{fig:manalise}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/manalise.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+\begin{mypicture}{\label{fig:manalise}}{Aba de visualização da análise de uma \textit{string}}{figuras/manalise.png}{fornecida pelo próprio autor}
+\end{mypicture}
 
 As janelas de diálogo aparecem contidas na área de visualização da execução dos algoritmos. Acima de cada janela está um botão de fechar que cobre o comprimento inteiro da janela. Dentro da janela de diálogo para copiar os resultados dos algoritmos em formato de texto estão os resultados de cada algoritmo divididos em seções e ao lado do título de cada seção está um botão de copiar. Na janela de diálogo de descrição do algoritmo tem apenas conteúdo textual. Os elementos descritos nesse parágrafo podem ser vistos na Figura \ref{fig:mpopup}.
 
-\begin{figure}[ht]
-  \centering
-  \captionsetup{width=16cm}
-  \caption{Janela de diálogo para copiar resultados}
-  \label{fig:mpopup}
-  \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/mpopup.png}}
-  \Fonte{fornecida pelo próprio autor}
-\end{figure}
+\begin{mypicture}{ \label{fig:mpopup}}{Janela de diálogo para copiar resultados}{figuras/mpopup.png}{fornecida pelo próprio autor}
+\end{mypicture}
 
 Por fim foi implementado um caixa de texto que mostra uma descrição dos elementos da interface de usuário ao passar o mouse por cima de um desses elementos. Essa caixa de texto funciona como um \textit{tooltip} sendo escondida quando o mouse sai de perto dos elementos.
 

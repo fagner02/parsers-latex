@@ -1,0 +1,68 @@
+% Membros da banca - PREENCHA COM OS NOMES E INSTITUIÇÕES
+\newcommand{\membroa}{\orientador\space(Orientador) \\ Universidade Federal do Ceará (UFC)}
+\newcommand{\membrob}{Prof. Dr. Nome Completo do Professor 1 \\ Universidade Federal do Ceará}
+\newcommand{\membroc}{Prof. Dr. Nome Completo do Professor 2 \\ Universidade Federal do Ceará}
+% Adicione mais membros se necessário
+\newcommand{\membrod}{Prof. Dr. Nome Completo do Professor Externo \\ Universidade Externa} % opcional
+\newcommand{\dataaprovacao}{2025}
+% Início da folha de aprovação
+\begin{titlepage}
+    \centering
+
+    {\textbf{\autor} \par}
+    \vspace{3cm}
+
+    % Título do trabalho
+    {\textbf{\titulodtcc} \par}
+
+    \ifdefined\subtitulo
+    {\vspace{0.5cm}\subtitulo \par}
+    \fi
+    \vspace{2cm}
+
+    % Texto de identificação do trabalho
+    \begin{flushright}
+        \begin{minipage}{0.5\textwidth}
+            \begin{flushleft}
+                \justifying
+                \singlespacing
+                \normalsize
+                Trabalho de Conclusão de Curso apresentado ao Curso de Graduação em Ciência da Computação do Campus Quixadá da Universidade Federal do Ceará, como requisito parcial para obtenção do grau de bacharel em Ciência da Computação.
+            \end{flushleft}
+        \end{minipage}
+    \end{flushright}
+    \vspace{0.5cm}
+
+    % Área para assinaturas da banca
+    \begin{flushleft}
+        \singlespacing
+        \normalsize
+        Aprovado em: \dataaprovacao \par
+        \vspace{1cm}
+    \end{flushleft}
+
+    \MakeUppercase{Banca examinadora} \par
+    \vspace{1cm}
+    % Assinatura do orientador (primeiro membro)
+    \rule{8cm}{0.4pt} \par
+    \membroa \par
+    \vspace{0.8cm}
+
+    % Segundo membro
+    \rule{8cm}{0.4pt} \par
+    \membrob \par
+    \vspace{0.8cm}
+
+    % Terceiro membro
+    \rule{8cm}{0.4pt} \par
+    \membroc \par
+    \vspace{0.8cm}
+
+    % Quarto membro (se houver) - remova esta seção se não for necessário
+    \ifdefined\membrod
+        \rule{8cm}{0.4pt} \par
+        \membrod \par
+        \vspace{1.5cm}
+    \fi
+
+\end{titlepage}

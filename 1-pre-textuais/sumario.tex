@@ -1,0 +1,37 @@
+\begingroup
+\fancypagestyle{plain}{
+  \fancyhf{} % clear header and footer
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\centering
+\renewcommand{\contentsname}{%
+  \begingroup
+  \normalfont\bfseries\fontsize{12}{14.4}\selectfont
+  SUMÁRIO%
+  \endgroup
+}
+\onehalfspacing
+% Formatação das entradas: 12pt, negrito para capítulos, normal para seções
+
+\titlecontents{chapter}
+[0em]{}
+{\bfseries\contentslabel{2.3em}\MakeUppercase}
+{\hspace*{-2.3em}}
+{\titlerule*[1pc]{.}\contentspage}
+
+\titlecontents{section}
+[2.3em]{}
+{\bfseries\contentslabel{2.3em}}
+{\hspace*{-2.3em}}
+{\titlerule*[1pc]{.}\contentspage}
+
+\renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftbeforetoctitleskip}{0pt}
+\tableofcontents
+\cleardoublepage
+\endgroup
+\pagebreak

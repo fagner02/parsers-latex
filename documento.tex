@@ -1,134 +1,24 @@
 \documentclass[
-    a4paper,          % Tamanho da folha A4
-    12pt,             % Tamanho da fonte 12pt
-    chapter=TITLE,    % Todos os capitulos devem ter caixa alta
-    % section=TITLE,    % Todas as secoes devem ter caixa alta somente na primeira letra
-    % subsection=TITLE, % Todas as subsecoes devem ter caixa alta somente na primeira letra
-    oneside,          % Usada para impressao em apenas uma face do papel
-    english,          % Hifenizacoes em ingles
-    spanish,          % Hifenizacoes em espanhol
-    brazil,           % Ultimo idioma eh o idioma padrao do documento
-    fleqn             % Comente esta linha se quiser centralizar as equacoes. Comente também a linha 65 abaixo
-]{lib/abntex2}
-
+    12pt,
+    a4paper,
+    oneside,
+    article,
+    title=TITLE
+]{book}
 \input{lib/preambulo} 
 
-\setlength{\mathindent}{0pt} %Complementa o alinhamento de equações para totalmente a esquerda.
+% Your personal and project information - EDIT THESE FIELDS
+\newcommand{\curso}{Bacharelado em Ciência da Computação} % Your course name
+\newcommand{\autor}{FRANCISCO FAGNER FERREIRA MESQUITA} % Your full name
+\newcommand{\titulodtcc}{VANSI: UMA FERRAMENTA PARA VISUALIZAÇÃO E ENSINO DE ALGORITMOS DE
+    ANÁLISE SINTÁTICA} % Title in UPPERCASE
+\newcommand{\subtitulo}{} % Subtitle in lowercase
+\newcommand{\orientador}{Prof. Dr. João Marcelo Uchôa de
+    Alencar} % Supervisor's name
+\newcommand{\grau}{Bacharelado}
+\newcommand{\local}{Quixadá} % City
+\newcommand{\data}{\today} % You can set a fixed date like "Novembro de 2025"
 
-\trabalhoacademico{tccgraduacao}
-
-\ehqualificacao{nao}
-
-\removerbordasdohyperlink{sim} 
-
-\cordohyperlink{nao}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%         Informacao sobre a instituicao          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ies{Universidade Federal do Ceará} 
-\iessigla{UFC}
-\centro{Campus Quixadá}
-% \centro{Centro de Xxxxxxxx}
-% \departamento{Departamento de Xxxxxxxxx}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%        Informacao para TCC de Graduacao         %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\graduacaoem{Ciência da computação}
-\habilitacao{bacharel} % Ou licenciado(a)
-
-% AVISO: Caso necessario alterar o texto de apresenta-
-% cao da Especializacao, ir a pasta "lib", arquivo 
-% "ufctex.sty" na linha 502.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%     Informacao para TCC de Especializacao       %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \especializacaoem{Yyyyyyyyy}
-
-% AVISO: Caso necessario alterar o texto de apresenta-
-% cao da Especializacao, ir a pasta "lib", arquivo 
-% "ufctex.sty" na linha 507.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%         Informacao para Dissertacao             %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \programamestrado{Programa de Pós-Graduação em Xxxxxxx}
-% \nomedomestrado{Mestrado Acadêmico em Xxxxxxx}
-% \mestreem{Engenharia Xxxxxx}
-% \areadeconcentracaomestrado{Engenharia Xxxxxx}
-
-% AVISO: Caso necessario alterar o texto de apresenta-
-% cao da dissertacao, ir a pasta "lib", arquivo 
-% "ufctex.sty" na linha 511.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%               Informação para Tese              %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \programadoutorado{Programa de Pós-Graduação em Xxxxxx}
-% \nomedodoutorado{Doutorado em Xxxxxxx}
-% \doutorem{Engenharia Xxxxxx}
-% \areadeconcentracaodoutorado{Engenharia Xxxxxxx}
-
-% AVISO: Caso necessario alterar o texto de apresenta-
-% cao da tese, ir a pasta "lib", arquivo "ufctex.sty" 
-% na linha 515.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%      Informacoes relacionadas ao trabalho       %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\autor{Francisco Fagner Ferreira Mesquita}
-\titulo{VANSI: Uma ferramenta para visualização e ensino de algoritmos de análise sintática}
-\data{2024}
-\local{Quixadá}
-
-% Exemplo: \dataaprovacao{01 de Janeiro de 2012}
-\dataaprovacao{xx/xx/xxxx.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%           Informação sobre o Orientador         %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\orientador{Prof. Dr. João Marcelo Uchôa de Alencar}
-\orientadories{Universidade Federal do Ceará (UFC)}
-\orientadorcentro{Centro de Ciências e Tecnologia (CCT)}
-\orientadorfeminino{nao} % Coloque 'sim' se for do sexo feminino
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%          Informação sobre o Coorientador        %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Deixe o nome do coorientador em branco para remover do documento
-
-% \coorientador{Prof. Dr. Xxxxxx (Se houver)}
-% \coorientadories{Universidade Coorientador (SIGLA)}
-% \coorientadorcentro{Centro do Coorientador (SIGLA)}
-% \coorientadorfeminino{nao} % Coloque 'sim' se for do sexo feminino
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%              Informação sobre a banca           %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Atenção! Deixe em branco o nome do membro da banca para remover da folha de aprovacao
-
-% Exemplo de uso:
-% \membrodabancadois{Prof. Dr. Fulano de Tal}
-% \membrodabancadoisies{Universidade Federal do Ceará - UFC}
-
-
-\membrodabancadois{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
-\membrodabancadoiscentro{Faculdade de Filosofia Dom Aureliano Matos (FAFIDAM)}
-\membrodabancadoisies{Universidade do Membro da Banca três (SIGLA)}
-\membrodabancatres{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
-\membrodabancatrescentro{Centro de Ciências e Tecnologia (CCT)}
 % \membrodabancatresies{Universidade do Membro da Banca quatro (SIGLA)}
 % \membrodabancaquatro{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
 % \membrodabancaquatrocentro{Centro de Ciências e Tecnologia (CCT)}
@@ -139,12 +29,13 @@
 % \membrodabancaseis{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
 % \membrodabancaseiscentro{}
 % \membrodabancaseisies{Universidade do Membro da Banca sete (SIGLA)}
- 
-
 \begin{document}
-\ExpandArgs{c}\let{NC@find@X}\relax % Remove X is already defined warning
-\imprimircapa
-\imprimirfolhaderosto{}
+
+\ExpandArgs{c}\let{NC@find@X}\relax
+
+\input{1-pre-textuais/capa.tex}
+\input{1-pre-textuais/folha-de-rosto}
+\input{1-pre-textuais/folha-de-aprovacao}
 %\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
 %\imprimirerrata{elementos-pre-textuais/errata}
 % \imprimirfolhadeaprovacao
@@ -153,6 +44,10 @@
 \input{1-pre-textuais/epigrafe.tex}
 % \imprimirresumo{1-pre-textuais/resumo}
 % \imprimirabstract{1-pre-textuais/abstract}
+\input{1-pre-textuais/sumario.tex}
+\input{1-pre-textuais/lists.tex}
+% \listoffigures
+% \listof{quadro}{Lista de Quadros}
 % \renewcommand*\listfigurename{Lista de Figuras} %Se você comentar esta linha o título da lista fica: LISTA DE ILUSTRAÇÕES
 % \imprimirlistadeilustracoes
 % \imprimirlistadetabelas
@@ -161,13 +56,15 @@
 % \imprimirlistadecodigosfonte
 % \imprimirlistadeabreviaturasesiglas
 %\imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}
-\imprimirsumario
-% \printglossary
 
+\restoregeometry
 \setcounter{table}{0}% Deixe este comando antes da primeira tabela.
+\clearpage
+\normalfont
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
 
 %Elementos textuais
-\textual
 \input{2-textuais/1-introducao}
 \input{2-textuais/2-fundamentacao-teorica}
 \input{2-textuais/3-trabalhos-relacionados}
@@ -176,14 +73,10 @@
 %\input{2-textuais/6-conclusao}
 %\printglossary
 
-\urlstyle{same}
-\begin{SingleSpace}
-    \printbibliography
-\end{SingleSpace}
-
+\input{1-pre-textuais/referencias.tex}
 % \imprimirapendices
 
-% \imprimiranexos
+% \imprimiranexos 
 % Adicione aqui os anexos do seu trabalho
 % \input{3-pos-textuais/anexos/anexo-a}
 % \input{3-pos-textuais/anexos/anexo-b}		

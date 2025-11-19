@@ -9,12 +9,9 @@ Programas que são executados em computadores são escritos no que é chamada de
 \subsection{Fases do compilador}
 As fases de um compilador podem ser divididas de várias formas. Os trabalhos de \textcite{cooper2022engineering,mogensen2024introduction, thain2020introduction} dão suas definições das fases de um compilador, mas para esse trabalho será seguida a definição de \textcite{thain2020introduction}.
 
-\begin{figure}[ht]
-    \captionsetup{width=16cm}
-    \Caption{\label{fig:compfases}Fases de um compilador UNIX}
-    \tcbox[left=0cm, right=0cm, top=0cm, bottom=0cm,center]{\includegraphics[width=15.6cm]{figuras/compfases.png}}{
-        \Fonte{adaptada de \textcite{thain2020introduction}.}}
-\end{figure}
+
+\begin{mypicture}{\label{fig:compfases}}{Fases de um compilador UNIX}{figuras/compfases.png}{adaptada de \textcite{thain2020introduction}.}
+\end{mypicture}
 
 \subsubsection{Análise Léxica}
 Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural, esse agrupamento é feito usando expressões regulares implementadas através de autômatos.
@@ -360,7 +357,7 @@ Com essas modificações chegamos aos algoritmos de \textit{closure} LR(1) e con
 \end{algorithm}
 
 \section{\textit{Svelte}}
-\textit{Svelte} é um \textit{framework} de componentes criado em 2016 por Harry Rich e pode ser considerado uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}. \textit{Svelte} é semelhante aos \textit{frameworks} \textit{React} e \textit{Vue}, mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigido a estado (\textit{declarative state-driven}). Isso aumenta a carga de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como \textit{Virtual} DOM que é uma representação intermediária do DOM real \cite{harris_svelte_2019}.
+\textit{Svelte} é um \textit{framework} de componentes criado em 2016 por Harry Rich e pode ser considerado uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}. \textit{Svelte} é semelhante aos \textit{frameworks} \textit{React} e \textit{Vue}, mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigido a estado (\textit{declarative state-driven}). Isso aumenta a carga de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como \textit{Virtual} DOM que é uma representação intermediária do \gls{dom} real \cite{harris_svelte_2019}.
 
 Ao contrário dos \textit{frameworks} tradicionais, \textit{Svelte} age como um compilador funcionando em \textit{build-time} para transformar os componentes criados em código \textit{Javascript} imperativo altamente eficiente que atualiza o DOM apenas onde necessário. Isso permite escrever código para aplicações robustas sem necessidade de se preocupar muito com optimizações para que as aplicações sejam leves e performáticas.
 

@@ -1,0 +1,14 @@
+\begingroup
+\makeatletter
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{\cftbeforeloftitleskip}
+  \begin{center}
+    \normalfont\bfseries\fontsize{12}{14.4}\selectfont\MakeUppercase{#1}
+  \end{center}
+  \vspace*{30pt}
+}
+\makeatother
+\urlstyle{same}
+\addcontentsline{toc}{section}{\bfseries{Referências}}
+\printbibliography
+\endgroup
