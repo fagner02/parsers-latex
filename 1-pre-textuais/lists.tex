@@ -1,3 +1,4 @@
+\cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Lista de Figuras
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,11 +45,46 @@
   \endgroup
 }
 \makeatletter
-\expandafter\def\csname l@quadro\endcsname{\@dottedtocline{1}{0pt}{2.3em}}
+\expandafter\def\csname l@quadro\endcsname{
+  \vspace{3pt}
+  \@dottedtocline{1}{0pt}{2.3em}}
 \makeatother
+\let\origaddvspace\addvspace
+\renewcommand{\addvspace}[1]{}
 \listofquadros
 \cleardoublepage
+\renewcommand{\addvspace}[1]{\origaddvspace{#1}}
 \endgroup
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Lista de Tabelas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begingroup
+\fancypagestyle{plain}{
+  \fancyhf{} % clear header and footer
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\makeatletter
+\centering
+\renewcommand{\listtabelaname}{%
+  \begingroup
+  \normalfont\bfseries\fontsize{12}{14.4}\selectfont
+  LISTA DE TABELAS%
+  \endgroup
+}
+\makeatletter
+\expandafter\def\csname l@tabela\endcsname{
+  \vspace{3pt}
+  \@dottedtocline{1}{0pt}{2.3em}}
+\makeatother
+\let\origaddvspace\addvspace
+\renewcommand{\addvspace}[1]{}
+\listoftabelas
+\cleardoublepage
+\renewcommand{\addvspace}[1]{\origaddvspace{#1}}
+\endgroup
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Lista de Algoritmos

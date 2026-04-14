@@ -1,4 +1,25 @@
+
+\makeatletter
+
+% Allow page breaks in ToC
+\patchcmd{\@starttoc}{\begingroup}{\begingroup\interlinepenalty=0\relax}{}{}
+
+\renewcommand{\l@chapter}[2]{\@dottedtocline{1}{0em}{3.8em}{\bfseries \MakeUppercase{#1}}{#2}}
+
+% Section: bold
+\renewcommand{\l@section}[2]{\@dottedtocline{1}{0em}{3.8em}{\bfseries #1}{#2}}
+
+% Subsection
+\renewcommand{\l@subsection}[2]{\@dottedtocline{2}{0em}{3.8em}{\normalfont#1}{#2}}
+
+% Subsubsection
+\renewcommand{\l@subsubsection}[2]{\@dottedtocline{3}{0em}{3.8em}{\normalfont #1}{#2}}
+
+\makeatother
+
 \begingroup
+\cleardoublepage
+\pagestyle{empty}
 \fancypagestyle{plain}{
   \fancyhf{} % clear header and footer
   \renewcommand{\headrulewidth}{0pt}
@@ -15,23 +36,12 @@
 \onehalfspacing
 % Formatação das entradas: 12pt, negrito para capítulos, normal para seções
 
-\titlecontents{chapter}
-[0em]{}
-{\bfseries\contentslabel{2.3em}\MakeUppercase}
-{\hspace*{-2.3em}}
-{\titlerule*[1pc]{.}\contentspage}
-
-\titlecontents{section}
-[2.3em]{}
-{\bfseries\contentslabel{2.3em}}
-{\hspace*{-2.3em}}
-{\titlerule*[1pc]{.}\contentspage}
-
 \renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftbeforetoctitleskip}{0pt}
 \tableofcontents
 \cleardoublepage
+\pagestyle{fancy}
 \endgroup
 \pagebreak

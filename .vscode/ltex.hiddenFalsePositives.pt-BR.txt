@@ -4,3 +4,4 @@
 {"rule":"IRREGULAR_PAST_PARTICIPLES","sentence":".*seja aceita.*"}
 {"rule":"BARBARISMS","sentence":".*campus.*"}
 {"rule":"HUNSPELL_RULE","sentence":".*Dummy.*"}
+{"rule":"AS_PONTUAL_BR","sentence":"^\\QA sexta tarefa envolveu a construção do autômato LR(1) com itens canônicos, enquanto as duas últimas focaram na aplicação prática, com a análise sintática de \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q utilizando as tabelas LL(1) e SLR previamente construídas.\\E$"}
