@@ -9,6 +9,7 @@ compile:
 	makeindex $(filename)
 	makeglossaries $(filename)
 	$(pdflatex)
+	makeglossaries $(filename)
 	$(pdflatex)
 	@echo "Processo de compilação finalizado com sucesso!"
 

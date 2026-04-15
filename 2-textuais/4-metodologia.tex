@@ -104,33 +104,6 @@ Vários elementos têm iterações feitas sobre seus itens dispostos na vertical
 
 Alguns dados são movidos entre elementos como no algoritmo \textit{first} que move símbolos da direita de uma produção para o conjunto \textit{first}. Para demonstrar essa transferência entre os elementos uma linha é exibida que se estende do item de origem até o elemento de destino com uma animação.
 
-
-% \section{Integrar a ferramenta com o \textit{Moodle}}
-% A plataforma \gls{lms} \textit{Moodle} implementa o padrão \gls{lti} o que permite a utilização da ferramenta criada nesse trabalho diretamente no \textit{Moodle} sem necessidade de \textit{login} externo. Para que a ferramenta possa utilizar o padrão \gls{lti} com o \textit{Moodle} será implementado no \textit{back-end} da aplicação uma \gls{api} que manuseia as requisições relacionada ao \gls{lti}.
-
-% Os \textit{endpoints} da \gls{api} foram definidos de acordo com o Quadro \ref{qua:endpoints}.
-
-% \setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt}
-% \setlength{\belowcaptionskip}{5pt plus 0pt minus 0pt}
-% \begin{table}[ht]
-%   \centering\setlength{\extrarowheight}{2pt}
-%   \captionsetup{width={\textwidth}}
-%   \captionof{quadro}{Endpoints}\label{qua:endpoints}
-%   \resizebox{\textwidth}{!}{
-%     \begin{NiceTabular}{m[c]{3cm}m[c]{3cm}m[c]{10cm}}[corners,hvlines]
-%       \CodeBefore
-%       \rowcolor{gray!15}{1-1}
-%       \Body
-%       \textbf{Endpoint}                                                  & \textbf{Método} & \textbf{Finalidade}                 \\
-%       \selectlanguage{brazil}$\backslash$\selectlanguage{brazil}         & GET             & redirecionar para página            \\
-%       \selectlanguage{brazil}$\backslash$\selectlanguage{brazil}login    & POST            & inicia uma conexão com a plataforma \\
-%       \selectlanguage{brazil}$\backslash$\selectlanguage{brazil}register & POST            & registrar uma nova plataforma       \\
-%     \end{NiceTabular}}
-%   {\Fonte{fornecido pelo autor}}
-% \end{table}
-
-% Com a \gls{api} pronta pode ser feita a conexão entre a ferramenta e a \gls{lms}. Utilizando o serviço \gls{lti} de \textit{Dynamic Registration} é possível fazer o cadastro da ferramenta no \textit{Moodle} utilizando um \textit{link} para o \textit{endpoint} de registro dinâmico da \gls{api}.
-
 \section{Avaliação da Ferramenta}
 \label{sec:avaliacao}
 
@@ -185,7 +158,7 @@ Por fim, a análise qualitativa focou nos comentários livres do questionário. 
 
 \subsection{Ferramentas e Considerações Técnicas}
 
-Para o processamento e análise dos dados, foram desenvolvidos \textit{scripts} em \textit{Python} que utilizam as bibliotecas \textit{pandas} e \textit{numpy} para manipulação e análise estatística dos dados tabulares, \textit{matplotlib} e \textit{seaborn} para geração de visualizações e gráficos. Todo o código desenvolvido para a análise está disponível publicamente no repositório do projeto\footnote{https://github.com/fagner02/parsers-svelte.git}, garantindo a transparência e reprodutibilidade dos procedimentos analíticos.
+Para o processamento e análise dos dados, foram desenvolvidos \textit{scripts} em \textit{Python} que utilizam as bibliotecas \textit{pandas} e \textit{numpy} para manipulação e análise estatística dos dados tabulares, \textit{matplotlib} e \textit{seaborn} para geração de visualizações e gráficos. Todo o código desenvolvido para a análise está disponível publicamente no repositório do projeto, garantindo a transparência e reprodutibilidade dos procedimentos analíticos.
 
 A condução do estudo também considerou aspectos éticos da pesquisa envolvendo seres humanos. Foi obtido o consentimento informado de todos os participantes, garantindo o anonimato completo dos dados pessoais e a utilização exclusiva das informações para fins acadêmicos e de pesquisa.
 

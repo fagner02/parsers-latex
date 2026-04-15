@@ -7,17 +7,17 @@ O programa que realiza a análise sintática é chamado analisador sintático ou
 
 A disciplina de compiladores está presente em muitas grades curriculares de cursos de ciência da computação pelo mundo. Dentro dessa disciplina são ensinados vários algoritmos de análise sintática. No entanto, aprender o funcionamento desses algoritmos é uma tarefa difícil para os alunos, assim como também é difícil para os professores ensinarem esse assunto \cite{sangal2018pavt}.
 
-Tendo em mente a dificuldade no ensino sobre compiladores, foram criadas ferramentas de visualização de algoritmos(ou \gls{av}). Essas ferramentas procuram ajudar no ensino de algoritmos que fazem parte das fases da compilação e, ao serem usadas com alunos, tiveram uma resposta positiva. Elas podem auxiliar na compreensão do conteúdo não só por meio da visualização do funcionamento dos algoritmos, mas também pelas respostas instantâneas, que os estudantes podem usar para validar resultados que são difíceis de construir manualmente. \cite{10.1145/3002136}.
+Tendo em mente a dificuldade no ensino sobre compiladores, foram criadas ferramentas de visualização de algoritmos(ou \gls{av}). Essas ferramentas procuram ajudar no ensino de algoritmos que fazem parte das fases da compilação e, ao serem usadas com alunos, tiveram uma resposta positiva. Elas podem auxiliar na compreensão do conteúdo não só por meio da visualização do funcionamento dos algoritmos, mas também pelas respostas instantâneas, as quais podem ser usadas pelos estudantes para validar resultados que são difíceis de construir manualmente. \cite{10.1145/3002136}.
 
-O interesse pelo uso de \gls{av}'s cresceu nos últimos anos. Com disso, também houve o surgimento de tecnologias de desenvolvimento \textit{web} modernas e os avanços na capacidade e qualidade dos gráficos de \textit{browsers}. Esses avanços permitiram um desenvolvimento \textit{web} mais fácil e a criação de várias aplicações baseadas inteiramente na \textit{web} \cite{effectiveav}. Dentre os avanços no desenvolvimento \textit{web} está a criação de \textit{frameworks web} que reutilizam componentes e implementam funcionalidades para acelerar a criação de aplicações \textit{web} \cite{uppal2022}. Um exemplo de \textit{framework web} é o \textit{Svelte}\footnote{https://svelte.dev/} que foi utilizado para o desenvolvimento da ferramenta apresentada nesse trabalho.
+O interesse pelo uso de \gls{av}'s cresceu nos últimos anos. Com isso, também houve o surgimento de tecnologias de desenvolvimento \textit{web} modernas e os avanços na capacidade e qualidade dos gráficos de \textit{browsers}. Esses avanços permitiram um desenvolvimento \textit{web} mais fácil e a criação de várias aplicações baseadas inteiramente na \textit{web} \cite{effectiveav}. Dentre os avanços no desenvolvimento \textit{web} está a criação de \textit{frameworks web} que reutilizam componentes e implementam funcionalidades para acelerar a criação de aplicações \textit{web} \cite{uppal2022}. Um exemplo de \textit{framework web} é o \textit{Svelte}\footnote{https://svelte.dev/} que foi utilizado para o desenvolvimento da ferramenta apresentada neste trabalho.
 
-Embora esse tema tenha já tenha sido abordado em trabalho similares como o proposto por \textcite{pavt}, ainda há avanços que podem ser alcançados como será discutido na seção de trabalhos relacionados. Com isso, esse trabalho apresenta o desenvolvimento da ferramenta de visualização de analisadores sintáticos VANSI\footnote{https://vansi.netlify.app}.
+Embora esse tema tenha já tenha sido abordado em trabalhos similares como o proposto por \textcite{pavt}, ainda há avanços que podem ser alcançados como será discutido na seção de trabalhos relacionados. Com isso, esse trabalho apresenta o desenvolvimento da ferramenta de visualização de analisadores sintáticos VANSI\footnote{https://vansi.netlify.app}.
 
 \section{Objetivos}
-O objetivo desse trabalho é desenvolver uma ferramenta que auxilie na compreensão do funcionamento da análise sintática e quais os processos necessários para obter a saída de cada passo de seus algoritmos. Esse trabalho tem os seguintes objetivos específicos:
+O objetivo deste trabalho é desenvolver uma ferramenta que auxilie na compreensão do funcionamento da análise sintática e quais os processos necessários para obter a saída de cada passo de seus algoritmos. Este trabalho tem os seguintes objetivos específicos:
 \begin{itemize}[label=$\sbullet$]
-    % \item Criar a ferramenta usando \textit{Svelte}\footnote{https://svelte.dev/}.
-    \item Desenvolver uma forma de visualização para os algoritmos \gls{clr}, \gls{slr} e \gls{ll}.
-    \item Validar a ferramenta fazendo uma avaliação com alunos.
+  % \item Criar a ferramenta usando \textit{Svelte}\footnote{https://svelte.dev/}.
+  \item Desenvolver uma forma de visualização para os algoritmos \gls{clr}, \gls{slr} e \gls{ll}.
+  \item Validar a ferramenta fazendo uma avaliação com alunos.
 \end{itemize}
 
