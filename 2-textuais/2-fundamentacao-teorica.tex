@@ -82,7 +82,7 @@ Na fase de geração de código, o gerador de código consome a representação 
 \end{algorithm}
 
 \begin{algorithm}[htbp]
-  \caption{Construção da Tabela \gls{ll}(1)}\label{alg:lltable}
+  \caption{Construção da Tabela LL(1)}\label{alg:lltable}
   \Input{Gramática $G$}
   \Output{Tabela $M$}
   \Inicio{
@@ -101,7 +101,7 @@ Na fase de geração de código, o gerador de código consome a representação 
   }
 \end{algorithm}
 \begin{algorithm}[htbp]
-  \caption{Análise \gls{ll}(1)}\label{alg:llparse}
+  \caption{Análise LL(1)}\label{alg:llparse}
   \Input{Gramática $G$, Tabela $M$, String de entrada $w$}
   \Output{Sucesso ou erro}
   \Inicio{
@@ -145,7 +145,7 @@ Na fase de geração de código, o gerador de código consome a representação 
 
 
 \begin{algorithm}[htbp]
-  \caption{Autômato \gls{lr}(0)}\label{alg:automaton}
+  \caption{Connstrução do Autômato LR(0)}\label{alg:automaton}
   \Input{Gramática $G$}
   \Output{Autômato $\mathit{M}$}
   \Inicio{
@@ -185,7 +185,7 @@ Na fase de geração de código, o gerador de código consome a representação 
 O conjunto de gramáticas que podem ser analisadas usando algoritmos que utilizam apenas um não-terminal e o próximo símbolo da entrada é chamado conjunto de gramáticas \gls{ll}(1). Uma das formas de fazer a análise dessas gramáticas é usando o analisador sintático descendente recursivo, o qual utiliza funções recursivas para cada não-terminal para processar a entrada. O analisador sintático descendente recursivo é uma técnica de implementação dos analisadores sintáticos \gls{ll}(1) já tratados neste trabalho. Além disso, aproxima-se mais de um padrão de implementação para analisadores sintáticos \gls{ll}(1) do que de um conceito algoritmico único com estruturas visualizáveis. Por essa razão, não está incluído na ferramenta VANSI.
 
 \begin{algorithm}[htbp]
-  \caption{Closure \gls{lr}(0)}\label{alg:closure}
+  \caption{Closure LR(0)}\label{alg:closure}
   \Input{Gramática $G$, Estado $S$}
   \Output{Closure do estado $S$}
   \Inicio{
@@ -206,7 +206,7 @@ O conjunto de gramáticas que podem ser analisadas usando algoritmos que utiliza
   }
 \end{algorithm}
 \begin{algorithm}[htbp]
-  \caption{Construção da Tabela \gls{slr}}\label{alg:slrtable}
+  \caption{Construção da Tabela SLR}\label{alg:slrtable}
   \Input{Autômato \gls{lr}(0) $\mathit{M}$}
   \Output{Tabelas $\textsc{Action}$ e $\textsc{Goto}$}
   \Inicio{
@@ -237,47 +237,14 @@ O conjunto de gramáticas que podem ser analisadas usando algoritmos que utiliza
   }
 \end{algorithm}
 
-\subsection{Analisadores Sintáticos \gls{ll}(1)}
+\subsection{Analisadores Sintáticos LL(1)}
 Os analisadores sintáticos \gls{ll}(1) são um tipo de analisador sintático descendente. Esses analisadores sintáticos levam em consideração um único \textit{lookahead}. Para os analisadores sintáticos \gls{ll}(1), o \textit{lookahead} é o símbolo inicial do lado direito das produções. O \textit{lookahead} é usado para decidir qual produção deve ser escrita. Por essa razão, apenas as gramáticas não ambíguas podem ser analisadas pelos analisadores sintáticos \gls{ll}(1).
-
-\begin{algorithm}[htbp]
-  \caption{Construção da Tabela \gls{slr}}\label{alg:slrtable}
-  \Input{Autômato \gls{lr}(0) $\mathit{M}$}
-  \Output{Tabelas $\textsc{Action}$ e $\textsc{Goto}$}
-  \Inicio{
-    $\textsc{Action} \gets \text{Tabela}\langle\text{Estado}, \text{Terminal}, \text{Ação}\rangle$ \\
-    $\textsc{Goto} \gets \text{Tabela}\langle\text{Estado}, \text{Não-terminal}, \text{Estado}\rangle$ \\
-
-    \ForEach{estado $s_i \in \mathit{M}$}{
-      \ForEach{item $[A \rightarrow \alpha \cdot a \beta] \in s_i$}{
-        $s_j \gets \delta(s_i, a)$ \\
-        \Ifx{$s_j \neq \varnothing$}{
-          $\textsc{Action}[s_i, a] \gets \text{``shift } s_j \text{''}$ \\
-        }
-      }
-      \ForEach{item $[A \rightarrow \alpha \cdot] \in s_i$}{
-        \ForEach{$a \in \textsc{Follow}(A)$}{
-          $\textsc{Action}[s_i, a] \gets \text{``reduce } A \rightarrow \alpha \text{''}$ \\
-        }
-      }
-      \ForEach{não-terminal $A$}{
-        $s_j \gets \delta(s_i, A)$ \\
-        \Ifx{$s_j \neq \varnothing$}{
-          $\textsc{Goto}[s_i, A] \gets s_j$ \\
-        }
-      }
-    }
-
-    \Return{$\textsc{Action}, \textsc{Goto}$}
-  }
-\end{algorithm}
-
 
 O conjunto dos símbolos iniciais das produções de uma gramática é chamado conjunto \textit{first}. No algoritmo \gls{ll}(1) o conjunto \textit{lookahead} corresponde ao conjunto \textit{first}. A construção do conjunto \textit{first} pode ser feita seguindo o Algoritmo \ref{alg:first}. As definições dos algoritmos foram tiradas do trabalho de \textcite{thain2020introduction}.
 
 
 \begin{algorithm}[htbp]
-  \caption{Análise \gls{slr}}\label{alg:slrparsing}
+  \caption{Análise SLR}\label{alg:slrparsing}
   \Input{Tabelas $\textsc{Action}$, $\textsc{Goto}$, String de entrada $w$}
   \Output{Sucesso ou erro}
   \Inicio{
@@ -314,7 +281,7 @@ O conjunto \textit{follow} é o conjunto de símbolos terminais da gramática qu
 Uma tabela de análise sintática \gls{ll}(1) pode ser usada para determinar as regras a serem usadas na análise de uma \textit{string} para todas as combinações de não-terminais e \textit{tokens} da \textit{string}. A construção dessa tabela pode ser feita usando os conjuntos de \textit{first} e \textit{follow} seguindo o Algoritmo \ref{alg:lltable}. Tendo a tabela de análise sintática \gls{ll}(1) em mãos, é possível fazer a análise de uma sequência de \textit{tokens} usando uma \textit{stack}. O Algoritmo \ref{alg:llparse} mostra a análise sintática usando a tabela \gls{ll}(1).
 
 \begin{algorithm}[htbp]
-  \caption{Closure \gls{lr}(1)}\label{alg:closurelr1}
+  \caption{Closure LR(1)}\label{alg:closurelr1}
   \Input{Gramática $G$, Estado $s$}
   \Output{Closure do estado $s$}
   \Inicio{
@@ -346,20 +313,14 @@ Uma tabela de análise sintática \gls{ll}(1) pode ser usada para determinar as 
 \section{Analisadores Sintáticos Ascendentes}
 \textcite{cooper2022engineering,mogensen2024introduction, thain2020introduction} falam sobre analisadores sintáticos ascendentes, mas para este trabalhos será seguida a definição de \textcite{thain2020introduction}. Os analisadores sintáticos ascendentes levam uma abordagem oposta aos analisadores sintáticos descendentes. Ao invés de começar com o símbolo inicial da gramática, os analisadores sintáticos ascendentes procuram sequências de \textit{tokens} que façam par com o lado direito das produções da gramática e substituem as sequências de \textit{tokens} pelo símbolo não-terminal do lado esquerdo da produção. Esse processo é repetido até que toda a sequência de \textit{tokens} seja reescrita e apenas reste o símbolo inicial da gramática.
 
-\subsection{Analisadores Sintáticos \gls{slr}}
+
+\subsection{Analisadores Sintáticos SLR}
 Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de \gls{lr}(0). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não-terminais. Quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática, a análise da entrada teve sucesso, caso contrário, há um erro na entrada.
 
 Todas as ações de \textit{shift-reduce} possíveis podem ser calculadas para uma gramática construindo um autômato \gls{lr}(0), o qual também pode ser chamado de coleção de itens canônicos. Esse autômato guarda todas as possíveis posições de leitura das produções da gramática representadas por um ponto escrito no lado direito das produções.
 
-As ações de \textit{shift-reduce} são definidas pelas transições do autômato e pela posição de leitura. Caso uma transição seja feita com um terminal, a ação será de \textit{shift}. Caso uma transição seja feita com um não-terminal, a ação será de \textit{goto}. Caso a posição de leitura esteja no fim da produção, a ação será de \textit{reduce}. O Algoritmo \ref{alg:automaton} mostra como construir o autômato \gls{lr}(0) com o auxílio do \textit{closure} mostrado no Algoritmo \ref{alg:closure}.
-
-Quando um símbolo não-terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não-terminal não pode ser derivado. No entanto, quando um não-terminal produz outro não-terminal, o não-terminal produzido terá outras derivações. Por essa razão é preciso levar em consideração as produções dos não-terminais que estão sob a posição de leitura dentro da produção de outro não-terminal. \textit{Closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções.
-
-
-Usando o autômato \gls{lr}(0) podemos construir uma tabela de ações e \textit{goto} para facilitar o acesso a essas informações durante o processo de análise sintática. Essa tabela pode ser calculada usando o Algoritmo \ref{alg:slrtable}. A análise sintática do analisador sintático \gls{slr} pode ser feita usando a tabela de ações e \textit{goto} seguindo o Algoritmo \ref{alg:slrparsing}.
-
 \begin{algorithm}[htbp]
-  \caption{Autômato \gls{lr}(1)}\label{alg:automatonlr1}
+  \caption{Construção do Autômato LR(1)}\label{alg:automatonlr1}
   \Input{Gramática $G$}
   \Output{Autômato $\mathit{M}$}
   \Inicio{
@@ -389,23 +350,15 @@ Usando o autômato \gls{lr}(0) podemos construir uma tabela de ações e \textit
   }
 \end{algorithm}
 
-\subsection{Analisadores Sintáticos \gls{clr}}
-O analisador sintático \gls{clr} é um analisador sintático descendente para gramáticas \gls{lr}(1). O analisador sintático \gls{clr} usa o autômato \gls{lr}(1) para a construção da tabela de ações e \textit{goto}. Esse autômato é parecido com o autômato \gls{lr}(0), o que diferencia os dois é que todos os itens do autômato \gls{lr}(1) têm uma anotação com o conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto de \textit{tokens} é o conjunto \textit{lookahead} para o analisador \gls{clr}.
+As ações de \textit{shift-reduce} são definidas pelas transições do autômato e pela posição de leitura. Caso uma transição seja feita com um terminal, a ação será de \textit{shift}. Caso uma transição seja feita com um não-terminal, a ação será de \textit{goto}. Caso a posição de leitura esteja no fim da produção, a ação será de \textit{reduce}. O Algoritmo \ref{alg:automaton} mostra como construir o autômato \gls{lr}(0) com o auxílio do \textit{closure} mostrado no Algoritmo \ref{alg:closure}.
 
-A construção do autômato \gls{lr}(1) segue o mesmo algoritmo da construção do autômato \gls{lr}(0) com algumas modificações. A primeira produção a ser adicionada no primeiro estado do autômato vai ser adicionada com o \textit{lookahead}. Esse \textit{lookahead} tem $\$$ como único elemento. Ao computar o \textit{closure} serão considerados dois casos:
-\begin{itemize}[label=$\sbullet$]
-  \item Para produções da forma $A \rightarrow \alpha . B$ com \textit{lookahead} de $\{L\}$, deverão ser adicionadas novas produções da forma $B \rightarrow . \gamma$ com \textit{lookahead} de $\{L\}$
-  \item Para produções da forma $A \rightarrow \alpha.B\beta$, com \textit{lookahead} de $\{L\}$, deverão ser adicionadas novas produções da forma $B \rightarrow . \gamma$ com \textit{lookahead} da seguinte forma:
-        \begin{itemize}
-          \item Se $\beta$ não produz $\epsilon$, o \textit{lookahead} é $First(G,\beta)$.
-          \item Se $\beta$ produz $\epsilon$, o \textit{lookahead} é $First(G,\beta)\cup\{L\}$.
-        \end{itemize}
-\end{itemize}
-\selectlanguage{brazil}
+Quando um símbolo não-terminal produz um símbolo terminal, apenas um caminho para derivação é possível, já que um não-terminal não pode ser derivado. No entanto, quando um não-terminal produz outro não-terminal, o não-terminal produzido terá outras derivações. Por essa razão é preciso levar em consideração as produções dos não-terminais que estão sob a posição de leitura dentro da produção de outro não-terminal. \textit{Closure} é o nome dado a ação de completar os estados do autômato adicionando essas produções.
 
+
+Usando o autômato \gls{lr}(0) podemos construir uma tabela de ações e \textit{goto} para facilitar o acesso a essas informações durante o processo de análise sintática. Essa tabela pode ser calculada usando o Algoritmo \ref{alg:slrtable}. A análise sintática do analisador sintático \gls{slr} pode ser feita usando a tabela de ações e \textit{goto} seguindo o Algoritmo \ref{alg:slrparsing}.
 
 \begin{algorithm}[htbp]
-  \caption{Construção da Tabela \gls{lr}(1)}\label{alg:lr1table}
+  \caption{Construção da Tabela LR(1)}\label{alg:lr1table}
   \Input{Autômato \gls{lr}(1) $\mathit{M}$}
   \Output{Tabelas $\textsc{Action}$, $\textsc{Goto}$}
   \Inicio{
@@ -434,6 +387,21 @@ A construção do autômato \gls{lr}(1) segue o mesmo algoritmo da construção 
     \Return{$(\textsc{Action}, \textsc{Goto})$}
   }
 \end{algorithm}
+
+\subsection{Analisadores Sintáticos CLR}
+O analisador sintático \gls{clr} é um analisador sintático descendente para gramáticas \gls{lr}(1). O analisador sintático \gls{clr} usa o autômato \gls{lr}(1) para a construção da tabela de ações e \textit{goto}. Esse autômato é parecido com o autômato \gls{lr}(0), o que diferencia os dois é que todos os itens do autômato \gls{lr}(1) têm uma anotação com o conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto de \textit{tokens} é o conjunto \textit{lookahead} para o analisador \gls{clr}.
+
+A construção do autômato \gls{lr}(1) segue o mesmo algoritmo da construção do autômato \gls{lr}(0) com algumas modificações. A primeira produção a ser adicionada no primeiro estado do autômato vai ser adicionada com o \textit{lookahead}. Esse \textit{lookahead} tem $\$$ como único elemento. Ao computar o \textit{closure} serão considerados dois casos:
+\begin{itemize}[label=$\sbullet$]
+  \item Para produções da forma $A \rightarrow \alpha . B$ com \textit{lookahead} de $\{L\}$, deverão ser adicionadas novas produções da forma $B \rightarrow . \gamma$ com \textit{lookahead} de $\{L\}$
+  \item Para produções da forma $A \rightarrow \alpha.B\beta$, com \textit{lookahead} de $\{L\}$, deverão ser adicionadas novas produções da forma $B \rightarrow . \gamma$ com \textit{lookahead} da seguinte forma:
+        \begin{itemize}
+          \item Se $\beta$ não produz $\epsilon$, o \textit{lookahead} é $First(G,\beta)$.
+          \item Se $\beta$ produz $\epsilon$, o \textit{lookahead} é $First(G,\beta)\cup\{L\}$.
+        \end{itemize}
+\end{itemize}
+\selectlanguage{brazil}
+
 
 Com essas modificações chegamos aos algoritmos de \textit{closure} \gls{lr}(1) e construção do autômato \gls{lr}(1) que podem ser vistos no Algoritmo \ref{alg:closurelr1} e no Algoritmo \ref{alg:automatonlr1} respectivamente. O algoritmo de construção da tabela \gls{lr}(1), mostrado no Algoritmo \ref{alg:lr1table}, também é parecido com o algoritmo de construção da tabela \gls{slr}. A única diferença é que o \textit{lookahead} será usado no lugar do conjunto follow para definir as ações de \textit{reduce}. Quanto ao algoritmo de \textit{parsing} usando a tabela \gls{lr}(1), ele é o mesmo algoritmo de \textit{parsing} usando a tabela \gls{slr}.
 

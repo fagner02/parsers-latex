@@ -1,8 +1,8 @@
 \chapter{Resultados}
 
-Este capítulo apresenta os resultados obtidos na avaliação da ferramenta VANSI. A análise integra dados quantitativos de interação coletados automaticamente pela ferramenta com respostas qualitativas dos questionários de \textit{feedback}, organizando-se em cinco seções principais: caracterização dos padrões de uso, avaliação de usabilidade e análise da eficácia pedagógica.
+Este capítulo apresenta os resultados obtidos na avaliação da ferramenta VANSI. A análise integra dados quantitativos de interação coletados automaticamente pela ferramenta com respostas qualitativas dos questionários de \textit{feedback}, organizando-se em cinco seções principais: caracterização dos dados coletados, análise dos padrões de interação, avaliação de usabilidade, eficácia pedagógica e avaliação geral.
 
-\section{Caracterização dos Participantes e Dados Coletados}
+\section{Caracterização dos dados coletados}
 \label{sec:caracterizacao-participantes}
 Os 23 participantes da avaliação apresentaram o perfil descrito na Tabela \ref{tab:perfil-participantes}. Nota-se que a maioria (60,9\%) não possuía experiência prévia com algoritmos de análise sintática, configurando uma amostra representativa do público-alvo da ferramenta.
 
@@ -24,33 +24,30 @@ Os 23 participantes da avaliação apresentaram o perfil descrito na Tabela \ref
 	\hline
 \end{mytabela}
 
-Durante as 34,5 horas totais de atividade, o sistema de \textit{log} da VANSI registrou 108.327 eventos de interação. A média de 4.710 eventos por estudante indica alto engajamento durante a sessão de avaliação. O tempo médio de uso foi de 10,3 minutos. Estudantes sem experiência prévia gastaram em média 15,8 minutos, enquanto aqueles com experiência utilizaram 9,4 minutos, sugerindo que a familiaridade com os conceitos reduziu o tempo necessário para execução das tarefas.
+Durante as 7,7 horas totais de atividade, o sistema de \textit{log} da VANSI registrou 88.301 eventos de interação. Com 23 estudantes participantes, a média de 3.839 eventos por estudante indica alto engajamento durante a sessão de avaliação. O tempo médio de uso foi de 20,1 minutos. Estudantes sem experiência prévia gastaram em média 28,5 minutos, enquanto aqueles com experiência utilizaram 15,8 minutos, sugerindo que a familiaridade com os conceitos reduziu o tempo necessário para execução das sete tarefas.
 
 A Tabela \ref{tab:volume-dados} detalha o volume de dados coletados por categoria de evento. Os eventos de \textit{mouse} representaram a maioria dos registros, seguidos pelas interações com controles de fluxo e trocas de aba.
 
 \begin{mytabela}{tab:volume-dados}{Volume de dados coletados durante a avaliação}{Xlr}
 	\hline
 	\textbf{Tipo de Evento} & \textbf{Total} & \textbf{Média por Estudante} \\
-
 	\hline
-	Eventos de mouse (posição + clique) & 87.421 & 3.801 \\
-	Trocas de aba & 412 & 17,9 \\
-	Interações com \textit{tooltips} & 203 & 8,8 \\
-	Manipulações de janelas flutuantes & 147 & 6,4 \\
-	Controles de fluxo utilizados & 321 & 14,0 \\
-	Eventos de formulário & 184 & 8,0 \\
-
-	\textbf{Total de eventos} & \textbf{108.327} & \textbf{4.710} \\
+	Eventos de mouse (posição + clique) & 87.421 & 3.801                    \\
+	Trocas de aba & 412 & 17,9                                              \\
+	Manipulações de janelas flutuantes & 147 & 6,4                          \\
+	Controles de fluxo utilizados & 321 & 14,0                              \\
+	\hline
+	\textbf{Total de eventos} & \textbf{88.301} & \textbf{3.839}            \\
 	\hline
 \end{mytabela}
 
-\section{Análise dos Padrões de Interação}
+\section{Análise dos padrões de interação}
 \label{sec:padroes-interacao}
 
-Nesta seção, são examinados os comportamentos de navegação e interação dos participantes com a ferramenta, com base nos registros automáticos de eventos. Os resultados estão organizados em duas subseções: distribuição do tempo por aba e padrões de navegação e interação.
+Nesta seção são examinados os comportamentos de navegação e interação dos participantes com a ferramenta, com base nos registros automáticos de eventos. Os resultados estão organizados em duas subseções, distribuição do tempo por aba e padrões de navegação e interação.
 
 
-\subsection{Distribuição do Tempo por Aba}
+\subsection{Distribuição do tempo por aba}
 
 A distribuição do tempo gasto em cada aba da ferramenta revelou padrões consistentes entre os participantes. A aba \gls{slr} recebeu a maior atenção com 31,7\% do tempo total, seguida pela aba \gls{ll}(1) com 25,4\% e \gls{lr}(1) com 20,1\%. A aba de Gramática, destinada à entrada inicial dos dados, consumiu 15,5\% do tempo, enquanto a aba de Análise de \textit{String}, utilizada principalmente para validação final, representou 7,3\% do tempo total. Esta distribuição sugere que os algoritmos \gls{slr} e \gls{ll}(1), tradicionalmente mais desafiadores para os estudantes, demandaram maior tempo de exploração e compreensão. A Figura \ref{fig:timeline} mostra a linha de tempo de um dos \textit{logs}.
 
@@ -62,9 +59,9 @@ A distribuição do tempo gasto em cada aba da ferramenta revelou padrões consi
 \end{mypicture}
 
 
-\subsection{Padrões de Navegação e Interação}
+\subsection{Padrões de navegação e interação}
 
-A análise dos \textit{heatmaps} de cliques revelou padrões de interação distintos entre as abas. Na \textbf{Tarefa}, observou-se distribuição esparsa das interações pelos campos de entrada como mostra a Figura \ref{fig:heatmap}. Nas abas algorítmicas, porém, identificou-se concentração em elementos visuais específicos: a tabela de \textit{parsing} na \gls{ll}(1), o autômato \gls{lr}(0) no \gls{slr}, e a árvore sintática na análise de \textit{strings}.
+A análise dos \textit{heatmaps} de cliques revelou padrões de interação distintos entre as abas. Na Tarefa, observou-se distribuição esparsa das interações pelos campos de entrada como mostra a Figura \ref{fig:heatmap}. Nas abas algorítmicas, porém, identificou-se concentração em elementos visuais específicos, a tabela de \textit{parsing} na \gls{ll}(1), o autômato \gls{lr}(0) no \gls{slr}, e a árvore sintática na análise de \textit{strings}.
 
 
 \begin{mypicture}
@@ -76,9 +73,9 @@ A análise dos \textit{heatmaps} de cliques revelou padrões de interação dist
 
 Os controles de fluxo foram utilizados extensivamente, com média de 14 ações por estudante. O botão ``Avançar'' representou 45,2\% das ações, seguido por ``Voltar'' com 32,4\% e ``Pular para passo'' com 12,1\%. A predominância do uso sequencial (``Avançar'' e ``Voltar'') sobre o acesso direto (``Pular para passo'') sugere que os estudantes preferiram percorrer os algoritmos de forma linear, revisando passos quando necessário, em vez de acessar etapas diretamente.
 
-\section{Avaliação de Usabilidade}
+\section{Avaliação de usabilidade}
 
-As respostas às questões de usabilidade apresentaram avaliação geral positiva. A Tabela \ref{tab:avaliacao-usabilidade} sumariza os resultados obtidos nas sete questões relacionadas à interface e usabilidade. A clareza dos elementos da interface obteve a maior nota média (4,3/5), com 91\% das respostas nas categorias 4 ou 5. O diálogo para copiar resultados também recebeu avaliação elevada (4,5/5), indicando que a funcionalidade de exportação foi bem recebida. A facilidade de navegação obteve média de 4,1/5, com 85\% de avaliações positivas.
+As respostas às questões de usabilidade apresentaram avaliação geral positiva. A Tabela \ref{tab:avaliacao-usabilidade} sumariza os resultados obtidos nas sete questões relacionadas à interface e usabilidade. A clareza dos elementos da interface obteve a maior nota média (4,3/5), com 91,0\% das respostas nas categorias 4 ou 5. O diálogo para copiar resultados também recebeu avaliação elevada (4,5/5), indicando que a funcionalidade de exportação foi bem recebida. A facilidade de navegação obteve média de 4,1/5, com 85,0\% de avaliações positivas.
 
 \begin{mytabela}{tab:avaliacao-usabilidade}{Avaliação de usabilidade da ferramenta (escala 1-5)}{Xccc}
 	\hline
@@ -96,11 +93,11 @@ As respostas às questões de usabilidade apresentaram avaliação geral positiv
 	\hline
 \end{mytabela}
 
-A análise qualitativa dos \textit{logs} permitiu identificar dois padrões comportamentais associados a dificuldades de usabilidade. Sete estudantes (30,4\%) apresentaram o ``padrão de busca'', caracterizado por múltiplas trocas rápidas de aba nos primeiros 5 minutos de uso, reduzindo progressivamente após período de adaptação. Nove estudantes (39,1\%) apresentaram uso sub-ótimo de controles, utilizando predominantemente o botão ``Avançar'' sem explorar funcionalidades de pular para passo mesmo em tarefas repetitivas que se beneficiariam deste recurso.
+A análise qualitativa dos \textit{logs} permitiu identificar dois padrões comportamentais associados a dificuldades de usabilidade. Sete estudantes (30,4\%) apresentaram um padrão de busca, caracterizado por múltiplas trocas rápidas de aba nos primeiros 5 minutos de uso, reduzindo progressivamente após período de adaptação. Nove estudantes (39,1\%) apresentaram uso sub-ótimo de controles, utilizando predominantemente o botão ``Avançar'' sem explorar funcionalidades de pular para passo.
 
-\section{Eficácia Pedagógica}
+\section{Eficácia pedagógica}
 
-Os recursos pedagógicos da VANSI receberam avaliação consistentemente alta. A Tabela \ref{tab:avaliacao-pedagogica} apresenta os resultados das oito questões relacionadas à efetividade educacional da ferramenta. A visualização passo a passo obteve a maior nota média (4,7/5), seguida pelos controles de navegação (4,6/5) e pela árvore sintática (4,5/5). As animações e transições, implementadas para destacar mudanças nas estruturas de dados, receberam média de 4,4/5. O pseudocódigo com \textit{breakpoints}, embora avaliado positivamente (4,2/5), obteve a menor média entre os recursos pedagógicos, possivelmente por demandar familiaridade prévia com programação.
+Os recursos pedagógicos da VANSI receberam avaliação consistentemente alta. A Tabela \ref{tab:avaliacao-pedagogica} apresenta os resultados das oito questões relacionadas à efetividade educacional da ferramenta. A visualização passo a passo obteve a maior nota média (4,7/5), seguida pelos controles de navegação (4,6/5) e pela árvore sintática (4,5/5). As animações e transições, implementadas para destacar mudanças nas estruturas de dados, receberam média de 4,4/5. O pseudocódigo com \textit{breakpoints}, embora avaliado positivamente (4,2/5), obteve a menor média entre os recursos pedagógicos, possivelmente por demandar familiaridade prévia com a ferramenta.
 
 \begin{mytabela}{tab:avaliacao-pedagogica}{Avaliação dos recursos pedagógicos (escala 1-5)}{Xcc}
 	\hline
@@ -119,11 +116,11 @@ Os recursos pedagógicos da VANSI receberam avaliação consistentemente alta. A
 \end{mytabela}
 
 
-\section{Avaliação Geral e Intenção de Uso}
+\section{Avaliação geral}
 
-A avaliação geral da ferramenta foi predominantemente positiva, com 69,6\% dos participantes classificando-a como ``Excelente'' e 26,1\% como ``Boa''. Nenhum participante avaliou a ferramenta como ``Ruim'' ou ``Péssima''. A consistência entre as diferentes dimensões avaliadas sugere que a VANSI foi bem recebida tanto em aspectos técnicos quanto pedagógicos. As questões sobre intenção de uso futuro revelaram alta aceitação da ferramenta. 90\% dos participantes responderam que usariam a ferramenta novamente para estudar algoritmos de compiladores, enquanto 85\% afirmaram que a recomendariam para outros alunos.
+A avaliação geral da ferramenta foi predominantemente positiva, com 86,9\% dos participantes classificando-a como ``Excelente'' e 13,1\% como ``Boa''. Nenhum participante avaliou a ferramenta como ``Ruim'' ou ``Péssima''. A consistência entre os diferentes tópicos avaliadas sugere que a VANSI foi bem recebida tanto em aspectos técnicos quanto pedagógicos. As questões sobre intenção de uso futuro revelaram alta aceitação da ferramenta. 90,0\% dos participantes responderam que usariam a ferramenta novamente para estudar algoritmos de compiladores, enquanto 85,0\% afirmaram que a recomendariam para outros alunos.
 
-\subsection{Sugestões e Comentários}
+\subsection{Sugestões e comentários}
 
 A análise temática dos comentários abertos identificou quatro categorias principais de \textit{feedback}, conforme apresentado na Tabela \ref{tab:temas-comentarios}. Três participantes elogiaram a interatividade da ferramenta, destacando que ``poder interagir com cada passo tornou a aprendizagem muito mais ativa e compreensível''.
 
@@ -139,4 +136,4 @@ A análise temática dos comentários abertos identificou quatro categorias prin
 
 Dentre as sugestões específicas, dois aspectos foram particularmente mencionados pelos participantes. Sete usuários que acessaram a ferramenta por dispositivos móveis apontaram a necessidade de melhorias na experiência mobile, com comentários como ``seria bom melhorar um pouco a visualização dos elementos pelo celular'' e ``no celular alguns botões ficam muito pequenos para clicar''.
 
-Quatro estudantes sugeriram melhorias específicas na interface visual, com ênfase na clareza dos estados dos elementos interativos. Os comentários incluíam observações como ``as cores dos botões ativos/inativos poderiam ser mais distintas'' e ``fica confuso saber quando um botão está desabilitado porque a mudança de cor é muito sutil''. Essas observações apontam para oportunidades de aprimoramento de \textit{affordance} visual dos controles da interface.
+Quatro estudantes sugeriram melhorias específicas na interface visual, com ênfase na clareza dos estados dos elementos interativos. Os comentários incluíam observações como ``as cores dos botões ativos/inativos poderiam ser mais diferentes'' e ``fica confuso saber quando um botão está desabilitado porque a mudança de cor é muito fraca''. Essas observações apontam para oportunidades de aprimoramento de \textit{affordance} visual dos controles da interface, isto é, para melhorar a percepção de funcionalidade dos elementos da interface.

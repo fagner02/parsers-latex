@@ -4,9 +4,9 @@
 Nesta seção, estão descritas algumas ferramentas de visualização de algoritmos de análise sintática, suas funcionalidades e limitações.
 
 \section{\textit{Teaching Compilers: Automatic Question Generation and Intelligent Assessment of Grammars' Parsing}}
-No trabalho de \textcite{munozquestions} foi desenvolvida uma aplicação usada como \textit{plug-in} no sistema de avaliação \textit{SIETTE}. O objetivo da aplicação é gerar gramáticas livres de contexto, determinar se elas atendem os requisitos \gls{ll}(1) ou \gls{slr}, construir as tabelas de \textit{parsing} e avaliar os alunos. Essa aplicação foi usada na Universidade de Málaga durante 7 anos para avaliar mais de mil alunos.
+No trabalho de \textcite{munozquestions} foi desenvolvida uma aplicação usada como \textit{plug-in} no sistema de avaliação \textit{SIETTE}. O objetivo da aplicação é gerar gramáticas livres de contexto, determinar se elas atendem aos requisitos \gls{ll}(1) ou \gls{slr}, construir as tabelas de \textit{parsing} e avaliar os alunos. Essa aplicação foi usada na Universidade de Málaga durante 7 anos para avaliar mais de mil alunos.
 
-Para a criação de gramáticas livres de contexto foram usados blocos de construção. Esses blocos são conjuntos de produções que podem ter seus terminais substituídos por não-terminais representando outros blocos. Combinando diferentes blocos é possível ser obtidas gramáticas aleatórias. Para gerar as tabelas de \textit{parsing} são implementados os algoritmos de construção dessas tabelas e algoritmos auxiliares. Apesar da equivalência entre gramáticas livres de contexto ser um problema indecidível como as gramáticas livres de contexto usadas são pequenas, a aplicação consegue testar a equivalência entre elas usando um algoritmo de força bruta.
+Para a criação de gramáticas livres de contexto foram usados blocos de construção. Esses blocos são conjuntos de produções que podem ter seus terminais substituídos por não-terminais representando outros blocos. Combinando diferentes blocos é possível serem obtidas gramáticas aleatórias. Para gerar as tabelas de \textit{parsing} são implementados os algoritmos de construção dessas tabelas e algoritmos auxiliares. Apesar da equivalência entre gramáticas livres de contexto ser um problema indecidível, como as gramáticas livres de contexto usadas são pequenas, a aplicação consegue testar a equivalência entre elas usando um algoritmo de força bruta.
 
 Após os dados da utilização da aplicação serem analisados, os autores concluíram que os testes gerados automaticamente têm dificuldade e resultados semelhantes aos obtidos com os testes criados por professores. Os autores também afirmam que os testes gerados automaticamente têm a vantagem de sempre diferir uns dos outros, requerendo um entendimento mais aprofundado dos alunos para resolução desses testes. Por fim, os autores citam como possibilidade de trabalhos futuros a criação de uma ferramenta com \textit{feedback} gráfico e mais detalhado.
 
@@ -16,12 +16,12 @@ No trabalho de \textcite{sangal2018pavt} foi introduzida a ferramenta \gls{pavt}
 
 
 
-\begin{mypicture}{\label{fig:pavt}}{Interface da ferramenta \gls{pavt}}{figuras/pavt.png}{adaptada de \textcite{pavt}.}
+\begin{mypicture}{\label{fig:pavt}}{Interface da ferramenta PAVT}{figuras/pavt.png}{adaptada de \textcite{pavt}.}
 \end{mypicture}
 
-\gls{pavt} tem módulos responsáveis pela visualização de cada algoritmo. Para todos é feita a análise da \textit{string} de entrada. Caso a \textit{string} seja aceita, é construída a árvore sintática representada da esquerda para a direita. Além disso, todos os elementos presentes nos algoritmos são apresentados. Esses elementos são o conjunto \textit{first}, conjunto \textit{follow}, conjunto de itens, tabela de \textit{parsing} e derivação mais à direita.
+\gls{pavt} tem módulos responsáveis pela visualização de cada algoritmo. Para todos é feita a análise da \textit{string} de entrada. Caso a \textit{string} seja aceita, é construída a árvore sintática representada da esquerda para a direita. Além disso, todos os elementos presentes nos algoritmos são apresentados. Esses elementos são o conjunto \textit{first}, conjunto \textit{follow}, conjunto de itens canônicos, tabela de \textit{parsing} e derivação mais à direita.
 
-A ferramenta foi usada no curso de construção de compiladores e ao fim do curso o \textit{feedback} dos alunos foi coletado. Os resultados obtidos indicaram que a ferramenta ajudou no aprendizado de algoritmos de análise sintática. Os autores afirmam que os resultados de cada passo dos algoritmos são dados em um formato comumente usado pelos professores, e ajudam os estudantes a praticar e entender os algoritmos.
+A ferramenta foi usada no curso de construção de compiladores e ao fim do curso o \textit{feedback} dos alunos foi coletado. Os resultados obtidos indicaram que a ferramenta ajudou no aprendizado de algoritmos de análise sintática. Os autores afirmam que os resultados de cada passo dos algoritmos são dados em um formato comumente usado pelos professores e ajudam os estudantes a praticar e entender os algoritmos.
 
 \section{\textit{A Web-Based Educational System for Teaching Compilers}}
 O trabalho de \textcite{webbased} foi feito na universidade de Pristina para criar uma versão \textit{web} de um sistema de simulação chamado \textit{ComVis}. Essa versão foi criada com módulos que ensinam as fases da compilação. O sistema já havia sido desenvolvido em \textit{Java} para \textit{desktop}, no entanto, por questões de acessibilidade e melhor representação visual foi decidido criar a versão \textit{web} do sistema. A motivação por trás desse trabalho foi a dificuldade dos alunos da universidade na disciplina de compiladores. Os autores também citam como a utilização de um \textit{software} interativo pode ajudar na motivação.
@@ -41,14 +41,14 @@ No estudo foi feita uma análise comparativa entre as versões \textit{web} e \t
 
 
 \section{Considerações}
-Apesar de já existirem ferramentas de visualização de \textit{parsers}, algumas desvantagens ainda precisam ser consideradas. Uma limitação é que o conteúdo não tem muita interatividade. A ferramenta apresentada no trabalho de \textcite{sangal2018pavt}, por exemplo, apresenta apenas em um arquivo de texto. Isso pode dificultar a compreensão dos conceitos. Outra limitação é a falta de detalhamento do passo a passo dos algoritmos, por exemplo, a ferramenta apresentada no trabalho de \textcite{webbased} foca apenas no último passo da análise sintática, excluindo a parte de construção das tabelas de \textit{parsing} e conjuntos de itens. Isso impede que os estudantes acompanhem o funcionamento interno dos processos de análise. Essas lacunas representam oportunidades de melhoria para que as ferramentas de visualização de \textit{parsers} se tornem ainda mais eficazes no apoio ao ensino e aprendizagem de análise sintática. O resumo do comparativo dos trabalhos citados anteriormente pode ser visto no Quadro \ref{qua:comparativo}.
+Apesar de já existirem ferramentas de visualização de \textit{parsers}, algumas desvantagens ainda precisam ser consideradas. Uma limitação é que o conteúdo não tem muita interatividade. A ferramenta apresentada no trabalho de \textcite{sangal2018pavt}, por exemplo, apresenta apenas um arquivo de texto. Isso pode dificultar a compreensão dos conceitos. Outra limitação é a falta de detalhamento do passo a passo dos algoritmos, por exemplo, a ferramenta apresentada no trabalho de \textcite{webbased} foca apenas no último passo da análise sintática, excluindo a parte de construção das tabelas de \textit{parsing} e conjunto de itens. Isso impede que os estudantes acompanhem o funcionamento interno dos processos de análise. Essas lacunas representam oportunidades de melhoria para que as ferramentas de visualização de \textit{parsers} se tornem ainda mais eficazes no apoio ao ensino e aprendizagem de análise sintática. O resumo do comparativo dos trabalhos citados anteriormente pode ser visto no Quadro \ref{qua:comparativo}.
 
 
 \begin{myquadro}{\label{qua:comparativo}}{Comparativo de trabalhos relacionados}
     { X[3]
         X[c]
         X[c]
-        X[c]}[  hvlines ]
+        X[c]}[hvlines]
     \CodeBefore
     \rowcolor{gray!15}{1-2}
     \Body
@@ -58,6 +58,6 @@ Apesar de já existirem ferramentas de visualização de \textit{parsers}, algum
     \textcite{sangal2018pavt} &   & x & x \\
     \textcite{webbased}       &   & x & x \\
     \textcite{jflapparser}    & x & x & \\
-    Esse trabalho             & x & x & x \\
+    Este trabalho             & x & x & x \\
 \end{myquadro}
 
