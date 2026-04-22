@@ -113,24 +113,28 @@ A avaliação da ferramenta VANSI foi estruturada para investigar tanto sua usab
 
 O primeiro passo da coleta de dados consistiu na criação do sistema de \textit{log} integrado à própria ferramenta VANSI. Esse sistema registra automaticamente, diversos eventos de interação do usuário com a interface. Os \textit{logs} são armazenados em formato \gls{csv} com três campos base. O primeiro campo é o \textit{timestamp} que registra o momento em que o evento ocorreu, o segundo campo é o \textit{type} que indica o tipo de evento e o terceiro campo é o \textit{desc} que fornece uma informação adicional do evento. Os possíveis valores do campo \textit{type} estão descritos no Quadro \ref{qua:esquema-log}
 
-\begin{myquadro}{\label{qua:esquema-log}}{Esquema dos dados registrados pelo sistema de \textit{log} da VANSI}{lX}[hvlines]
+\begin{myquadro}{\label{qua:esquema-log}}{Possíveis valores do campo \textit {type}}{lX}[hvlines]
 
-    \textbf{Campo}     & \textbf{Descrição}                                         \\
+    \textbf{Valor}     & \textbf{Descrição}                                         \\
     mouse pos          & Movimento do \textit{mouse}. Contém coordenadas do \textit{mouse} e dimensões da \textit{viewport}        \\
     w click            & Clique do \textit{mouse}. Contém coordenadas do \textit{mouse} e dimensões da \textit{viewport}        \\
     tab change         & Alteração de aba. Contém o identificador da nova aba ativa        \\
     algorithm change   & Alteração de algoritmo. Contém o identificador do novo algoritmo        \\
     control flow       & Fluxo de controle. Contém identificador do botão de fluxo de execução        \\
-    open parse         & Abre a aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
-    close parse        & Fecha a aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
-    open popup         & Abre uma janela de diálogo. Contém o nome da janela de diálogo aberta        \\
-    close popup        & Fecha uma janela de diálogo. Contém o nome da janela de diálogo
+    open parse         & Abertura da aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
+    close parse        & Ação de fechar a aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
+    open popup         & Abertura de uma janela de diálogo. Contém o nome da janela de diálogo aberta       \\
+    close popup        & Ação de fechar uma janela de diálogo. Contém o nome da janela de diálogo \\
+    resize float       & Redimensionamento de janela flutuante. Contém o identificador da janela redimensionada e suas dimensões        \\
+    move float         & Movimento de janela flutuante. Contém o identificador da janela movida e suas novas coordenadas        \\
+    open float         & Abertura de uma janela flutuante. Contém o nome da janela flutuante aberta e suas dimensões       \\
+    close float        & Ação de fechar uma janela flutuante. Contém o nome da janela flutuante fechada
 \end{myquadro}
 
 
 A partir dos dados base registrados nos \textit{logs} foram calculadas novas propriedades usadas para a análise da interação com a ferramenta. Para isso foi criado um \textit{script Python} que lê os arquivos \gls{csv} usando a biblioteca \textit{pandas}. Esse \textit{script} separa as linhas do \gls{csv} pelo valor do campo \textit{type} e extrai os valores contidos no campo \textit{desc}. Após esse processamento foram obtidas as propriedades descritas no Quadro \ref{qua:esquema-proc}.
 
-\begin{myquadro}{\label{qua:esquema-proc}}{Esquema dos dados registrados pelo sistema de \textit{log} da VANSI}{llX}[hvlines]
+\begin{myquadro}{\label{qua:esquema-proc}}{Esquema dos dados obtidos pelo processamento dos \textit{logs}}{llX}[hvlines]
 
     \textbf{Campo}     & \textbf{Tipo} & \textbf{Descrição}                                          \\
     timestamp          & DateTime      & Data e hora do evento com precisão de milissegundos         \\
@@ -176,13 +180,15 @@ A seção de informações gerais buscou caracterizar o perfil dos participantes
     Avaliação Geral         & 4                    & Coleta de impressões holísticas e intenções de uso futuro                 \\
 \end{myquadro}
 
-\subsection{Metodologia de análise}
+\subsection{Análise dos dados}
 
 A análise dos dados coletados adotou uma abordagem de métodos mistos, integrando técnicas quantitativas e qualitativas para uma compreensão multidimensional dos resultados. A análise quantitativa concentrou-se inicialmente na estatística descritiva das métricas de uso extraídas dos \textit{logs}, calculando médias, medianas e distribuições de frequência para os diferentes tipos de interação.
 
 Além disso, técnicas de visualização foram empregadas com a geração de \textit{heatmaps} de distribuição de cliques e linhas do tempo de interação, facilitando a identificação de padrões comportamentais. A identificação desses padrões foi feita manualmente através da comparação entre as vizualizações geradas e o \textit{feedback} dos participantes.
 
 Os \textit{heatmaps} de cliques foram gerados utilizando as coordenadas de clique registradas nos \textit{logs}, aplicando um mapa de calor sobre uma imagem interface da ferramenta para destacar as áreas de maior interação. As imagens da interface presentes nos \textit{heatmaps} foram geradas automaticamente por um \textit{script Common JavaScript} executado no \textit{Node.js}\footnote{https://nodejs.org}. O \textit{script} utiliza a biblioteca \textit{puppeteer} para lançar uma instância de um navegador, acessar o \textit{url} da ferramenta, navegar até a tela desejada e fazer uma captura de tela tudo de forma automatizada. O \textit{script} está disponível publicamente no repositório do projeto\footnote{https://github.com/fagner02/parsers-svelte.git}.
+
+Os rótulos de tempo (\textit{timestamps}) dos cliques nas abas foram usados para determinar qual aba estava ativa durante cada evento registrado. Isso permitiu a geração de \textit{screenshots} específicas de cada aba da aplicação. Os rótulos de tempo também permitiram o cálculo de médias de tempo gasto em cada aba da aplicação.
 
 As linhas do tempo de interação foram construídas plotando os eventos registrados ao longo do tempo, permitindo a visualização de sequências e durações de uso dos diferentes componentes da interface gráfica. Os gráficos de linha de tempo também marcam as transições entre as abas que são identificadas por cliques em elementos de navegação registrados nos \textit{logs}.
 

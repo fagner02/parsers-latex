@@ -407,8 +407,17 @@ Com essas modificações chegamos aos algoritmos de \textit{closure} \gls{lr}(1)
 
 
 \section{\textit{Svelte}}
+
+\begin{mypicture}
+  {\label{fig:svelte}}
+  {Fluxo de processamento do \textit{framework} \textit{Svelte}}
+  {figuras/svelte.png}
+  {adaptado de \textcite{harris_svelte_2019}.}
+\end{mypicture}
+
 \textit{Svelte} é um \textit{framework} de componentes criado em 2016 por Harry Rich e pode ser considerado uma tecnologia recente em relação a outras similares \cite{krill_slim_2016}. \textit{Svelte} é semelhante aos \textit{frameworks} \textit{React} e \textit{Vue}, mas tem uma abordagem bastante diferente no processamento de código. Os \textit{frameworks} tradicionais usam código declarativo dirigido a estado (\textit{declarative state-driven}). Isso aumenta a carga de processamento para o \textit{browser} que precisa transformar essas estruturas declarativas em operações no \gls{dom} usando técnicas como \textit{Virtual} \gls{dom} que é uma representação intermediária do \gls{dom} real \cite{harris_svelte_2019}.
 
-Ao contrário dos \textit{frameworks} tradicionais, \textit{Svelte} age como um compilador, funcionando em \textit{build-time} para transformar os componentes criados em código \textit{Javascript} imperativo altamente eficiente que atualiza o \gls{dom} apenas onde necessário. Isso permite escrever código para aplicações robustas sem necessidade de se preocupar muito com optimizações para que as aplicações sejam leves e performáticas.
+
+Ao contrário dos \textit{frameworks} tradicionais, \textit{Svelte} age como um compilador, funcionando em \textit{build-time} para transformar os componentes criados em código \textit{Javascript} imperativo altamente eficiente que atualiza o \gls{dom} apenas onde necessário. Isso permite escrever código para aplicações robustas sem necessidade de se preocupar muito com optimizações para que as aplicações sejam leves e performáticas. A Figura \ref{fig:svelte} mostra o fluxo de processamento do \textit{framework} \textit{Svelte}.
 
 Além de ter código mais leve e performático, a quantidade de código escrito usando \textit{Svelte} é menor em comparação a outros \textit{frameworks}. Já que \textit{Svelte} compila o código base, o \textit{framework} é livre para escolher a forma como o código deve ser escrito e, para maior simplicidade o código em \text{Svelte} segue a sintaxe da linguagem \textit{Javascript}. Tal coisa não é possível com outros \textit{frameworks} como \textit{React} que funciona em \textit{runtime} e tem sua sintaxe limitada a isso, sendo necessário mais código para estar em conformidade com o funcionamento do \textit{framework}. Um exemplo disso é a atualização do estado de uma variável. Enquanto usando \textit{Svelte} é apenas necessário usar o operador de atribuição para dar um novo valor à variável assim como na sintaxe \textit{Javascript}. Usando \textit{React} é necessário a utilização de funções chamadas \textit{hooks} para a atribuição do novo valor \cite{harris_write_2019}.

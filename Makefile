@@ -27,3 +27,6 @@ clean:
 postclean:
 	$(cleancmd)
 
+gloss:
+	makeglossaries $(filename)
+

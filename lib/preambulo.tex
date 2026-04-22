@@ -227,6 +227,7 @@
     % Create unique box name using counter
     \expandafter\newsavebox\csname quadrobox\thequadrocount\endcsname
     \expandafter\sbox\csname quadrobox\thequadrocount\endcsname{%
+      \small
       \begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
     }
     \pgfmathsetlengthmacro{\tableheight}{\ht\csname quadrobox\thequadrocount\endcsname + \dp\csname quadrobox\thequadrocount\endcsname}
@@ -257,6 +258,7 @@
     % Create unique box name using counter
     \expandafter\newsavebox\csname tabelabox\thetabelacount\endcsname
     \expandafter\sbox\csname tabelabox\thetabelacount\endcsname{%
+      \small
       \begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
     }
     \pgfmathsetlengthmacro{\tableheight}{\ht\csname tabelabox\thetabelacount\endcsname + \dp\csname tabelabox\thetabelacount\endcsname}
