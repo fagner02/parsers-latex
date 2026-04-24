@@ -5,7 +5,7 @@ Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento 
 \begin{mypicture}{\label{fig:etapas}}{Fluxograma das etapas}{figuras/fluxograma.png}{fornecida pelo próprio autor}
 \end{mypicture}
 
-\section{Definição dos requisitos}
+\section{Definição dos requisitos\label{sec:requisitos}}
 O primeiro passo no desenvolvimento de \textit{software} é a definição dos requisitos. Com eles tem-se um direcionamento sobre o que deve ser feito. A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
 
 \begin{itemize}[label={$\sbullet$}]
@@ -31,9 +31,32 @@ O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, p
 
 O \textit{framework Capacitor}\footnote{https://capacitorjs.com} consome essa coleção de arquivos e cria um projeto para a plataforma \textit{Android}. Esse projeto é usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. O \textit{framework Tauri}\footnote{https://tauri.app} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma em que eles são construídos. Já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
 
-Para a versão \textit{online} da aplicação, os serviços  de computação em nuvem \textit{Netlify}\footnote{https://www.netlify.com} e \textit{Supabase}\footnote{https://supabase.com} serão usados para hospedar respectivamente a aplicação e a data-base usada por ela. \textit{Netlify} e \textit{Supabase} foram escolhidos pela facilidade de uso e pelo oferecimento gratuito dos serviços para aplicações pequenas como a proposta neste trabalho.
+Para a versão \textit{online} da aplicação, adotaram-se os serviços de computação em nuvem \textit{Netlify}\footnote{https://www.netlify.com} e \textit{Supabase}\footnote{https://supabase.com}. O primeiro responsável por hospedar a aplicação e o segundo responsável pelo banco de dados. Ambos foram escolhidos pela facilidade de uso e por oferecerem planos gratuitos adequados a projetos de pequeno porte, como o proposto neste trabalho.
 
-O projeto da aplicação foi hospedado em um repositório\footnote{https://github.com/fagner02/parsers-svelte.git} no \textit{Github} que é uma plataforma \textit{web} de hospedagem de repositórios do sistema de versionamento \textit{Git}\footnote{https://git-scm.com}. Graças a integração entre \textit{Netlify} e \textit{Github}, a aplicação é atualizada automaticamente com cada \textit{commit} feito para o repositório do projeto. Por fim, a plataforma \textit{Supabase} será utilizada para armazenar arquivos de \textit{log} da utilização da aplicação durante os testes.
+O código-fonte da aplicação foi armazenado em um repositório \textit{Git}\footnote{https://git-scm.com} hospedado no \textit{Github}\footnote{https://github.com/fagner02/parsers-svelte.git}. Graças à integração entre \textit{Netlify} e \textit{Github}, a aplicação é atualizada automaticamente a cada \textit{commit} realizado no repositório. Já o \textit{Supabase} foi utilizado especificamente para armazenar os arquivos de \textit{log} gerados durante a avaliação da ferramenta com os alunos.
+
+Ao término do desenvolvimento, a base de código da ferramenta continha 127 arquivos-fonte, totalizando cerca de 16,5 mil linhas de código. A Tabela \ref{tab:dimensao-codigo} apresenta a distribuição do esforço implementação pelos principais módulos do sistema, evidenciando a separação entre a lógica dos algoritmos de análise sintática, os componentes de visualização e as estruturas gráficas interativas. O desenvolvimento do núcleo de funcionamento da ferramenta foi realizado em um período de 6 meses, com atualizações incrementais pelos 6 meses seguintes.
+
+\begin{mytabela}
+    {tab:dimensao-codigo}
+    {Dimensão da base de código da ferramenta VANSI}
+    {lrrX}
+    \hline
+    \textbf{Módulo} & \textbf{Arquivos} & \textbf{Linhas} & \textbf{Descrição} \\ \hline
+    \texttt{lib/stepCalc} & 10 & 4.346 & Lógica dos algoritmos de \textit{parsing} \\
+    \texttt{components/Algorithms} & 12 & 1.780 & Componentes para execução passo a passo dos algoritmos \\
+    \texttt{components/Layout} & 16 & 1.968 & Elementos reutilizáveis de interface \\
+    \texttt{components/Tabs} & 9 & 1.521 & Sistema de abas \\
+    \texttt{components/Structures} & 5 & 1.573 & Renderização gráfica do autômato e árvore sintática \\
+    \texttt{components/Cards} & 7 & 1.382 & Caixas de estruturas de dados \\
+    \texttt{components/Info} & 11 & 891 & Diálogos informativos dos algoritmos \\
+    \texttt{routes} & 5 & 301 & Rotas da aplicação\\
+    Outros (\texttt{Icons}, \texttt{lib}, etc.) & 52 & 2.713 & Ícones, estilos globais e funções auxiliares \\ \hline
+    \textbf{Total} & \textbf{127} & \textbf{16.475} & Base de código completa da ferramenta \\ \hline
+\end{mytabela}
+
+A concentração de aproximadamente 26\% do código em \texttt{lib/stepCalc} reflete a prioridade dada à corretude e ao detalhamento dos algoritmos de análise sintática, enquanto os 63\% restantes distribuídos em \texttt{components} demonstram o esforço voltado à construção de uma interface interativa e de múltiplas visualizações, conforme os requisitos definidos na Seção \ref{sec:requisitos}.
+
 
 \section{Implementação da interface de usuário}
 Nesta seção estão descritos o \textit{layout} da ferramenta e os elementos que o constituem. Começando pela barra de navegação, a qual contém abas que levam para as abas dos algoritmos e de entrada da gramática. A aba de entrada da gramática é a primeira. Nessa aba há apenas uma caixa de texto para digitar a entrada. Os elementos descritos neste parágrafo podem ser vistos na Figura \ref{fig:mgrammar}.
