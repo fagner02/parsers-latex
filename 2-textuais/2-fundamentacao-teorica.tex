@@ -13,10 +13,10 @@ As fases de um compilador podem ser divididas de várias formas. Os trabalhos de
 \begin{mypicture}{\label{fig:compfases}}{Fases de um compilador UNIX}{figuras/compfases.png}{adaptado de \textcite{thain2020introduction}.}
 \end{mypicture}
 
-\subsubsection{Análise Léxica}
+\subsubsection{Análise léxica}
 Na fase de análise léxica, o \textit{scanner}, também chamado de \textit{tokenizer}, consome texto simples de um programa e agrupa os caracteres individuais em sequências chamadas de \textit{tokens}. Esse processo funciona de forma parecida com agrupar letras para formar palavras da linguagem natural. Esse agrupamento é feito usando expressões regulares implementadas através de autômatos.
 
-\subsubsection{Análise Sintática}
+\subsubsection{Análise sintática}
 Análise de sintática será o foco do trabalho, sendo discutida de forma mais aprofundada nas próximas seções. A fase de análise sintática da compilação rearranja os \textit{tokens} gerados pela fase de análise léxica, gerando assim uma estrutura chamada árvore sintática. As árvores sintáticas são estruturas de árvore como diz o nome. As folhas dessa árvore são os \textit{tokens} e a leitura em ordem da árvore dá a sequência de \textit{tokens} do texto de entrada dado ao analisador sintático. Ao construir a árvore sintática, o analisador sintático também checa se há erros de sintaxe no texto de entrada.
 
 \subsubsection{Análise semântica}
@@ -140,7 +140,7 @@ Na fase de geração de código, o gerador de código consome a representação 
 \end{algorithm}
 
 
-\section{Analisadores Sintáticos Descendentes}
+\section{Analisadores sintáticos descendentes}
 \textcite{cooper2022engineering,mogensen2024introduction, thain2020introduction} falam sobre analisadores sintáticos descendentes, mas para este trabalho será seguida apenas a definição de \textcite{thain2020introduction}. Analisadores sintáticos descendentes, também chamados \textit{parsers top-down}, são métodos de análise sintática que iniciam a análise a partir do símbolo inicial da gramática. Eles fazem comparações entre os \textit{tokens} do texto de entrada e os símbolos da gramática para encontrar a produção que deve ser escrita no lugar dos símbolos não-terminais. Essas comparações são feitas até sobrar apenas símbolos terminais. Esses símbolos terminais devem coincidir com a sequência de \textit{tokens} da entrada, caso contrário, um erro é retornado.
 
 
@@ -181,7 +181,7 @@ Na fase de geração de código, o gerador de código consome a representação 
 \end{algorithm}
 
 
-\subsection{Descendentes Recursivos}
+\subsection{Descendentes recursivos}
 O conjunto de gramáticas que podem ser analisadas usando algoritmos que utilizam apenas um não-terminal e o próximo símbolo da entrada é chamado conjunto de gramáticas \gls{ll}(1). Uma das formas de fazer a análise dessas gramáticas é usando o analisador sintático descendente recursivo, o qual utiliza funções recursivas para cada não-terminal para processar a entrada. O analisador sintático descendente recursivo é uma técnica de implementação dos analisadores sintáticos \gls{ll}(1) já tratados neste trabalho. Além disso, aproxima-se mais de um padrão de implementação para analisadores sintáticos \gls{ll}(1) do que de um conceito algoritmico único com estruturas visualizáveis. Por essa razão, não está incluído na ferramenta VANSI.
 
 \begin{algorithm}[htbp]
@@ -237,7 +237,7 @@ O conjunto de gramáticas que podem ser analisadas usando algoritmos que utiliza
   }
 \end{algorithm}
 
-\subsection{Analisadores Sintáticos LL(1)}
+\subsection{Analisadores sintáticos LL(1)}
 Os analisadores sintáticos \gls{ll}(1) são um tipo de analisador sintático descendente. Esses analisadores sintáticos levam em consideração um único \textit{lookahead}. Para os analisadores sintáticos \gls{ll}(1), o \textit{lookahead} é o símbolo inicial do lado direito das produções. O \textit{lookahead} é usado para decidir qual produção deve ser escrita. Por essa razão, apenas as gramáticas não ambíguas podem ser analisadas pelos analisadores sintáticos \gls{ll}(1).
 
 O conjunto dos símbolos iniciais das produções de uma gramática é chamado conjunto \textit{first}. No algoritmo \gls{ll}(1) o conjunto \textit{lookahead} corresponde ao conjunto \textit{first}. A construção do conjunto \textit{first} pode ser feita seguindo o Algoritmo \ref{alg:first}. As definições dos algoritmos foram tiradas do trabalho de \textcite{thain2020introduction}.
@@ -310,11 +310,11 @@ Uma tabela de análise sintática \gls{ll}(1) pode ser usada para determinar as 
 \end{algorithm}
 
 
-\section{Analisadores Sintáticos Ascendentes}
+\section{Analisadores sintáticos ascendentes}
 \textcite{cooper2022engineering,mogensen2024introduction, thain2020introduction} falam sobre analisadores sintáticos ascendentes, mas para este trabalhos será seguida a definição de \textcite{thain2020introduction}. Os analisadores sintáticos ascendentes levam uma abordagem oposta aos analisadores sintáticos descendentes. Ao invés de começar com o símbolo inicial da gramática, os analisadores sintáticos ascendentes procuram sequências de \textit{tokens} que façam par com o lado direito das produções da gramática e substituem as sequências de \textit{tokens} pelo símbolo não-terminal do lado esquerdo da produção. Esse processo é repetido até que toda a sequência de \textit{tokens} seja reescrita e apenas reste o símbolo inicial da gramática.
 
 
-\subsection{Analisadores Sintáticos SLR}
+\subsection{Analisadores sintáticos SLR}
 Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de \gls{lr}(0). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não-terminais. Quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática, a análise da entrada teve sucesso, caso contrário, há um erro na entrada.
 
 Todas as ações de \textit{shift-reduce} possíveis podem ser calculadas para uma gramática construindo um autômato \gls{lr}(0), o qual também pode ser chamado de coleção de itens canônicos. Esse autômato guarda todas as possíveis posições de leitura das produções da gramática representadas por um ponto escrito no lado direito das produções.
@@ -388,7 +388,7 @@ Usando o autômato \gls{lr}(0) podemos construir uma tabela de ações e \textit
   }
 \end{algorithm}
 
-\subsection{Analisadores Sintáticos CLR}
+\subsection{Analisadores sintáticos CLR}
 O analisador sintático \gls{clr} é um analisador sintático descendente para gramáticas \gls{lr}(1). O analisador sintático \gls{clr} usa o autômato \gls{lr}(1) para a construção da tabela de ações e \textit{goto}. Esse autômato é parecido com o autômato \gls{lr}(0), o que diferencia os dois é que todos os itens do autômato \gls{lr}(1) têm uma anotação com o conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto de \textit{tokens} é o conjunto \textit{lookahead} para o analisador \gls{clr}.
 
 A construção do autômato \gls{lr}(1) segue o mesmo algoritmo da construção do autômato \gls{lr}(0) com algumas modificações. A primeira produção a ser adicionada no primeiro estado do autômato vai ser adicionada com o \textit{lookahead}. Esse \textit{lookahead} tem $\$$ como único elemento. Ao computar o \textit{closure} serão considerados dois casos:
