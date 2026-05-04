@@ -315,7 +315,8 @@ Uma tabela de análise sintática \gls{ll}(1) pode ser usada para determinar as 
 
 
 \subsection{Analisadores sintáticos SLR}
-Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} e um único \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de \gls{lr}(0). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não-terminais. Quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática, a análise da entrada teve sucesso, caso contrário, há um erro na entrada.
+Há um conjunto de gramáticas que podem ser analisadas usando técnicas de \textit{shift-reduce} sem uso de \textit{lookahead}, esse conjunto de gramáticas pode ser chamado de conjunto \gls{lr}(0). Usando um único \textit{lookahead} junto as ações de \textit{shift-reduce}, chegamos ao analisador sintático \gls{slr} que consegue analisar uma versão expandida do conjunto \gls{lr}(0). As ações de \textit{shift-reduce} são usadas para reduzir \textit{tokens} de uma entrada a não-terminais. Quando uma sequência de \textit{tokens} pode ser reduzida ao símbolo inicial da gramática, a análise da entrada teve sucesso, caso contrário, há um erro na entrada.
+e um único \textit{lookahead}
 
 Todas as ações de \textit{shift-reduce} possíveis podem ser calculadas para uma gramática construindo um autômato \gls{lr}(0), o qual também pode ser chamado de coleção de itens canônicos. Esse autômato guarda todas as possíveis posições de leitura das produções da gramática representadas por um ponto escrito no lado direito das produções.
 
@@ -389,7 +390,7 @@ Usando o autômato \gls{lr}(0) podemos construir uma tabela de ações e \textit
 \end{algorithm}
 
 \subsection{Analisadores sintáticos CLR}
-O analisador sintático \gls{clr} é um analisador sintático descendente para gramáticas \gls{lr}(1). O analisador sintático \gls{clr} usa o autômato \gls{lr}(1) para a construção da tabela de ações e \textit{goto}. Esse autômato é parecido com o autômato \gls{lr}(0), o que diferencia os dois é que todos os itens do autômato \gls{lr}(1) têm uma anotação com o conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto de \textit{tokens} é o conjunto \textit{lookahead} para o analisador \gls{clr}.
+O analisador sintático \gls{clr} (ou \gls{lr}(1)) é um analisador sintático descendente para gramáticas \gls{lr}(1). O analisador sintático \gls{clr} usa o autômato \gls{lr}(1) para a construção da tabela de ações e \textit{goto}. Esse autômato é parecido com o autômato \gls{lr}(0), o que diferencia os dois é que todos os itens do autômato \gls{lr}(1) têm uma anotação com o conjunto de \textit{tokens} que podem aparecer depois desses itens. Esse conjunto de \textit{tokens} é o conjunto \textit{lookahead} para o analisador \gls{clr}.
 
 A construção do autômato \gls{lr}(1) segue o mesmo algoritmo da construção do autômato \gls{lr}(0) com algumas modificações. A primeira produção a ser adicionada no primeiro estado do autômato vai ser adicionada com o \textit{lookahead}. Esse \textit{lookahead} tem $\$$ como único elemento. Ao computar o \textit{closure} serão considerados dois casos:
 \begin{itemize}[label=$\sbullet$]
