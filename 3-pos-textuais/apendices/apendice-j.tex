@@ -1,0 +1,34 @@
+\begin{apendice}{apêndice j - Algoritmo Construção do Autômato LR(1)}
+    \label{ap:automatonlr1}
+    \begin{algorithm}[htbp]
+        \caption{Construção do Autômato LR(1)}
+        \Input{Gramática $G$}
+        \Output{Autômato $\mathit{M}$}
+        \Inicio{
+            $s_0 \gets \{ [S' \rightarrow \cdot S, \$] \}$ \\
+            $\textsc{Closure}(s_0)$ \\
+            $\mathit{M} \gets \{ s_0 \}$ \\
+            $\mathit{newStates} \gets \{ s_0 \}$ \\
+            \ForEach{$s \in \mathit{newStates}$}{
+                \ForEach{$X \in T \cup NT$}{
+                    $s' \gets \varnothing$ \\
+                    \ForEach{item $[A \rightarrow \alpha \cdot X \beta, \ell] \in s$}{
+                        $s' \gets s' \cup \{ [A \rightarrow \alpha X \cdot \beta, \ell] \}$ \\
+                    }
+                    \Ifx{$s' \neq \varnothing$}{
+                        $\textsc{Closure}(s')$ \\
+                        \Ifx{$s' \notin \mathit{M}$}{
+                            $\mathit{M} \gets \mathit{M} \cup \{ s' \}$ \\
+                            $\mathit{newStates} \gets \mathit{newStates} \cup \{ s' \}$ \\
+                        }
+                        adicione transição $s \xrightarrow{X} s'$ \\
+                    }
+                }
+                $\mathit{newStates} \gets \mathit{newStates} - \{ s \}$ \\
+            }
+
+            \Return{$\mathit{M}$}
+        }
+    \end{algorithm}
+
+\end{apendice}

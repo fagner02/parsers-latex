@@ -1,0 +1,31 @@
+\begin{apendice}{apêndice i - Algoritmo Closure LR(1)}
+    \label{ap:closurelr1}
+    \begin{algorithm}[htbp]
+        \caption{Closure LR(1)}
+        \Input{Gramática $G$, Estado $s$}
+        \Output{Closure do estado $s$}
+        \Inicio{
+            $\mathit{added} \gets \text{verdadeiro}$ \\
+
+            \While{$\mathit{added}$}{
+                $\mathit{added} \gets \text{falso}$ \\
+                \ForEach{item $[A \rightarrow \alpha \cdot B \beta, \ell] \in s$}{
+                    \ForEach{produção $B \rightarrow \gamma \in G$}{
+                        $\mathit{lookahead} \gets \textsc{First}(\beta)$ \\
+                        \Ifx{$\epsilon \in \textsc{First}(\beta)$}{
+                            $\mathit{lookahead} \gets \mathit{lookahead} \cup \{ \ell \}$ \\
+                        }
+                        \ForEach{$a \in \mathit{lookahead}$}{
+                            \If{$[B \rightarrow \cdot \gamma, a] \notin s$}{
+                                $s \gets s \cup \{ [B \rightarrow \cdot \gamma, a] \}$ \\
+                                $\mathit{added} \gets \text{verdadeiro}$ \\
+                            }
+                        }
+                    }
+                }
+            }
+
+            \Return{$s$}
+        }
+    \end{algorithm}
+\end{apendice}

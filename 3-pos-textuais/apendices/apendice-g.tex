@@ -1,0 +1,35 @@
+\begin{apendice}{apêndice g - Algoritmo Construção da Tabela SLR}
+    \label{ap:slrtable}
+    \begin{algorithm}[htbp]
+        \caption{Construção da Tabela SLR}
+        \Input{Autômato \gls{lr}(0) $\mathit{M}$}
+        \Output{Tabelas $\textsc{Action}$ e $\textsc{Goto}$}
+        \Inicio{
+            $\textsc{Action} \gets \text{Tabela}\langle\text{Estado}, \text{Terminal}, \text{Ação}\rangle$ \\
+            $\textsc{Goto} \gets \text{Tabela}\langle\text{Estado}, \text{Não-terminal}, \text{Estado}\rangle$ \\
+
+            \ForEach{estado $s_i \in \mathit{M}$}{
+                \ForEach{item $[A \rightarrow \alpha \cdot a \beta] \in s_i$}{
+                    $s_j \gets \delta(s_i, a)$ \\
+                    \Ifx{$s_j \neq \varnothing$}{
+                        $\textsc{Action}[s_i, a] \gets \text{``shift } s_j \text{''}$ \\
+                    }
+                }
+                \ForEach{item $[A \rightarrow \alpha \cdot] \in s_i$}{
+                    \ForEach{$a \in \textsc{Follow}(A)$}{
+                        $\textsc{Action}[s_i, a] \gets \text{``reduce } A \rightarrow \alpha \text{''}$ \\
+                    }
+                }
+                \ForEach{não-terminal $A$}{
+                    $s_j \gets \delta(s_i, A)$ \\
+                    \Ifx{$s_j \neq \varnothing$}{
+                        $\textsc{Goto}[s_i, A] \gets s_j$ \\
+                    }
+                }
+            }
+
+            \Return{$\textsc{Action}, \textsc{Goto}$}
+        }
+    \end{algorithm}
+
+\end{apendice}

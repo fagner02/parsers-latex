@@ -1,0 +1,24 @@
+\begin{apendice}{apêndice f - Algoritmo Closure LR(0)}
+    \label{ap:closure}
+    \begin{algorithm}[htbp]
+        \caption{Closure LR(0)}
+        \Input{Gramática $G$, Estado $S$}
+        \Output{Closure do estado $S$}
+        \Inicio{
+            $\mathit{oldSize} \gets 0$ \\
+
+            \Repeat{$|S| = \mathit{oldSize}$}{
+                $\mathit{oldSize} \gets |S|$ \\
+                \ForEach{item $[A \rightarrow \alpha \cdot X \beta] \in S$}{
+                    \ForEach{produção $X \rightarrow \gamma \in G$}{
+                        \If{$[X \rightarrow \cdot \gamma] \notin S$}{
+                            $S \gets S \cup \{ [X \rightarrow \cdot \gamma] \}$ \\
+                        }
+                    }
+                }
+            }
+
+            \Return{$S$}
+        }
+    \end{algorithm}
+\end{apendice}

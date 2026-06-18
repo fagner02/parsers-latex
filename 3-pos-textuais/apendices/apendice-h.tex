@@ -1,0 +1,33 @@
+\begin{apendice}
+    {apêndice h - algoritmo Análise SLR}
+    \label{ap:slrparsing}
+    \begin{algorithm}[htbp]
+        \caption{Análise SLR}
+        \Input{Tabelas $\textsc{Action}$, $\textsc{Goto}$, String de entrada $w$}
+        \Output{Sucesso ou erro}
+        \Inicio{
+            $\mathit{pilha} \gets [s_0, \$]$ \\
+            $\mathit{token} \gets \text{pr\'oximo token de } w$ \\
+
+            \Repeat{para sempre}{
+                $s \gets \text{topo}(\mathit{pilha})$ \\
+
+                \If{$\textsc{Action}[s, \mathit{token}] = \text{``shift } s_j \text{''}$}{
+                    $\text{empilhe}(s_j)$ \\
+                    $\mathit{token} \gets \text{pr\'oximo token de } w$ \\
+                }
+                \ElseIf{$\textsc{Action}[s, \mathit{token}] = \text{``reduce } A \rightarrow \beta \text{''}$}{
+                    $\text{desempilhe}(2 \times |\beta|)$, {remove $|\beta|$ estados e $|\beta|$ símbolos} \\
+                    $s' \gets \text{topo}(\mathit{pilha})$ \\
+                    $\text{empilhe}(\textsc{Goto}[s', A])$ \\
+                }
+                \ElseIf{$\textsc{Action}[s, \mathit{token}] = \text{``aceitar''}$}{
+                    \Return{sucesso} \\
+                }
+                \Elsex{
+                    \Return{erro} \\
+                }
+            }
+        }
+    \end{algorithm}
+\end{apendice}

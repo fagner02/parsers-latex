@@ -1,0 +1,41 @@
+\begin{apendice}{apêndice d - ALGORITMO Análise LL(1)}
+    \label{ap:llparse}
+    \begin{algorithm}[htbp]
+        \caption{Análise LL(1)}
+        \Input{Gramática $G$, Tabela $M$, String de entrada $w$}
+        \Output{Sucesso ou erro}
+        \Inicio{
+            $\mathit{pilha} \gets [\$, S]$ \\
+            $\mathit{token} \gets \text{pr\'oximo token de } w$ \\
+
+            \While{$\mathit{pilha} \neq [\$]$}{
+                $X \gets \text{topo}(\mathit{pilha})$ \\
+                \If{$X$ é terminal}{
+                    \If{$X = \mathit{token}$}{
+                        $\text{desempilhe}(\mathit{pilha})$ \\
+                        $\mathit{token} \gets \text{pr\'oximo token de } w$
+                    }
+                    \Elsex{
+                        \Return{erro}
+                    }
+                }
+                \Elsex{
+                    \If{$M[X, \mathit{token}] = (X \rightarrow \alpha)$}{
+                        $\text{desempilhe}(\mathit{pilha})$ \\
+                        $\text{empilhe}(\alpha)$ {da direita para a esquerda}
+                    }
+                    \Elsex{
+                        \Return{erro}
+                    }
+                }
+            }
+
+            \If{$\mathit{token} = \$ $}{
+                \Return{sucesso}
+            }
+            \Elsex{
+                \Return{erro}
+            }
+        }
+    \end{algorithm}
+\end{apendice}

@@ -244,6 +244,22 @@
 }
 {}
 
+\NewDocumentEnvironment{apendice}{m +b}{
+  \pagebreak
+  \begingroup
+  \vspace*{-1cm}
+  \begin{center}
+    \normalfont\bfseries\fontsize{12}{14.4}\selectfont\MakeUppercase{#1}
+  \end{center}
+  \vspace*{20pt}
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\protect\numberline{}\MakeUppercase{#1}}
+  \refstepcounter{chapter}
+  #2
+  \cleardoublepage
+  \endgroup
+}{}
+
 % No preâmbulo, adicione:
 \newcounter{tabelacount}
 \NewDocumentEnvironment{mytabela}{ m m +b }

@@ -1,14 +1,23 @@
-\apendice{ Códigos-fontes utilizados para}
-\label{ap:C}
+\begin{apendice}{APÊNDICE C - ALGORITMO Construção da tabela LL(1)}
+	\label{ap:lltable}
 
-\lstinputlisting[language=C++,caption={Hello World em C++}]{figuras/main.cpp}
-
-
-\begin{lstlisting}[language=Java,caption={Hello World em Java}]
-public class HelloWorld {
-	public static void main(String[] args) {
-		System.out.println("Hello World!");
-	}
-}
-\end{lstlisting}
-
+	\begin{algorithm}[htbp]
+		\caption{Construção da Tabela LL(1)}
+		\Input{Gramática $G$}
+		\Output{Tabela $M$}
+		\Inicio{
+			$M \gets \text{Tabela}\langle\text{Não-terminal}, \text{Terminal}, \text{Produção}\rangle$ \\
+			\ForEach{regra $A \rightarrow \alpha$ em $G$}{
+				\ForEach{terminal $a \in \textsc{First}(\alpha) - \{ \epsilon \}$}{
+					$M[A, a] \gets (A \rightarrow \alpha)$
+				}
+				\Ifx{$\epsilon \in \textsc{First}(\alpha)$}{
+					\ForEach{terminal $b \in \textsc{Follow}(A)$}{
+						$M[A, b] \gets (A \rightarrow \alpha)$
+					}
+				}
+			}
+			\Return{$M$}
+		}
+	\end{algorithm}
+\end{apendice}

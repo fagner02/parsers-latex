@@ -1,22 +1,28 @@
-\apendice{ Questionário utilizado para}
-\label{ap:B}
+\begin{apendice}{APÊNDICE B - ALGORITMO FOLLOW}
+	\label{ap:follow}
 
-\begin{questao}
-	\item Esta é a primeira questão com alguns itens:
-		\begin{enumerate}
-			\item Este é o primeiro item
-			\item Segundo item
-		\end{enumerate}
-	\item Esta é a segunda questão:
-		\begin{enumerate}
-			\item Este é o primeiro item
-			\item Segundo item
-		\end{enumerate}
-	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dictum sed tortor nec viverra. consectetur adipiscing elit. Nunc dictum sed tortor nec viverra.
-		\begin{enumerate}
-			\item consectetur
-			\item adipiscing
-			\item Nunc
-			\item dictum
-		\end{enumerate}
-\end{questao}
+	\begin{algorithm}[htbp]
+		\caption{Follow}
+		\Input{Gramática $G$, Símbolo $A$}
+		\Output{Conjunto $\mathit{follow}$}
+		\Inicio{
+			$\mathit{follow} \gets \varnothing$ \\
+
+			\Ifx{$A$ é o símbolo inicial $S$}{
+				$\mathit{follow} \gets \{ \$ \}$
+			}
+
+			\Repeat{não haja mais mudanças}{
+				\ForEach{produção $B \rightarrow \alpha A \beta$ em $G$}{
+					\Ifx{$\beta \neq \epsilon$}{
+						$\mathit{follow} \gets \mathit{follow} \cup \left( \textsc{First}(\beta) - \{ \epsilon \} \right)$
+					}
+					\Ifx{$\beta = \epsilon \lor \epsilon \in \textsc{First}(\beta)$}{
+						$\mathit{follow} \gets \mathit{follow} \cup \textsc{Follow}(B)$
+					}
+				}
+			}
+			\Return{$\mathit{follow}$}
+		}
+	\end{algorithm}
+\end{apendice}

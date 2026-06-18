@@ -1,6 +1,6 @@
 \chapter{Metodologias}
 \label{chap:metodologia}
-Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento deste trabalho. As etapas seguidas estão representadas no fluxograma da Figura \ref{fig:etapas}.
+Neste Capítulo serão apresentadas as metodologias usadas para o desenvolvimento deste trabalho. As etapas seguidas estão representadas no fluxograma da Figura \ref{fig:etapas}.
 
 \begin{mypicture}{\label{fig:etapas}}{Fluxograma das etapas}{figuras/fluxograma.png}{fornecida pelo próprio autor}
 \end{mypicture}
@@ -9,22 +9,22 @@ Nesta seção serão apresentadas as metodologias usadas para o desenvolvimento 
 O primeiro passo no desenvolvimento de \textit{software} é a definição dos requisitos. Com eles tem-se um direcionamento sobre o que deve ser feito. A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
 
 \begin{itemize}[label={$\sbullet$}]
-    \item Permitir que os usuários digitem uma gramática para ser analisada.
-    \item Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
-    \item Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos.
-    \item Permitir que os usuários selecionem o algoritmo a ser visualizado.
-    \item Permitir que os usuários acessem o pseudocódigo dos algoritmos.
-    \item Permitir que os usuários adicionem \textit{breakpoints} no pseudocódigo.
-    \item Permitir que os usuários visualizem o autômato dos algoritmos \gls{lr}.
-    \item Permitir que os usuários visualizem uma descrição dos botões da interface.
-    \item Permitir que os usuários digitem uma \textit{string} para ser analisada.
-    \item Permitir que os usuários visualizem a análise de uma \textit{string}.
-    \item Permitir que os usuários visualizem a árvore sintática de uma \textit{string}.
-    \item Permitir que os usuários copiem em formato de texto o resultado dos algoritmos.
+    \item RF1: Permitir que os usuários digitem uma gramática para ser analisada.
+    \item RF2: Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
+    \item RF3: Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos.
+    \item RF4: Permitir que os usuários selecionem o algoritmo a ser visualizado.
+    \item RF5: Permitir que os usuários acessem o pseudocódigo dos algoritmos.
+    \item RF6: Permitir que os usuários adicionem \textit{breakpoints} no pseudocódigo.
+    \item RF7: Permitir que os usuários visualizem o autômato dos algoritmos \gls{lr}.
+    \item RF8: Permitir que os usuários visualizem uma descrição dos botões da interface.
+    \item RF9: Permitir que os usuários digitem uma \textit{string} para ser analisada.
+    \item RF10: Permitir que os usuários visualizem a análise de uma \textit{string}.
+    \item RF11: Permitir que os usuários visualizem a árvore sintática de uma \textit{string}.
+    \item RF12: Permitir que os usuários copiem em formato de texto o resultado dos algoritmos.
 \end{itemize}
 
 \section{Definição da arquitetura do projeto}
-O projeto será construído usando o \textit{framework Svelte}, sem \gls{ssr}, para ser possível o funcionamento \textit{offline} da ferramenta. Já que a ferramenta não teria acesso ao servidor quando \textit{offline}, não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
+O projeto foi construído usando o \textit{framework Svelte}, sem \gls{ssr}, para ser possível o funcionamento \textit{offline} da ferramenta. Já que a ferramenta não teria acesso ao servidor quando \textit{offline}, não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
 
 \begin{mypicture}{\label{fig:arqremo}}{Arquitetura da aplicação em nuvem}{figuras/remote.png}{fornecida pelo próprio autor}
 \end{mypicture}
@@ -35,7 +35,7 @@ Para a versão \textit{online} da aplicação, adotaram-se os serviços de compu
 
 O código-fonte da aplicação foi armazenado em um repositório \textit{Git}\footnote{https://git-scm.com} hospedado no \textit{Github}\footnote{https://github.com/fagner02/parsers-svelte.git}. Graças à integração entre \textit{Netlify} e \textit{Github}, a aplicação é atualizada automaticamente a cada \textit{commit} realizado no repositório. Já o \textit{Supabase} foi utilizado especificamente para armazenar os arquivos de \textit{log} gerados durante a avaliação da ferramenta com os alunos.
 
-Ao término do desenvolvimento, a base de código da ferramenta continha 127 arquivos-fonte, totalizando cerca de 16,5 mil linhas de código. A Tabela \ref{tab:dimensao-codigo} apresenta a distribuição do esforço implementação pelos principais módulos do sistema, evidenciando a separação entre a lógica dos algoritmos de análise sintática, os componentes de visualização e as estruturas gráficas interativas. O desenvolvimento do núcleo de funcionamento da ferramenta foi realizado em um período de 6 meses, com atualizações incrementais pelos 6 meses seguintes.
+Ao término do desenvolvimento, a base de código da ferramenta continha 127 arquivos-fonte, totalizando cerca de 16,5 mil linhas de código. A Tabela \ref{tab:dimensao-codigo} apresenta a distribuição do esforço de implementação pelos principais módulos do sistema, evidenciando a separação entre a lógica dos algoritmos de análise sintática, os componentes de visualização e as estruturas gráficas interativas. O desenvolvimento do núcleo de funcionamento da ferramenta foi realizado em um período de 6 meses, com atualizações incrementais pelos 6 meses seguintes. O módulo que tomou mais tempo e esforço foi o módulo \texttt{lib/stepCalc}, módulo que engloba a integração dos algoritmos de parsing e a conciliação do fluxo das animações com o a execução dos algoritmos.
 
 \begin{mytabela}
     {tab:dimensao-codigo}
@@ -59,7 +59,7 @@ A concentração de aproximadamente 26\% do código em \texttt{lib/stepCalc} ref
 
 
 \section{Implementação da interface de usuário}
-Nesta seção estão descritos o \textit{layout} da ferramenta e os elementos que o constituem. Começando pela barra de navegação, a qual contém abas que levam para as abas dos algoritmos e de entrada da gramática. A aba de entrada da gramática é a primeira. Nessa aba há apenas uma caixa de texto para digitar a entrada. Os elementos descritos neste parágrafo podem ser vistos na Figura \ref{fig:mgrammar}.
+Nesta Seção estão descritos o \textit{layout} da ferramenta e os elementos que o constituem. Começando pela barra de navegação, a qual contém abas que levam para as abas dos algoritmos e de entrada da gramática. A aba de entrada da gramática é a primeira. Nessa aba há apenas uma caixa de texto para digitar a entrada. Os elementos descritos neste parágrafo podem ser vistos na Figura \ref{fig:mgrammar}.
 
 
 \begin{mypicture}{\label{fig:mgrammar}}{Aba de entrada da gramática}
@@ -112,7 +112,7 @@ Nessa implementação, as pausas são feitas chamando uma \textit{Promise} com r
 
 O problema com a forma de implementação citada acima é que os passos da execução não são pré-calculados. Por essa razão, se a execução de um algoritmo tiver uma quantidade muito grande de passos, quando a ação de voltar ou pular for realizada, vários passos serão executados em sequência até chegar no passo esperado.
 
-Dessa forma, dado o fato que as funções de atualização da interface gráfica também serão executadas, a aplicação vai requerer uma quantidade maior de poder computacional e vai parar de responder até que a execução dos passos seja finalizada.
+Dessa forma, dado o fato que as funções de atualização da interface gráfica também serão executadas, a aplicação vai requerer uma quantidade maior de poder computacional e vai parar de responder até que a execução dos passos seja finalizada. Esse problema não ocorria quando processando uma gramática pequena, mas, quando a gramática requeria muitos passos e operações das estruturas de dados, o problema se tornava certo de ocorrer.
 
 Pela razão citada acima foi necessário criar uma segunda forma de implementação de controle de fluxo. Nessa implementação, o estado das estruturas em cada passo é salvo em uma \textit{array} usando apenas as estruturas de dados sem modificar os elementos da interface gráfica. Dessa forma, a aplicação consegue pré-calcular os passos da execução sem muito esforço. Assim, quando as ações de controle de fluxo são executadas, os estados salvos são carregados e a interface gráfica é atualizada de acordo com eles.
 

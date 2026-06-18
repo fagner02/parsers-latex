@@ -1,4 +1,32 @@
-\apendice{EXEMPLO DE APÊNDICE}
-\label{ap:A}
+\begin{apendice}{APÊNDICE A - ALGORITMO FIRST}
+    \label{ap:first}
 
-Um apêndice é um documento elaborado pelo autor, diferentemente do anexo. Geralmente, se coloca como apêndice, questionários, códigos de programação, tabelas que tomariam muito espaço no meio do trabalho.
+    \begin{algorithm}[htbp]
+        \caption{First}
+        \Input{Gramática $G$, Símbolo $X$}
+        \Output{Conjunto $\mathit{first}$}
+        \Inicio{
+            $\mathit{first} \gets \varnothing$ \\
+
+            \Ifx{$X$ é terminal}{
+                $\mathit{first} \gets \{ X \}$
+            }
+            \Elsex{
+                \Repeat{não haja mais mudanças}{
+                    \ForEach{regra $X \rightarrow Y_1 Y_2 \dots Y_k$ em $G$}{
+                        \Ifx{
+                            $a \in \textsc{First}(Y_1) \lor (a \in \textsc{First}(Y_n) \land Y_1 \dots Y_{n-1} \Rightarrow^* \epsilon)$
+                        }{
+                            $\mathit{first} \gets \mathit{first} \cup \{ a \}$
+                        }
+                        \Ifx{$Y_1 \dots Y_k \Rightarrow^* \epsilon$}{
+                            $\mathit{first} \gets \mathit{first} \cup \{ \epsilon \}$
+                        }
+                    }
+                }
+            }
+            \Return{$\mathit{first}$}
+        }
+    \end{algorithm}
+
+\end{apendice}

@@ -1,0 +1,38 @@
+\begin{apendice}{apêndice e - Algoritmo Construção do autômato LR(0)}
+    \label{ap:automaton}
+    \begin{algorithm}[htbp]
+        \caption{Construção do Autômato LR(0)}
+        \Input{Gramática $G$}
+        \Output{Autômato $\mathit{M}$}
+        \Inicio{
+            $\mathit{M} \gets \varnothing$ \\
+            $s_0 \gets \{ [S' \rightarrow \cdot S] \}$, {Onde $S$ é o símbolo inicial} \\
+            $s_0 \gets \textsc{Closure}(s_0)$ \\
+            $\mathit{M} \gets \mathit{M} \cup \{ s_0 \}$ \\
+            $\mathit{newStates} \gets \{ s_0 \}$ \\
+
+            \While{$\mathit{newStates} \neq \varnothing$}{
+                selecione $s \in \mathit{newStates}$ \\
+                $\mathit{newStates} \gets \mathit{newStates} - \{ s \}$ \\
+
+                \ForEach{$X \in T \cup NT$}{
+                    $s' \gets \varnothing$ \\
+                    \ForEach{item $[A \rightarrow \alpha \cdot X \beta] \in s$}{
+                        $s' \gets s' \cup \{ [A \rightarrow \alpha X \cdot \beta] \}$ \\
+                    }
+                    \Ifx{$s' = \varnothing$}{
+                        continua para a próxima iteração \\
+                    }
+                    $s' \gets \textsc{Closure}(s')$ \\
+                    \Ifx{$s' \notin \mathit{M}$}{
+                        $\mathit{M} \gets \mathit{M} \cup \{ s' \}$ \\
+                        $\mathit{newStates} \gets \mathit{newStates} \cup \{ s' \}$ \\
+                    }
+                    adicione transição $s \xrightarrow{X} s'$ \\
+                }
+            }
+
+            \Return{$\mathit{M}$}
+        }
+    \end{algorithm}
+\end{apendice}
