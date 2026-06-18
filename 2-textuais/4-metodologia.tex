@@ -2,31 +2,31 @@
 \label{chap:metodologia}
 Neste Capítulo serão apresentadas as metodologias usadas para o desenvolvimento deste trabalho. As etapas seguidas estão representadas no fluxograma da Figura \ref{fig:etapas}.
 
-\begin{mypicture}{\label{fig:etapas}}{Fluxograma das etapas}{figuras/fluxograma.png}{fornecida pelo próprio autor}
+\begin{mypicture}{\label{fig:etapas}}{Fluxograma das etapas}{figuras/fluxograma.png}{Elaborado pelo autor}
 \end{mypicture}
 
 \section{Definição dos requisitos\label{sec:requisitos}}
 O primeiro passo no desenvolvimento de \textit{software} é a definição dos requisitos. Com eles tem-se um direcionamento sobre o que deve ser feito. A partir da revisão bibliográfica foram definidos alguns requisitos básicos que deveriam estar presentes na ferramenta. Apesar das ferramentas compartilharem as mesmas funcionalidades básicas já definidas inicialmente, outras têm características interessantes que podem ser reaproveitadas. Como requisito não funcional foi definido oferecer suporte multi-plataforma, para \textit{mobile}, \textit{desktop} e \textit{web}. Como requisitos funcionais foram definidos os seguintes:
 
 \begin{itemize}[label={$\sbullet$}]
-    \item RF1: Permitir que os usuários digitem uma gramática para ser analisada.
-    \item RF2: Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
-    \item RF3: Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos.
-    \item RF4: Permitir que os usuários selecionem o algoritmo a ser visualizado.
-    \item RF5: Permitir que os usuários acessem o pseudocódigo dos algoritmos.
-    \item RF6: Permitir que os usuários adicionem \textit{breakpoints} no pseudocódigo.
-    \item RF7: Permitir que os usuários visualizem o autômato dos algoritmos \gls{lr}.
-    \item RF8: Permitir que os usuários visualizem uma descrição dos botões da interface.
-    \item RF9: Permitir que os usuários digitem uma \textit{string} para ser analisada.
-    \item RF10: Permitir que os usuários visualizem a análise de uma \textit{string}.
-    \item RF11: Permitir que os usuários visualizem a árvore sintática de uma \textit{string}.
-    \item RF12: Permitir que os usuários copiem em formato de texto o resultado dos algoritmos.
+	\item RF1: Permitir que os usuários digitem uma gramática para ser analisada.
+	\item RF2: Permitir que os usuários visualizem o estado das estruturas dos algoritmos.
+	\item RF3: Permitir que os usuários avancem, retornem e reiniciem os passos da execução dos algoritmos.
+	\item RF4: Permitir que os usuários selecionem o algoritmo a ser visualizado.
+	\item RF5: Permitir que os usuários acessem o pseudocódigo dos algoritmos.
+	\item RF6: Permitir que os usuários adicionem \textit{breakpoints} no pseudocódigo.
+	\item RF7: Permitir que os usuários visualizem o autômato dos algoritmos \gls{lr}.
+	\item RF8: Permitir que os usuários visualizem uma descrição dos botões da interface.
+	\item RF9: Permitir que os usuários digitem uma \textit{string} para ser analisada.
+	\item RF10: Permitir que os usuários visualizem a análise de uma \textit{string}.
+	\item RF11: Permitir que os usuários visualizem a árvore sintática de uma \textit{string}.
+	\item RF12: Permitir que os usuários copiem em formato de texto o resultado dos algoritmos.
 \end{itemize}
 
 \section{Definição da arquitetura do projeto}
 O projeto foi construído usando o \textit{framework Svelte}, sem \gls{ssr}, para ser possível o funcionamento \textit{offline} da ferramenta. Já que a ferramenta não teria acesso ao servidor quando \textit{offline}, não seria possível usá-lo para renderizar elementos. \textit{Svelte} compila a base de código e cria uma coleção de arquivos estáticos que constituem a página \textit{web} e a base para o suporte multi-plataforma da aplicação.
 
-\begin{mypicture}{\label{fig:arqremo}}{Arquitetura da aplicação em nuvem}{figuras/remote.png}{fornecida pelo próprio autor}
+\begin{mypicture}{\label{fig:arqremo}}{Arquitetura da aplicação em nuvem}{figuras/remote.png}{Elaborado pelo autor}
 \end{mypicture}
 
 O \textit{framework Capacitor}\footnote{https://capacitorjs.com} consome essa coleção de arquivos e cria um projeto para a plataforma \textit{Android}. Esse projeto é usado para criar a versão \textit{mobile} da ferramenta usando o \textit{Android Studio}. O \textit{framework Tauri}\footnote{https://tauri.app} constrói instaladores para \textit{desktop} diretamente da coleção de arquivos estáticos. A plataforma alvo dos instaladores é a plataforma em que eles são construídos. Já que o \textit{framework} não tem suporte para construção \textit{cross-platform} é necessária a utilização de máquinas virtuais para construir instaladores para diferentes plataformas \textit{desktop}.
@@ -38,21 +38,21 @@ O código-fonte da aplicação foi armazenado em um repositório \textit{Git}\fo
 Ao término do desenvolvimento, a base de código da ferramenta continha 127 arquivos-fonte, totalizando cerca de 16,5 mil linhas de código. A Tabela \ref{tab:dimensao-codigo} apresenta a distribuição do esforço de implementação pelos principais módulos do sistema, evidenciando a separação entre a lógica dos algoritmos de análise sintática, os componentes de visualização e as estruturas gráficas interativas. O desenvolvimento do núcleo de funcionamento da ferramenta foi realizado em um período de 6 meses, com atualizações incrementais pelos 6 meses seguintes. O módulo que tomou mais tempo e esforço foi o módulo \texttt{lib/stepCalc}, módulo que engloba a integração dos algoritmos de parsing e a conciliação do fluxo das animações com o a execução dos algoritmos.
 
 \begin{mytabela}
-    {tab:dimensao-codigo}
-    {Dimensão da base de código da ferramenta VANSI}
-    {lrrX}
-    \hline
-    \textbf{Módulo} & \textbf{Arquivos} & \textbf{Linhas} & \textbf{Descrição} \\ \hline
-    \texttt{lib/stepCalc} & 10 & 4.346 & Lógica dos algoritmos de \textit{parsing} \\
-    \texttt{components/Algorithms} & 12 & 1.780 & Componentes para execução dos algoritmos \\
-    \texttt{components/Layout} & 16 & 1.968 & Elementos reutilizáveis de interface \\
-    \texttt{components/Tabs} & 9 & 1.521 & Sistema de abas \\
-    \texttt{components/Structures} & 5 & 1.573 & Renderização do autômato e árvore sintática \\
-    \texttt{components/Cards} & 7 & 1.382 & Caixas de estruturas de dados \\
-    \texttt{components/Info} & 11 & 891 & Diálogos informativos dos algoritmos \\
-    \texttt{routes} & 5 & 301 & Rotas da aplicação\\
-    Outros (\texttt{Icons}, \texttt{lib}, etc.) & 52 & 2.713 & Ícones, estilos globais e funções auxiliares \\ \hline
-    \textbf{Total} & \textbf{127} & \textbf{16.475} & Base de código completa da ferramenta \\ \hline
+	{tab:dimensao-codigo}
+	{Dimensão da base de código da ferramenta VANSI}
+	{lrrX}
+	\hline
+	\textbf{Módulo} & \textbf{Arquivos} & \textbf{Linhas} & \textbf{Descrição} \\ \hline
+	\texttt{lib/stepCalc} & 10 & 4.346 & Lógica dos algoritmos de \textit{parsing} \\
+	\texttt{components/Algorithms} & 12 & 1.780 & Componentes para execução dos algoritmos \\
+	\texttt{components/Layout} & 16 & 1.968 & Elementos reutilizáveis de interface \\
+	\texttt{components/Tabs} & 9 & 1.521 & Sistema de abas \\
+	\texttt{components/Structures} & 5 & 1.573 & Renderização do autômato e árvore sintática \\
+	\texttt{components/Cards} & 7 & 1.382 & Caixas de estruturas de dados \\
+	\texttt{components/Info} & 11 & 891 & Diálogos informativos dos algoritmos \\
+	\texttt{routes} & 5 & 301 & Rotas da aplicação\\
+	Outros (\texttt{Icons}, \texttt{lib}, etc.) & 52 & 2.713 & Ícones, estilos globais e funções auxiliares \\ \hline
+	\textbf{Total} & \textbf{127} & \textbf{16.475} & Base de código completa da ferramenta \\ \hline
 \end{mytabela}
 
 A concentração de aproximadamente 26\% do código em \texttt{lib/stepCalc} reflete a prioridade dada à corretude e ao detalhamento dos algoritmos de análise sintática, enquanto os 63\% restantes distribuídos em \texttt{components} demonstram o esforço voltado à construção de uma interface interativa e de múltiplas visualizações, conforme os requisitos definidos na Seção \ref{sec:requisitos}.
@@ -63,7 +63,7 @@ Nesta Seção estão descritos o \textit{layout} da ferramenta e os elementos qu
 
 
 \begin{mypicture}{\label{fig:mgrammar}}{Aba de entrada da gramática}
-    {figuras/mgrammar.png}{fornecida pelo próprio autor}
+	{figuras/mgrammar.png}{Elaborado pelo autor}
 \end{mypicture}
 
 Na aba dos algoritmos há uma barra de ações com botões separados em dois grupos. No grupo da esquerda, os dois primeiros botões abrem respectivamente uma janela de diálogo com os resultados em formato de texto e uma janela de diálogo com uma descrição do algoritmo. Os outros dois botões do grupo da esquerda alternam entre a visualização da construção do \textit{parser} e a visualização da análise de uma \textit{string}. No grupo de botões da direita estão os controles de fluxo da execução do algoritmo. O primeiro botão vai para o passo da execução digitado no campo de texto ao lado desse botão. Os demais botões realizam as respectivas ações: ir para o passo anterior, reiniciar, ir para o passo seguinte e pular para o fim da execução.
@@ -72,7 +72,7 @@ Na aba dos algoritmos há uma barra de ações com botões separados em dois gru
 Logo abaixo da barra de ações há uma lista de botões. Cada um deles abre a visualização de um algoritmo secundário usado na construção do parser selecionado e, abaixo desses botões estão os elementos que representam as estruturas de dados dos algoritmos. Os elementos descritos neste parágrafo podem ser vistos na Figura \ref{fig:malg}.
 
 
-\begin{mypicture}{ \label{fig:malg}}{Aba de visualização do algoritmo SLR}{figuras/malg.png}{fornecida pelo próprio autor}
+\begin{mypicture}{ \label{fig:malg}}{Aba de visualização do algoritmo SLR}{figuras/malg.png}{Elaborado pelo autor}
 \end{mypicture}
 \FloatBarrier
 
@@ -80,7 +80,7 @@ Logo abaixo da barra de ações há uma lista de botões. Cada um deles abre a v
 Ainda na aba dos algoritmos, existem janelas flutuantes onde são mostrados os pseudocódigos dos algoritmos e autômatos. Essas janelas flutuantes são abertas clicando em um botão flutuante com um ícone e título descrevendo a janela. Dentro dessas janelas, no canto superior direito, existe uma bandeja de ações com alguns botões. O primeiro botão minimiza a janela, o segundo ativa a ação de mover a janela ao clicar e arrastar ela e o terceiro ativa a interação com a janela. Os elementos descritos neste parágrafo e no parágrafo a seguir podem ser vistos na Figura \ref{fig:malgjan}.
 
 
-\begin{mypicture}{\label{fig:malgjan}}{Aba de visualização do algoritmo LR(1)}{figuras/malgjan.png}{fornecida pelo próprio autor}
+\begin{mypicture}{\label{fig:malgjan}}{Aba de visualização do algoritmo LR(1)}{figuras/malgjan.png}{Elaborado pelo autor}
 \end{mypicture}
 
 Na janela flutuante que mostra um autômato, há um quarto botão na bandeja de ações. Esse botão permite que os estados do autômato sejam movidos. Na janela flutuante de pseudocódigo os números das linhas são clicáveis para que o usuário possa adicionar \textit{breakpoints}. Por fim, nos cantos das janelas flutuantes existem pequenos quadrados que servem para redimensionar a janela.
@@ -89,12 +89,12 @@ Na janela flutuante que mostra um autômato, há um quarto botão na bandeja de 
 
 Dentro da aba de análise de \textit{strings}, no lado esquerdo, está uma área de visualização da árvore sintática e, no lado direito, está um campo de texto para digitar a \textit{string} de entrada. Logo abaixo do campo de texto estão os elementos que representam as estruturas de dados dos algoritmos. Os elementos descritos neste parágrafo podem ser vistos na Figura \ref{fig:manalise}.
 
-\begin{mypicture}{\label{fig:manalise}}{Aba de visualização da análise de uma \textit{string}}{figuras/manalise.png}{fornecida pelo próprio autor}
+\begin{mypicture}{\label{fig:manalise}}{Aba de visualização da análise de uma \textit{string}}{figuras/manalise.png}{Elaborado pelo autor}
 \end{mypicture}
 
 As janelas de diálogo aparecem contidas na área de visualização da execução dos algoritmos. Acima de cada janela está um botão de fechar que cobre o comprimento inteiro da janela. Dentro da janela de diálogo com os resultados dos algoritmos em formato de texto, estão os resultados de cada algoritmo divididos em seções e, ao lado do título de cada seção, está um botão de copiar. Na janela de diálogo de descrição do algoritmo tem apenas conteúdo textual. Os elementos descritos neste parágrafo podem ser vistos na Figura \ref{fig:mpopup}.
 
-\begin{mypicture}{ \label{fig:mpopup}}{Janela de diálogo para copiar resultados}{figuras/mpopup.png}{fornecida pelo próprio autor}
+\begin{mypicture}{ \label{fig:mpopup}}{Janela de diálogo para copiar resultados}{figuras/mpopup.png}{Elaborado pelo autor}
 \end{mypicture}
 
 Por fim foi implementada um caixa de texto que mostra uma descrição dos elementos da interface de usuário ao passar o mouse por cima de um desses elementos. Essa caixa de texto funciona como um \textit{tooltip}, sendo escondida quando o mouse sai de perto dos elementos.
@@ -138,20 +138,20 @@ O primeiro passo da coleta de dados consistiu na criação do sistema de \textit
 
 \begin{myquadro}{\label{qua:esquema-log}}{Possíveis valores do campo \textit {type}}{lX}[hvlines]
 
-    \textbf{Valor}     & \textbf{Descrição}                                         \\
-    mouse pos          & Movimento do \textit{mouse}. Contém coordenadas do \textit{mouse} e dimensões da \textit{viewport}        \\
-    w click            & Clique do \textit{mouse}. Contém coordenadas do \textit{mouse} e dimensões da \textit{viewport}        \\
-    tab change         & Alteração de aba. Contém o identificador da nova aba ativa        \\
-    algorithm change   & Alteração de algoritmo. Contém o identificador do novo algoritmo        \\
-    control flow       & Fluxo de controle. Contém identificador do botão de fluxo de execução        \\
-    open parse         & Abertura da aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
-    close parse        & Ação de fechar a aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
-    open popup         & Abertura de uma janela de diálogo. Contém o nome da janela de diálogo aberta       \\
-    close popup        & Ação de fechar uma janela de diálogo. Contém o nome da janela de diálogo \\
-    resize float       & Redimensionamento de janela flutuante. Contém o identificador da janela redimensionada e suas dimensões        \\
-    move float         & Movimento de janela flutuante. Contém o identificador da janela movida e suas novas coordenadas        \\
-    open float         & Abertura de uma janela flutuante. Contém o nome da janela flutuante aberta e suas dimensões       \\
-    close float        & Ação de fechar uma janela flutuante. Contém o nome da janela flutuante fechada
+	\textbf{Valor}     & \textbf{Descrição}                                         \\
+	mouse pos          & Movimento do \textit{mouse}. Contém coordenadas do \textit{mouse} e dimensões da \textit{viewport}        \\
+	w click            & Clique do \textit{mouse}. Contém coordenadas do \textit{mouse} e dimensões da \textit{viewport}        \\
+	tab change         & Alteração de aba. Contém o identificador da nova aba ativa        \\
+	algorithm change   & Alteração de algoritmo. Contém o identificador do novo algoritmo        \\
+	control flow       & Fluxo de controle. Contém identificador do botão de fluxo de execução        \\
+	open parse         & Abertura da aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
+	close parse        & Ação de fechar a aba de parse. Contém o nome do algoritmo de análise sintática usado para a análise        \\
+	open popup         & Abertura de uma janela de diálogo. Contém o nome da janela de diálogo aberta       \\
+	close popup        & Ação de fechar uma janela de diálogo. Contém o nome da janela de diálogo \\
+	resize float       & Redimensionamento de janela flutuante. Contém o identificador da janela redimensionada e suas dimensões        \\
+	move float         & Movimento de janela flutuante. Contém o identificador da janela movida e suas novas coordenadas        \\
+	open float         & Abertura de uma janela flutuante. Contém o nome da janela flutuante aberta e suas dimensões       \\
+	close float        & Ação de fechar uma janela flutuante. Contém o nome da janela flutuante fechada
 \end{myquadro}
 
 
@@ -159,34 +159,34 @@ A partir dos dados base registrados nos \textit{logs} foram calculadas novas pro
 
 \begin{myquadro}{\label{qua:esquema-proc}}{Esquema dos dados obtidos pelo processamento dos \textit{logs}}{llX}[hvlines]
 
-    \textbf{Campo}     & \textbf{Tipo} & \textbf{Descrição}                                          \\
-    timestamp          & DateTime      & Data e hora do evento com precisão de milissegundos         \\
-    type               & String        & Categoria do evento (clique, posição, mudança de aba, etc.) \\
-    active\_tab        & String        & Identificador da aba ativa no momento da interação          \\
-    mouse\_x           & Integer       & Coordenada x do cursor na interface gráfica                 \\
-    mouse\_y           & Integer       & Coordenada y do cursor na interface gráfica                 \\
-    win\_x             & Integer       & Dimensão x do \textit{viewport} da interface gráfica        \\
-    win\_y             & Integer       & Dimensão y do \textit{viewport} da interface gráfica        \\
-    window\_id         & String        & Identificador da janela flutuante envolvida na interação    \\
+	\textbf{Campo}     & \textbf{Tipo} & \textbf{Descrição}                                          \\
+	timestamp          & DateTime      & Data e hora do evento com precisão de milissegundos         \\
+	type               & String        & Categoria do evento (clique, posição, mudança de aba, etc.) \\
+	active\_tab        & String        & Identificador da aba ativa no momento da interação          \\
+	mouse\_x           & Integer       & Coordenada x do cursor na interface gráfica                 \\
+	mouse\_y           & Integer       & Coordenada y do cursor na interface gráfica                 \\
+	win\_x             & Integer       & Dimensão x do \textit{viewport} da interface gráfica        \\
+	win\_y             & Integer       & Dimensão y do \textit{viewport} da interface gráfica        \\
+	window\_id         & String        & Identificador da janela flutuante envolvida na interação    \\
 \end{myquadro}
 
 
 O segundo passo da coleta de dados consistiu numa atividade prática aplicada com os alunos voluntários. A atividade era composta por sete tarefas, elaboradas para exercitar as principais funcionalidades da ferramenta e avaliar sua completude como recurso pedagógico. A sequência de tarefas estruturou-se da seguinte forma:
 
 \begin{enumerate}[label=\arabic*.]
-    \item Geração de gramática a partir do conjunto \textit{First}: Os discentes receberam um conjunto \textit{First} e devem fornecer uma gramática que gere esse conjunto, correspondendo à questão 1 da atividade.
+	\item Geração de gramática a partir do conjunto \textit{First}: Os discentes receberam um conjunto \textit{First} e devem fornecer uma gramática que gere esse conjunto, correspondendo à questão 1 da atividade.
 
-    \item Geração de gramática a partir do conjunto \textit{Follow}: A partir de um conjunto \textit{Follow} fornecido, os participantes devem construir uma gramática que gere esse conjunto, correspondendo à questão 2.
+	\item Geração de gramática a partir do conjunto \textit{Follow}: A partir de um conjunto \textit{Follow} fornecido, os participantes devem construir uma gramática que gere esse conjunto, correspondendo à questão 2.
 
-    \item Geração de gramática a partir da tabela \textit{SLR}: Dada uma tabela \textit{SLR}, os discentes devem fornecer uma gramática que gere essa tabela, correspondendo à questão 3.
+	\item Geração de gramática a partir da tabela \textit{SLR}: Dada uma tabela \textit{SLR}, os discentes devem fornecer uma gramática que gere essa tabela, correspondendo à questão 3.
 
-    \item Geração de gramática a partir da tabela \textit{LR}(1): A partir de uma tabela \textit{LR}(1) fornecida, os participantes devem construir uma gramática que gere essa tabela, correspondendo à questão 4.
+	\item Geração de gramática a partir da tabela \textit{LR}(1): A partir de uma tabela \textit{LR}(1) fornecida, os participantes devem construir uma gramática que gere essa tabela, correspondendo à questão 4.
 
-    \item Cálculo dos itens canônicos de uma gramática LR(0): Dada uma gramática, os discentes devem fornecer o conjunto de itens canônicos LR(0) da gramática, correspondendo à questão 5.
+	\item Cálculo dos itens canônicos de uma gramática LR(0): Dada uma gramática, os discentes devem fornecer o conjunto de itens canônicos LR(0) da gramática, correspondendo à questão 5.
 
-    \item Análise sintática \textit{LL}(1): Os participantes devem mostrar os passos da análise sintática \textit{LL}(1) da cadeia ``a b a c'' para uma gramática fornecida, correspondendo à questão 6.
+	\item Análise sintática \textit{LL}(1): Os participantes devem mostrar os passos da análise sintática \textit{LL}(1) da cadeia ``a b a c'' para uma gramática fornecida, correspondendo à questão 6.
 
-    \item Construção de gramática \textit{LR} para entradas específicas: Finalizando com a construção de uma gramática \textit{LR} que aceita as entradas especificadas, correspondendo à questão 7.
+	\item Construção de gramática \textit{LR} para entradas específicas: Finalizando com a construção de uma gramática \textit{LR} que aceita as entradas especificadas, correspondendo à questão 7.
 \end{enumerate}
 
 
@@ -195,12 +195,12 @@ Complementando os dados objetivos de interação, o terceiro passo de coleta con
 A seção de informações gerais buscou caracterizar o perfil dos participantes em relação à experiência prévia e nível de conhecimento. A seção de interface e usabilidade avaliou aspectos como facilidade de navegação, clareza dos elementos e organização do \textit{layout}. A seção de recursos pedagógicos trata da utilidade percebida das diferentes visualizações, animações e mecanismos de controle. Por fim, a avaliação geral coletou impressões subjetivas sobre a ferramenta e intenções de uso futuro.
 
 \begin{myquadro}{\label{qua:questionario-estrutura}}{Estrutura de seções do questionário de feedback}{llX}[hvlines]
-    \textbf{Seção}       & \textbf{Nº Questões} & \textbf{Objetivo Específico}                                              \\
+	\textbf{Seção}       & \textbf{Nº Questões} & \textbf{Objetivo Específico}                                              \\
 
-    Informações Gerais      & 3                    & Caracterização do perfil e experiência prévia dos participantes           \\
-    Interface e Usabilidade & 7                    & Avaliação da navegabilidade, clareza visual e organização dos elementos   \\
-    Recursos Pedagógicos    & 7                    & Análise da efetividade das visualizações, animações e controles didáticos \\
-    Avaliação Geral         & 4                    & Coleta de impressões holísticas e intenções de uso futuro                 \\
+	Informações Gerais      & 3                    & Caracterização do perfil e experiência prévia dos participantes           \\
+	Interface e Usabilidade & 7                    & Avaliação da navegabilidade, clareza visual e organização dos elementos   \\
+	Recursos Pedagógicos    & 7                    & Análise da efetividade das visualizações, animações e controles didáticos \\
+	Avaliação Geral         & 4                    & Coleta de impressões holísticas e intenções de uso futuro                 \\
 \end{myquadro}
 
 \subsection{Análise dos dados}

@@ -1,18 +1,18 @@
 \newcommand{\ctext}[3][RGB]{
-  \begingroup
-  \definecolor{color}{#1}{#2}\sethlcolor{color}
-  \hl{#3}
-  \endgroup
+	\begingroup
+	\definecolor{color}{#1}{#2}\sethlcolor{color}
+	\hl{#3}
+	\endgroup
 }
 
 \newcommand{\qbox}[1]{\ctext[RGB]{180, 180, 250}{#1}}
 \newcommand\sbullet[1][.7]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
 \newcommand{\Fonte}[1]{%
-  \vspace*{5pt}%
-  \noindent
-  \footnotesize
-  Fonte: #1%
-  \normalsize
+	\vspace*{5pt}%
+	\noindent
+	\footnotesize
+	Fonte: #1%
+	\normalsize
 }
 
 % main.tex - TCC ABNT 2025 (NBR 14724:2024 + NBR 6023:2025)
@@ -26,8 +26,8 @@
 \usepackage{times}
 \usepackage[brazil]{babel}
 \usepackage[
-  top=3cm, left=3cm, bottom=2cm, right=2cm,
-  headheight=1cm, headsep=1cm
+	top=3cm, left=3cm, bottom=2cm, right=2cm,
+	headheight=1cm, headsep=1cm
 ]{geometry}
 \usepackage{graphicx}
 \usepackage{microtype}
@@ -61,23 +61,23 @@
 \makeatother
 
 \tcbset{ % This targets the standard \tcbox
-  colback=white,   % New default background color
-  colframe=black!75
+	colback=white,   % New default background color
+	colframe=black!75
 }
 
 \DeclareFloatingEnvironment[
-  fileext=loq,
-  listname={Lista de Quadros},
-  name=Quadro,
-  placement=htbp,
-  within=chapter
+	fileext=loq,
+	listname={Lista de Quadros},
+	name=Quadro,
+	placement=htbp,
+	within=chapter
 ]{quadro}
 \DeclareFloatingEnvironment[
-  fileext=lot,
-  listname={Lista de Tabelas},
-  name=Tabela,
-  placement=htbp,
-  within=chapter
+	fileext=lot,
+	listname={Lista de Tabelas},
+	name=Tabela,
+	placement=htbp,
+	within=chapter
 ]{tabela}
 \counterwithout{figure}{chapter}
 \counterwithout{quadro}{chapter}
@@ -85,11 +85,21 @@
 
 % BIBLIOGRAFIA CORRETA - NBR 6023:2025
 \usepackage[
-  backend=biber,
-  style=abnt,          % Estilo ABNT (biblatex-abnt package)
-  ittitles=true,       % Títulos em itálico (booleano válido)
-  justify=true
+	backend=biber,
+	style=abnt,          % Estilo ABNT (biblatex-abnt package)
+	ittitles=true,       % Títulos em itálico (booleano válido)
+	justify=true,
 ]{biblatex}
+
+
+\AtEveryBibitem{%
+	\ifentrytype{online}{}{%
+		\renewbibmacro*{url+urldate}{%
+			\printfield{url}%
+			\setunit{\addcomma\space}%
+			\printurldate}%
+	}%
+}
 
 \renewcommand{\sectionautorefname}{Seção}
 \renewcommand{\figureautorefname}{Figura}
@@ -102,7 +112,8 @@
 \AtEveryCitekey{\renewcommand*{\mkbibnamefamily}[1]{#1}}
 
 \xpatchbibmacro{name:andothers}{\bibstring{andothers}}{\mkbibemph{\bibstring{andothers}}}{}{}
-\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{url}{Disponível em: \url{#1}}
+\DeclareFieldFormat{urldate}{Acesso em: #1}
 \setlength{\bibitemsep}{1\baselineskip}
 \renewcommand*{\finentrypunct}{}
 
@@ -111,24 +122,24 @@
 \DeclareFieldFormat{journaltitle}{\textbf{#1}}   % Bold journal names
 \DeclareFieldFormat[inproceedings]{booktitle}{\textbf{#1}}
 \DefineBibliographyStrings{brazil}{
-  sineloco = {\mkbibemph{S}\adddot\addabbrvspace \mkbibemph{l}\adddot},
-  sinenomine = {\mkbibemph{s}\adddot\addabbrvspace \mkbibemph{l}\adddot},
+	sineloco = {\mkbibemph{S}\adddot\addabbrvspace \mkbibemph{l}\adddot},
+	sinenomine = {\mkbibemph{s}\adddot\addabbrvspace \mkbibemph{l}\adddot},
 }
 
 \renewbibmacro*{publisher+location+date}{%
-  \iflistundef{location}
-  {\iflistundef{publisher}
-    {\printtext{[{\bibstring{sineloco}\addcolon\addspace\bibstring{sinenomine}}]}}
-    {\printtext{[{\bibstring{sineloco}}]}\setunit*{\addcolon\space}\printlist{publisher}} % [S. l.]: Publisher
-  }
-  {\iflistundef{publisher}
-    {\printlist{location}\setunit*{\addcolon\space}\printtext{[{\bibstring{sinenomine}}]}} % Location: [s. n.]
-    {\printlist{location}\setunit*{\addcolon\space}\printlist{publisher}} % Location: Publisher
-    %
-  }
-  \setunit*{\addcomma\space}%
-  \usebibmacro{date}%
-  \newunit}
+	\iflistundef{location}
+	{\iflistundef{publisher}
+		{\printtext{[{\bibstring{sineloco}\addcolon\addspace\bibstring{sinenomine}}]}}
+		{\printtext{[{\bibstring{sineloco}}]}\setunit*{\addcolon\space}\printlist{publisher}} % [S. l.]: Publisher
+	}
+	{\iflistundef{publisher}
+		{\printlist{location}\setunit*{\addcolon\space}\printtext{[{\bibstring{sinenomine}}]}} % Location: [s. n.]
+		{\printlist{location}\setunit*{\addcolon\space}\printlist{publisher}} % Location: Publisher
+		%
+	}
+	\setunit*{\addcomma\space}%
+	\usebibmacro{date}%
+	\newunit}
 
 \makeglossaries
 \input{1-pre-textuais/lista-de-abreviaturas-e-siglas.tex}
@@ -170,9 +181,9 @@
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \fancypagestyle{plain}{
-  \fancyhf{}
-  \fancyhead[R]{\thepage}
-  \renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyhead[R]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
 }
 \pagestyle{plain}
 
@@ -217,100 +228,100 @@
 \newcounter{quadrocount}
 \NewDocumentEnvironment{myquadro}{ m m +b }
 {
-  \stepcounter{quadrocount}
-  \begin{table}[ht]
-    \setlength{\extrarowheight}{2pt}
-    \captionsetup{width={\textwidth}}
-    \captionof{quadro}{#2}#1
-    \noindent
+	\stepcounter{quadrocount}
+	\begin{table}[ht]
+		\setlength{\extrarowheight}{2pt}
+		\captionsetup{width={\textwidth}}
+		\captionof{quadro}{#2}#1
+		\noindent
 
-    % Create unique box name using counter
-    \expandafter\newsavebox\csname quadrobox\thequadrocount\endcsname
-    \expandafter\sbox\csname quadrobox\thequadrocount\endcsname{%
-      \small
-      \begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
-    }
-    \pgfmathsetlengthmacro{\tableheight}{\ht\csname quadrobox\thequadrocount\endcsname + \dp\csname quadrobox\thequadrocount\endcsname}
+		% Create unique box name using counter
+		\expandafter\newsavebox\csname quadrobox\thequadrocount\endcsname
+		\expandafter\sbox\csname quadrobox\thequadrocount\endcsname{%
+			\small
+			\begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
+		}
+		\pgfmathsetlengthmacro{\tableheight}{\ht\csname quadrobox\thequadrocount\endcsname + \dp\csname quadrobox\thequadrocount\endcsname}
 
-    \begin{tikzpicture}
-      \begin{scope}
-        \clip[rounded corners=5pt] (0,0) rectangle (\textwidth, \tableheight);
-        \node[anchor=south west, inner sep=0pt] at (0,0) {\expandafter\usebox\csname quadrobox\thequadrocount\endcsname};
-      \end{scope}
-      \draw[rounded corners=5pt, line width=1.5pt, black] (0,0) rectangle (\textwidth, \tableheight);
-    \end{tikzpicture}
-    {\vspace*{5pt}\Fonte{fornecido pelo autor}}
-  \end{table}
+		\begin{tikzpicture}
+			\begin{scope}
+				\clip[rounded corners=5pt] (0,0) rectangle (\textwidth, \tableheight);
+				\node[anchor=south west, inner sep=0pt] at (0,0) {\expandafter\usebox\csname quadrobox\thequadrocount\endcsname};
+			\end{scope}
+			\draw[rounded corners=5pt, line width=1.5pt, black] (0,0) rectangle (\textwidth, \tableheight);
+		\end{tikzpicture}
+		{\vspace*{5pt}\Fonte{Elaborado pelo autor}}
+	\end{table}
 }
 {}
 
 \NewDocumentEnvironment{apendice}{m +b}{
-  \pagebreak
-  \begingroup
-  \vspace*{-1cm}
-  \begin{center}
-    \normalfont\bfseries\fontsize{12}{14.4}\selectfont\MakeUppercase{#1}
-  \end{center}
-  \vspace*{20pt}
-  \phantomsection
-  \addcontentsline{toc}{chapter}{\protect\numberline{}\MakeUppercase{#1}}
-  \refstepcounter{chapter}
-  #2
-  \cleardoublepage
-  \endgroup
+	\pagebreak
+	\begingroup
+	\vspace*{-1cm}
+	\begin{center}
+		\normalfont\bfseries\fontsize{12}{14.4}\selectfont\MakeUppercase{#1}
+	\end{center}
+	\vspace*{20pt}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\protect\numberline{}\MakeUppercase{#1}}
+	\refstepcounter{chapter}
+	#2
+	\cleardoublepage
+	\endgroup
 }{}
 
 % No preâmbulo, adicione:
 \newcounter{tabelacount}
 \NewDocumentEnvironment{mytabela}{ m m +b }
 {
-  \stepcounter{tabelacount}
-  \begin{table}[ht]
-    \setlength{\extrarowheight}{2pt}
-    \captionsetup{width={\textwidth}}
-    \captionof{tabela}{#2}
-    \label{#1}
+	\stepcounter{tabelacount}
+	\begin{table}[ht]
+		\setlength{\extrarowheight}{2pt}
+		\captionsetup{width={\textwidth}}
+		\captionof{tabela}{#2}
+		\label{#1}
 
-    % Create unique box name using counter
-    \expandafter\newsavebox\csname tabelabox\thetabelacount\endcsname
-    \expandafter\sbox\csname tabelabox\thetabelacount\endcsname{%
-      \small
-      \begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
-    }
-    \pgfmathsetlengthmacro{\tableheight}{\ht\csname tabelabox\thetabelacount\endcsname + \dp\csname tabelabox\thetabelacount\endcsname}
+		% Create unique box name using counter
+		\expandafter\newsavebox\csname tabelabox\thetabelacount\endcsname
+		\expandafter\sbox\csname tabelabox\thetabelacount\endcsname{%
+			\small
+			\begin{NiceTabularX}{\textwidth} #3 \end{NiceTabularX}
+		}
+		\pgfmathsetlengthmacro{\tableheight}{\ht\csname tabelabox\thetabelacount\endcsname + \dp\csname tabelabox\thetabelacount\endcsname}
 
-    \begin{tikzpicture}
-      \begin{scope}
-        \node[anchor=south west, inner sep=0pt] at (0,0) {\expandafter\usebox\csname tabelabox\thetabelacount\endcsname};
-      \end{scope}
+		\begin{tikzpicture}
+			\begin{scope}
+				\node[anchor=south west, inner sep=0pt] at (0,0) {\expandafter\usebox\csname tabelabox\thetabelacount\endcsname};
+			\end{scope}
 
-    \end{tikzpicture}
-    {\vspace*{5pt}\Fonte{fornecido pelo autor}}
-  \end{table}
+		\end{tikzpicture}
+		{\vspace*{5pt}\Fonte{Elaborado pelo autor}}
+	\end{table}
 }
 {}
 
 \newlength{\myimgwidth}
 \newlength{\myimgheight}
 \NewDocumentEnvironment{mypicture}{m m m m +b}{
-  \begin{figure}[!ht]
-    \captionsetup{width=\textwidth}
-    \caption{#1#2}
-    \begin{tikzpicture}
-      \setlength{\myimgwidth}{\textwidth}
+	\begin{figure}[!ht]
+		\captionsetup{width=\textwidth}
+		\caption{#1#2}
+		\begin{tikzpicture}
+			\setlength{\myimgwidth}{\textwidth}
 
-      % Calculate height based on image's natural aspect ratio
+			% Calculate height based on image's natural aspect ratio
 
-      \settototalheight{\myimgheight}{\includegraphics[width=\myimgwidth]{#3}}
+			\settototalheight{\myimgheight}{\includegraphics[width=\myimgwidth]{#3}}
 
-      \begin{scope}
-        \clip[rounded corners=5pt] (0,0) rectangle (\myimgwidth, \myimgheight);
-        \node (image) at (0.5\myimgwidth,0.5\myimgheight) {
-          \includegraphics[width=\myimgwidth, height=\myimgheight]{#3}
-        };
-      \end{scope}
-      \draw[rounded corners=5pt, line width=1.5pt] (0,0) rectangle (\myimgwidth, \myimgheight);
-    \end{tikzpicture}
-    {\Fonte{#4}}
-  \end{figure}
+			\begin{scope}
+				\clip[rounded corners=5pt] (0,0) rectangle (\myimgwidth, \myimgheight);
+				\node (image) at (0.5\myimgwidth,0.5\myimgheight) {
+					\includegraphics[width=\myimgwidth, height=\myimgheight]{#3}
+				};
+			\end{scope}
+			\draw[rounded corners=5pt, line width=1.5pt] (0,0) rectangle (\myimgwidth, \myimgheight);
+		\end{tikzpicture}
+		{\Fonte{#4}}
+	\end{figure}
 }{}

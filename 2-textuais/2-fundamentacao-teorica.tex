@@ -11,7 +11,7 @@ Programas que são executados em computadores são escritos no que é chamada de
 As fases de um compilador podem ser divididas de várias formas. Os trabalhos de \textcite{cooper2022engineering,mogensen2024introduction, thain2020introduction} dão suas definições das fases de um compilador, mas para este trabalho será seguida a definição de \textcite{thain2020introduction}. As três primeiras fases do processo de compilação podem ser definidas como análise léxica, análise sintática e análise semântica. Elas são chamadas coletivamente de \textit{front-end} do compilador \cite{mogensen2024introduction}. A fase de análise léxica gera \textit{tokens} usados pela fase de análise sintática para validar que a entrada segue a estrutura da gramática da linguagem alvo e gerar uma árvore sintática para ser usada pelas próximas fases da compilação.
 
 
-\begin{mypicture}{\label{fig:compfases}}{Fases de um compilador UNIX}{figuras/compfases.png}{adaptado de \textcite{thain2020introduction}.}
+\begin{mypicture}{\label{fig:compfases}}{Fases de um compilador UNIX}{figuras/compfases.png}{Adaptado de \textcite{thain2020introduction}.}
 \end{mypicture}
 
 \subsubsection{Análise léxica}
@@ -101,7 +101,7 @@ Com essas modificações chegamos aos algoritmos de \textit{closure} \gls{lr}(1)
   {\label{fig:svelte}}
   {Fluxo de processamento do \textit{framework} \textit{Svelte}}
   {figuras/svelte.png}
-  {adaptado de \textcite{harris_svelte_2019}.}
+  {Adaptado de \textcite{harris_svelte_2019}.}
 \end{mypicture}
 
 Ao contrário dos \textit{frameworks} tradicionais, \textit{Svelte} age como um compilador, funcionando em \textit{build-time} para transformar os componentes criados em código \textit{Javascript} imperativo altamente eficiente que atualiza o \gls{dom} apenas onde necessário. Isso permite escrever código para aplicações robustas sem necessidade de se preocupar muito com otimizações para que as aplicações sejam leves e performáticas. A Figura \ref{fig:svelte} mostra o fluxo de processamento do \textit{framework} \textit{Svelte}.
