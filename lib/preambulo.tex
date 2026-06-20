@@ -32,7 +32,7 @@
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{listofitems}
-\usepackage{glossaries}
+\usepackage[nogroupskip, nonumberlist,style=super]{glossaries}
 \usepackage{xstring}
 \usepackage{setspace}
 \usepackage{soul}
@@ -64,20 +64,21 @@
 	colback=white,   % New default background color
 	colframe=black!75
 }
-
 \DeclareFloatingEnvironment[
 	fileext=loq,
 	listname={Lista de Quadros},
 	name=Quadro,
 	placement=htbp,
-	within=chapter
+	within=chapter,
+	chapterlistsgaps=off
 ]{quadro}
 \DeclareFloatingEnvironment[
 	fileext=lot,
 	listname={Lista de Tabelas},
 	name=Tabela,
 	placement=htbp,
-	within=chapter
+	within=chapter,
+	chapterlistsgaps=off
 ]{tabela}
 \counterwithout{figure}{chapter}
 \counterwithout{quadro}{chapter}
@@ -154,7 +155,7 @@
 {\MakeUppercase}
 
 % Optional: adjust spacing before/after chapter title
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
 
 \titleformat{\section}
 {\bfseries\fontsize{12}{14.4}\selectfont}
